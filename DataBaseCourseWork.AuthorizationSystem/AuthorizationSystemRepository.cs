@@ -1,5 +1,6 @@
 ﻿using DataBaseCourseWork.Common;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing.Printing;
@@ -84,6 +85,11 @@ namespace DataBaseCourseWork.AuthorizationSystem
         public void OpenConnection()
         {
             _connection?.Open();
+        }
+
+        public IEnumerable<object[]> ReadAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }

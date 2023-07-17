@@ -48,6 +48,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="TestData\Banks.txt" />
+    <Content Include="TestData\MenuItems.txt" />
     <Content Include="TestData\UserNames.txt" />
     <Content Include="TestData\UserPasswords.txt" />
   </ItemGroup>

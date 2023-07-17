@@ -1,8 +1,6 @@
 ﻿using DataBaseCourseWork.AuthorizationSystem;
+using DataBaseCourseWork.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Demo
@@ -17,7 +15,8 @@ namespace DataBaseCourseWork.Demo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AuthorizationForm());
+            Application.Run(new MyApplicationContext(() => new AuthorizationForm()));
+            //Application.Run(new AuthorizationForm());
         }
     }
 }

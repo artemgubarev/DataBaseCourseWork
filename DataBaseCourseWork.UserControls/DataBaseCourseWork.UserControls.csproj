@@ -79,6 +79,9 @@
     <EmbeddedResource Include="DataViewerUserControl.resx">
       <DependentUpon>DataViewerUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainUserControl.resx">
+      <DependentUpon>MainUserControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

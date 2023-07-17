@@ -75,6 +75,10 @@
       <Project>{81a4b727-fe1f-41c2-a1b7-9d1bfb35454e}</Project>
       <Name>DataBaseCourseWork.AuthorizationSystem</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
+      <Project>{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}</Project>
+      <Name>DataBaseCourseWork.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

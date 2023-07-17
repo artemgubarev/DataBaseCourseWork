@@ -13,21 +13,27 @@ namespace DataBaseCourseWork.AuthorizationSystem
         public AuthorizationForm()
         {
             InitializeComponent();
-
+           
             _repository = new AuthorizationSystemRepository();
-
             this.authorizationUserControl.Focus();
             this.authorizationUserControl.LoginButton.Click += LoginButton_Click;
             this.authorizationUserControl.RegistrationButton.Click += RegistrationButton_Click;
             this.Disposed += AuthorizationForm_Disposed;
+            
         }
 
         private void AuthorizationForm_Disposed(object sender, EventArgs e)
         {
             this.authorizationUserControl.LoginButton.Click -= LoginButton_Click;
             this.authorizationUserControl.RegistrationButton.Click -= RegistrationButton_Click;
+            _repository.CloseConnection();
         }
 
+        /// <summary>
+        /// Регистрация нового пользователя
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
             authorizationUserControl.RegistrationNameErrorLabel.Visible = false;
@@ -70,6 +76,11 @@ namespace DataBaseCourseWork.AuthorizationSystem
             }
         }
 
+        /// <summary>
+        /// Вход в приложение
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginButton_Click(object sender, EventArgs e)
         {
             authorizationUserControl.LoginNameErrorLabel.Visible = false;
@@ -104,14 +115,21 @@ namespace DataBaseCourseWork.AuthorizationSystem
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ShowMainForm()
         {
-            var mainForm = new MainForm();
-            //Close();
-            mainForm.ShowDialog();
-            //Application.Run(mainForm);
+            var mainForm = new MainForm(this);
+            mainForm.Show();
+            this.Close();
         }
 
+        /// <summary>
+        /// Вычислить хэш код для строки MD5
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         private string CalculateMD5Hash(string input)
         {
             using (MD5 md5 = MD5.Create())

@@ -8,6 +8,7 @@ namespace DataBaseCourseWork.Common
 {
     public interface IRepository
     {
+        IEnumerable<object[]> ReadAll();
         object AddOrUpdate(object obj);
         void Delete(int id);
         void CloseConnection();

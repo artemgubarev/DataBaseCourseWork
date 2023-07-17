@@ -1,4 +1,5 @@
 ﻿using DataBaseCourseWork.Common;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -56,6 +57,11 @@ namespace DataBaseCourseWork.Banks
         }
 
         public object Find(object obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<object[]> ReadAll()
         {
             throw new System.NotImplementedException();
         }

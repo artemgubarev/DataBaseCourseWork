@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +36,32 @@ namespace DataBaseCourseWork.Common
             }
 
             return result;
+        }
+
+        public IEnumerable<object[]> ExecuteReader(string query, SqlConnection connection, IEnumerable<SqlParameter> parameters = null)
+        {
+            if (connection.State != System.Data.ConnectionState.Open)
+                throw new InvalidOperationException("Подключение закрыто.");
+
+            var data = new List<object[]>();
+
+            using (var command = new SqlCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        object[] _data = new object[reader.FieldCount];
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            object value = reader.GetValue(i);
+                            _data[i] = value;
+                        }
+                        data.Add(_data);
+                    }
+                }
+            }
+            return data;
         }
     }
 }
