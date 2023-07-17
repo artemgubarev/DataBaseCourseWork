@@ -48,6 +48,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="TestData\Banks.txt" />
+    <Content Include="TestData\UserNames.txt" />
+    <Content Include="TestData\UserPasswords.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

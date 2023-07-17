@@ -46,7 +46,9 @@
             this.ClientSize = new System.Drawing.Size(455, 412);
             this.Controls.Add(this.authorizationUserControl);
             this.Name = "AuthorizationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход / Регистрация";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AuthorizationForm_KeyDown);
             this.ResumeLayout(false);
 
         }

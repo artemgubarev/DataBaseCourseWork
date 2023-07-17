@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using DataBaseCourseWork.TestDataGenerator;
-using DataBaseCourseWork.MSSQLDataBase;
+using DataBaseCourseWork.Common;
+using System.Security.Cryptography;
 
 namespace DataBaseCourseWork.ConsoleAppTest
 {
@@ -34,23 +35,44 @@ namespace DataBaseCourseWork.ConsoleAppTest
 
             //Console.WriteLine(connection.State == System.Data.ConnectionState.Open);
 
-            var dataBase = new DataBase();
-            string connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st";
-            using (var connection = new SqlConnection(connectionString))
+            //var dataBase = new MSSQLDataBase();
+            //string connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st";
+            //using (var connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    var generator = new Generator();
+            //    var banks = generator.GenerateTestData(new TestDataColumn[]
+            //    {
+            //        new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
+            //    });
+            //    banks.ToList().ForEach(bank => 
+            //    {
+            //        string query = "INSERT INTO Banks (Name) VALUES (@Name)";
+            //        var parameters = new SqlParameter[] { new SqlParameter() { ParameterName = "Name" ,Value = bank[0] } };
+            //        dataBase.ExecuteNonQuery(query, connection, parameters);
+            //    });
+
+            //}
+
+            string str = "";
+            string hashed = CalculateMD5Hash(str);
+            Console.WriteLine(hashed);
+        }
+
+        static string CalculateMD5Hash(string input)
+        {
+            using (MD5 md5 = MD5.Create())
             {
-                connection.Open();
-                var generator = new Generator();
-                var banks = generator.GenerateTestData(new TestDataColumn[]
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = md5.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
                 {
-                    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
-                });
-                banks.ToList().ForEach(bank => 
-                {
-                    string query = "INSERT INTO Banks (Name) VALUES (@Name)";
-                    var parameters = new SqlParameter[] { new SqlParameter() { ParameterName = "Name" ,Value = bank[0] } };
-                    dataBase.ExecuteNonQuery(query, connection, parameters);
-                });
-               
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
             }
         }
     }

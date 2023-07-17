@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ConsoleA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.UnitTests", "DataBaseCourseWork.UnitTests\DataBaseCourseWork.UnitTests.csproj", "{E59BA58F-EA1E-485D-B96B-0DF8792A6CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.MSSQLDataBase", "DataBaseCourseWork.MSSQLDataBase\DataBaseCourseWork.MSSQLDataBase.csproj", "{B3FF93CE-30D0-459A-80B8-F6811EA3330A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.TestDataGenerator", "DataBaseCourseWork.TestDataGenerator\DataBaseCourseWork.TestDataGenerator.csproj", "{DBCC5071-C092-41DE-BA93-EA79ED72C694}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Shops", "DataBaseCourseWork.Shops\DataBaseCourseWork.Shops.csproj", "{DB785D4A-000D-48B8-8660-4A12AC592118}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Demo", "DataBaseCourseWork.Demo\DataBaseCourseWork.Demo.csproj", "{3A32B05B-8AEB-4EE8-8C8F-8335FF227A82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AuthorizationSystem", "DataBaseCourseWork.AuthorizationSystem\DataBaseCourseWork.AuthorizationSystem.csproj", "{81A4B727-FE1F-41C2-A1B7-9D1BFB35454E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Common", "DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj", "{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{E59BA58F-EA1E-485D-B96B-0DF8792A6CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E59BA58F-EA1E-485D-B96B-0DF8792A6CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E59BA58F-EA1E-485D-B96B-0DF8792A6CC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3FF93CE-30D0-459A-80B8-F6811EA3330A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3FF93CE-30D0-459A-80B8-F6811EA3330A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3FF93CE-30D0-459A-80B8-F6811EA3330A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3FF93CE-30D0-459A-80B8-F6811EA3330A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBCC5071-C092-41DE-BA93-EA79ED72C694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBCC5071-C092-41DE-BA93-EA79ED72C694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCC5071-C092-41DE-BA93-EA79ED72C694}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{81A4B727-FE1F-41C2-A1B7-9D1BFB35454E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81A4B727-FE1F-41C2-A1B7-9D1BFB35454E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81A4B727-FE1F-41C2-A1B7-9D1BFB35454E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

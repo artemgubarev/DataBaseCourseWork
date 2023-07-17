@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DataBaseCourseWork.MSSQLDataBase")]
+[assembly: AssemblyTitle("DataBaseCourseWork.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DataBaseCourseWork.MSSQLDataBase")]
+[assembly: AssemblyProduct("DataBaseCourseWork.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b3ff93ce-30d0-459a-80b8-f6811ea3330a")]
+[assembly: Guid("9f0b31d4-3adf-472f-89ea-aa932ef8ff23")]
 
 // Version information for an assembly consists of the following four values:
 //

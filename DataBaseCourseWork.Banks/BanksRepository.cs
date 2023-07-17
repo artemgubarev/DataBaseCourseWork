@@ -1,4 +1,4 @@
-﻿using DataBaseCourseWork.MSSQLDataBase;
+﻿using DataBaseCourseWork.Common;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -11,7 +11,7 @@ namespace DataBaseCourseWork.Banks
         public BanksRepository()
         {
             _connection = new SqlConnection(_connectionString);
-            _connection.Open();
+            OpenConnection();
         }
 
         public void CloseConnection()
@@ -19,7 +19,7 @@ namespace DataBaseCourseWork.Banks
             _connection.Close();
         }
 
-        public void AddOrUpdate(object obj)
+        public object AddOrUpdate(object obj)
         {
             var bank = (Bank)obj;
             // Добавить новый банк
@@ -31,9 +31,31 @@ namespace DataBaseCourseWork.Banks
             {
 
             }
+
+            return null; 
         }
 
         public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsExist(object obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OpenConnection()
+        {
+            _connection.Open();
+        }
+
+        public object Find(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public object Find(object obj)
         {
             throw new System.NotImplementedException();
         }

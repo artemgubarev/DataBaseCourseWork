@@ -102,9 +102,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataBaseCourseWork.MSSQLDataBase\DataBaseCourseWork.MSSQLDataBase.csproj">
-      <Project>{b3ff93ce-30d0-459a-80b8-f6811ea3330a}</Project>
-      <Name>DataBaseCourseWork.MSSQLDataBase</Name>
+    <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
+      <Project>{9f0b31d4-3adf-472f-89ea-aa932ef8ff23}</Project>
+      <Name>DataBaseCourseWork.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.UserControls\DataBaseCourseWork.UserControls.csproj">
       <Project>{e425b6d4-e495-450f-9b99-6f4ceb1ee22e}</Project>

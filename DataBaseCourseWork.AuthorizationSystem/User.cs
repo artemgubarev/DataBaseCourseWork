@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataBaseCourseWork.Common;
+using System;
 
 namespace DataBaseCourseWork.AuthorizationSystem
 {
-    internal class User
+    internal class User : NamedElement
     {
-		private int? _id;
-
-		public int? Id
+		public User(string name)
 		{
-			get { return _id; }
-			set { _id = value; }
+			Name = name;
 		}
 
-		private string _name;
+		private string _password;
 
-		public string Name
+		/// <summary>
+		/// Храниться не пароль а его хэш код
+		/// </summary>
+		public string Password
 		{
-			get { return _name; }
-			set { _name = value; }
+			get { return _password; }
+			set 
+			{
+				if (string.IsNullOrEmpty(value))
+					throw new ArgumentException("Password can not be is null or empty.");
+                _password = value; 
+			}
 		}
+
 	}
 }
