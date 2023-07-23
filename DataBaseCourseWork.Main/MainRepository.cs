@@ -18,6 +18,16 @@ namespace DataBaseCourseWork.Main
             OpenConnection();
         }
 
+        public IEnumerable<object[]> GetAllForeignKeys()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> ReadAllNamesFromTable(string tableName)
+        {
+            throw new NotImplementedException();
+        }
+
         public object AddOrUpdate(object obj)
         {
             throw new NotImplementedException();

@@ -117,32 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAAARxJREFUOE+t0r9LgkEcx3H/OpeGFgeXlhaXhpYWl5YGl5YGl4YeQkIDjRApQqKI
-        ingQEUQexIgMC6TFx8fHfslHnwe/3Jfj6e4B7w0HN724+94lsMiyLCMrKBFs3j9H6A9HeP5w4QxctN9c
-        NF/HsF/GeOh5uO16qDseLjoTVNsTVFo+Sk0fhYaPI3uKw6cp8o9fIRqCJrCDewaqMLn/sP07BsbFqCgs
-        d8NAHcavScnY3jUDo2ZGyTOjZGy3/i3AuA/Ak7HsFQNNYDuXDDSBbdd+BKj7Z5QK26oyUPdpKRWWOf8V
-        oAqLes0obPOMgTqMUmEbZQbqTkapsPTpnwBXuSZhqSIDTWDrJzMBmsDWCgw0gSWPl2Aw7GBjYgHAHORn
-        KgWKL3HVAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="pictureBox.ToolTip" xml:space="preserve">
-    <value>Голубым цветом выделены 'Добавляемые' строки в базу данных.
-Красным цветом выделены 'Обновляемые' строки в базе данных.
-После нажатия на кнопку 'Создать' все строки которые были выделены голубым цветом
-добавятся в базу данных, и станут белыми.
-Аналогично со строками которые выделены красным цветом, после нажатия  на кнопку 'Обновить', строки
-в базе данных обновяться, и станут белыми.
-После нажатия на копку удалить удаляться все строки (в том числе из базы данных), которые были
-выделены темно синим цветом.</value>
-  </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
-  </metadata>
 </root>

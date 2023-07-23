@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace DataBaseCourseWork.Common
 {
     public interface IRepository
     {
         IEnumerable<object[]> ReadAll();
+        IEnumerable<object[]> GetAllForeignKeys();
+        IEnumerable<object> ReadAllNamesFromTable(string tableName);
         object AddOrUpdate(object obj);
         void Delete(int id);
         void CloseConnection();

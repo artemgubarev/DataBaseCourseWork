@@ -16,5 +16,32 @@ namespace DataBaseCourseWork.UserControls
         {
             InitializeComponent();
         }
+
+        public Button CreateButton 
+        {
+            get => this.createButton;
+            set => this.createButton = value;
+        }
+        public Button DeleteButton 
+        { 
+            get => this.deleteButton;
+            set => this.deleteButton = value;
+        }
+        public Button UpdateButton 
+        { 
+            get => this.updateButton;
+            set => this.updateButton = value;
+        }
+        public DataGridView DataGridView 
+        { 
+            get => this.dataGridView;
+            set => this.dataGridView = value;
+        }
+
+        public PictureBox HintPictureBox
+        {
+            get => this.pictureBox;
+            set => this.pictureBox = value;
+        }
     }
 }

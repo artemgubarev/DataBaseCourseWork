@@ -9,5 +9,11 @@ namespace DataBaseCourseWork.Banks
 		{
 			Name = name;
 		}
+
+        public Bank(int id, string name)
+        { 
+            Id = id;
+            Name = name;
+        }
 	}
 }

@@ -9,14 +9,24 @@ namespace DataBaseCourseWork.AuthorizationSystem
 {
     internal class AuthorizationSystemRepository : IRepository
     {
-        private SqlConnection _connection;
-        private string _connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;";
-        private MSSQLDataBase _dataBase;
+        private readonly SqlConnection _connection;
+        private readonly string _connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;";
+        private readonly MSSQLDataBase _dataBase;
         public AuthorizationSystemRepository()
         {
             _connection = new SqlConnection(_connectionString);
             _dataBase = new MSSQLDataBase();
             OpenConnection();
+        }
+
+        public IEnumerable<object[]> GetAllForeignKeys()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> ReadAllNamesFromTable(string tableName)
+        {
+            throw new NotImplementedException();
         }
 
         public object AddOrUpdate(object obj)

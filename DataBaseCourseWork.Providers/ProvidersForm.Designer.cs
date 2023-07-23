@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.Banks
+﻿namespace DataBaseCourseWork.Providers
 {
-    partial class BanksForm
+    partial class ProvidersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,17 +36,17 @@
             this.dataViewerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataViewerUserControl.Location = new System.Drawing.Point(0, 0);
             this.dataViewerUserControl.Name = "dataViewerUserControl";
-            this.dataViewerUserControl.Size = new System.Drawing.Size(530, 403);
+            this.dataViewerUserControl.Size = new System.Drawing.Size(584, 391);
             this.dataViewerUserControl.TabIndex = 0;
             // 
-            // BanksForm
+            // ProvidersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 403);
+            this.ClientSize = new System.Drawing.Size(584, 391);
             this.Controls.Add(this.dataViewerUserControl);
-            this.Name = "BanksForm";
-            this.Text = "Банки";
+            this.Name = "ProvidersForm";
+            this.Text = "Поставщики";
             this.ResumeLayout(false);
 
         }

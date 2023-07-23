@@ -9,6 +9,9 @@ namespace DataBaseCourseWork.UserControls
             InitializeComponent();
         }
 
-        public MenuStrip MenuStrip { get { return this.menuStrip; } set { this.menuStrip = value; } }
+        public MenuStrip MenuStrip { 
+            get => this.menuStrip;
+            set => this.menuStrip = value;
+        }
     }
 }

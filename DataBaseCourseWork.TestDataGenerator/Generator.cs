@@ -1,15 +1,12 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataBaseCourseWork.TestDataGenerator
 {
+    /// <summary>
+    /// Генератор тестовых данных
+    /// </summary>
     public class Generator
     {
         public void Run()
@@ -18,28 +15,43 @@ namespace DataBaseCourseWork.TestDataGenerator
             {
                 new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
             });
-
-
         }
 
+        /// <summary>
+        /// Генерируем таблицу с тестовыми данными
+        /// </summary>
+        /// <param name="dataColumns"></param>
+        /// <returns></returns>
         public IEnumerable<object[]> GenerateTestData(IEnumerable<TestDataColumn> dataColumns)
         {
             var data = new List<object[]>();
             var cols = dataColumns.ToList();
             cols.Sort();
 
+            // получаем все данные из файлов
             var textData = new List<string[]>();
-            textData.Add(File.ReadAllLines(cols[0].DataSource));
-            int minRowsCount = textData[0].Length;
+            cols.ForEach(col => { textData.Add(File.ReadAllLines(col.DataSource)); });
 
-            for (int i = 1; i < cols.Count; i++)
+            //количество строк в таблице будет равно
+            // количеству строк в файле который имеет минимальное количество
+            // строк из всех
+            int minRowsCount = textData[0].Length;  
+            textData.ForEach(txt =>
             {
-                var lines = File.ReadAllLines(cols[i].DataSource);
-                if (lines.Length < minRowsCount)
-                    minRowsCount = lines.Length;
-                textData.Add(lines);
-            }
+                int length = txt.Length;
+                if (length < minRowsCount)
+                    minRowsCount = length;
+            });
 
+            //for (int i = 1; i < cols.Count; i++)
+            //{
+            //    var lines = File.ReadAllLines(cols[i].DataSource);
+            //    if (lines.Length < minRowsCount)
+            //        minRowsCount = lines.Length;
+            //    textData.Add(lines);
+            //}
+
+            // заполняем таблицу
             for (int i = 0; i < minRowsCount; i++)
             {
                 object[] row = new object[cols.Count];
@@ -52,5 +64,15 @@ namespace DataBaseCourseWork.TestDataGenerator
 
             return data; 
         }
+
+        /// <summary>
+        /// отправить тестовые данные в базу данных
+        /// </summary>
+        /// <param name="data"></param>
+        private void SendToDataBase(string query, IEnumerable<string[]> data)
+        {
+
+        }
+
     }
 }

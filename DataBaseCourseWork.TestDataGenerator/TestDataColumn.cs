@@ -2,6 +2,56 @@
 
 namespace DataBaseCourseWork.TestDataGenerator
 {
+	/// <summary>
+	/// Диапозон для генерации случайных чисел
+	/// </summary>
+    public class NumberRange
+    {
+        public NumberRange(double leftBorder, double rightBorder)
+        {
+            LeftBorder = leftBorder;
+            RightBorder = rightBorder;
+        }
+
+		private double _leftBorder;
+
+		/// <summary>
+		/// левая граница диапозона
+		/// </summary>
+		public double LeftBorder
+		{
+			get { return _leftBorder; }
+            set
+            {
+                if (value >= _rigthBorder)
+                    throw new ArgumentException("Левая граница не может быть больше правой");
+                _leftBorder = value;
+            }
+		}
+
+		private double _rigthBorder;
+
+		/// <summary>
+		/// Правая граница диапозона
+		/// </summary>
+		public double RightBorder
+		{
+			get { return _rigthBorder; }
+            set
+            {
+                if (value <= _leftBorder)
+                    throw new ArgumentException("Правая граница не может быть меньше левой");
+                _rigthBorder = value;
+            }
+		}
+
+	}
+
+    /// <summary>
+	/// Столбец в таблицы базы данных
+	/// Для формирования таблицы тестовых данных
+	/// Каждый столбец береться из отдельного источника данных
+    /// </summary>
 	public class TestDataColumn : IComparable<TestDataColumn>
     {
 		public TestDataColumn(string dataSource, int colNumber)
@@ -10,8 +60,23 @@ namespace DataBaseCourseWork.TestDataGenerator
 			ColNumber = colNumber;
 		}
 
+        public TestDataColumn(NumberRange randomNumberRange, int colNumber)
+        {
+            RandomNumberRange = randomNumberRange;
+            ColNumber = colNumber;
+        }
+
+		/// <summary>
+		/// Диапозон для рандомного числа
+		/// </summary>
+        public NumberRange RandomNumberRange { get; set; } = null; 
+
 		private string _dataSource;
 
+		/// <summary>
+		/// Источник данных для столбца
+		/// путь к файлу
+		/// </summary>
 		public string DataSource
 		{
 			get { return _dataSource; }
@@ -25,6 +90,9 @@ namespace DataBaseCourseWork.TestDataGenerator
 
 		private int _colNumber;
 
+		/// <summary>
+		/// Номер столбца в таблице
+		/// </summary>
 		public int ColNumber
 		{
 			get { return _colNumber; }
@@ -36,6 +104,12 @@ namespace DataBaseCourseWork.TestDataGenerator
 			}
 		}
 
+		/// <summary>
+		/// Для того чтобы стобцы в таблице шли в заданном порядке
+		/// Необходима возможность сортировать коллекцию столбцов
+		/// </summary>
+		/// <param name="other"></param>
+		/// <returns></returns>
         public int CompareTo(TestDataColumn other)
         {
             if (other == null)
