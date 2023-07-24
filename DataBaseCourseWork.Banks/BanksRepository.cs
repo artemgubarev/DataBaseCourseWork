@@ -94,10 +94,20 @@ namespace DataBaseCourseWork.Banks
             throw new System.NotImplementedException();
         }
 
+        public int GetRowsNumber(string tableName)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<object[]> ReadAll()
         {
             string query = "SELECT * FROM Banks;";
             return _dataBase.ExecuteReader(query, _connection);
+        }
+
+        public IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

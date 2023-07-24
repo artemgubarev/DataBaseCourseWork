@@ -2,16 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
-namespace DataBaseCourseWork.Providers
+namespace DataBaseCourseWork.TestDataGenerator
 {
-    internal class ProvidersRepository : IRepository
+    internal class TestDataGeneratorRepository : IRepository
     {
         private readonly SqlConnection _connection;
         private readonly string _connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;" +
                                                     "User Id=db_a9c366_coursework_admin;Password=flyg919st;";
         private readonly MSSQLDataBase _dataBase;
-        public ProvidersRepository()
+
+        public TestDataGeneratorRepository()
         {
             _connection = new SqlConnection(_connectionString);
             _dataBase = new MSSQLDataBase();
@@ -20,30 +22,39 @@ namespace DataBaseCourseWork.Providers
 
         public IEnumerable<object[]> ReadAll()
         {
-            string query = "SELECT * FROM Providers";
-            return _dataBase.ExecuteReader(query, _connection);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<object[]> GetAllForeignKeys()
         {
-            string query = "SELECT \r\n\t" +
-                           "fkc.parent_column_id AS ColumnNumber,\r\n    " +
-                           "OBJECT_NAME(fkc.referenced_object_id) AS TableName\r\nFROM \r\n    " +
-                           "sys.foreign_key_columns AS fkc\r\n" +
-                           "WHERE OBJECT_NAME(fkc.parent_object_id) = 'Providers'";
-
-            return _dataBase.ExecuteReader(query, _connection);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<object> ReadAllNamesFromTable(string tableName)
         {
-            string query = "SELECT Name FROM " + tableName;
-            return _dataBase.ExecuteReader(query, _connection);
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName)
+        {
+            string query = $"SELECT DISTINCT {columnName} FROM {tableName};";
+            var dataFromDB = _dataBase.ExecuteReader(query, _connection).ToArray();
+            object[] data = new object[dataFromDB.Length];
+            for (int i = 0; i < dataFromDB.Length; i++)
+                data[i] = dataFromDB[i][0];
+            return data;
         }
 
         public object AddOrUpdate(object obj)
         {
-            throw new NotImplementedException();
+          
+            var testData = (TestDataRow)obj;
+            var dataArray = testData.Data.ToArray();
+            var parameters = new SqlParameter[dataArray.Length];
+            for (int i = 0; i < dataArray.Length; i++)
+                parameters[i] = new SqlParameter() { Value = dataArray[i], ParameterName = testData.ParameterNames[i] };
+            _dataBase.ExecuteNonQuery(testData.Query, _connection, parameters);
+            return null;
         }
 
         public void Delete(int id)
@@ -53,12 +64,12 @@ namespace DataBaseCourseWork.Providers
 
         public void CloseConnection()
         {
-            _connection.Close();    
+            _connection.Close();
         }
 
         public void OpenConnection()
         {
-            _connection.Open(); 
+            _connection.Open();
         }
 
         public bool IsExist(object obj)
@@ -76,14 +87,11 @@ namespace DataBaseCourseWork.Providers
             throw new NotImplementedException();
         }
 
-        public IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName)
-        {
-            throw new NotImplementedException();
-        }
-
         public int GetRowsNumber(string tableName)
         {
-            throw new NotImplementedException();
+            string query = $"SELECT COUNT(*) FROM {tableName}";
+            int rowsNumber = Convert.ToInt32(_dataBase.ExecuteScalar(query,_connection).ToString());
+            return rowsNumber;
         }
     }
 }

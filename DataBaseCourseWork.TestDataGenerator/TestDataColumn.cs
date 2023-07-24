@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataBaseCourseWork.TestDataGenerator
 {
@@ -65,6 +66,19 @@ namespace DataBaseCourseWork.TestDataGenerator
             RandomNumberRange = randomNumberRange;
             ColNumber = colNumber;
         }
+
+        public TestDataColumn(IEnumerable<object> uniqueValuesFromTable, int colNumber)
+        {
+            UniqueValuesFromTable = uniqueValuesFromTable;
+			ColNumber = colNumber;
+        }
+
+        /// <summary>
+        /// Уникальные значения столбца из другой таблицы
+        /// которая связанная с таблицей для которой генерируются тестовые данные
+        /// вторичным ключом
+        /// </summary>
+        public IEnumerable<object> UniqueValuesFromTable { get; set; } = null;
 
 		/// <summary>
 		/// Диапозон для рандомного числа

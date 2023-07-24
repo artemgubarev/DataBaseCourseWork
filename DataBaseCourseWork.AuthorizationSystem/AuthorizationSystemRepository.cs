@@ -101,5 +101,15 @@ namespace DataBaseCourseWork.AuthorizationSystem
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetRowsNumber(string tableName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

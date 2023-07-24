@@ -25,7 +25,7 @@ namespace DataBaseCourseWork.Providers
             InitializeComponent();
 
             this.Disposed += ProvidersForm_Disposed;
-            LoadBanks();
+            LoadProviders();
         }
 
         private void ProvidersForm_Disposed(object sender, System.EventArgs e)
@@ -33,11 +33,17 @@ namespace DataBaseCourseWork.Providers
             _repository.CloseConnection();
         }
 
-        private void LoadBanks()
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadProviders()
         {
             var providers = _repository.ReadAll().ToList();
 
             if (providers.Count == 0) return;
+
+            // внешние ключи
+            var foreignKeys = _repository.GetAllForeignKeys();
 
             int colsCount = _columnsNames.Length;
             for (int i = 0; i < colsCount; i++)

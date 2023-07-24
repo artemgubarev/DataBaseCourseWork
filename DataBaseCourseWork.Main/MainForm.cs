@@ -11,14 +11,13 @@ namespace DataBaseCourseWork.Main
 {
     public partial class MainForm : Form
     {
-        private MainRepository _repository;
+        private MainRepository _repository = new MainRepository();
+        private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
         public MainForm()
         {
             InitializeComponent();
 
-            _repository = new MainRepository();
-            _menuItems = new List<MenuItem>();
             LoadMenuStrip();
             this.Disposed += MainForm_Disposed;
         }
@@ -33,11 +32,11 @@ namespace DataBaseCourseWork.Main
             prevForm = form;
         }
 
-        private List<MenuItem> _menuItems;
-
+        /// <summary>
+        /// Загрузка элементов меню только на два уровня
+        /// </summary>
         private void LoadMenuStrip()
         {
-
             var menuItems = _repository.ReadAll().ToArray();
 
             // init
@@ -61,13 +60,6 @@ namespace DataBaseCourseWork.Main
                 var menuItem = new ToolStripMenuItem(item.Name);
                 menuItem.Tag = item;
                 menuItem.Click += MenuItem_Click;
-                //// set read
-                //var isRead = accessData.Where(a => (int)a[1] == item.Id)
-                //          .Select(row => Convert.ToBoolean(row[2]))
-                //        .FirstOrDefault();
-                //if (!isRead) menuItem.Enabled = false;
-                //// admin panel
-                //if (!isAdmin && item.Name == "Панель администратора") menuItem.Visible = false;
                 this.mainUserControl.MenuStrip.Items.Add(menuItem);
             }
 
@@ -79,11 +71,6 @@ namespace DataBaseCourseWork.Main
                 var tempChild = new ToolStripMenuItem(item.Name);
                 tempChild.Tag = item;
                 tempChild.Click += MenuItem_Click;
-                //var isRead = accessData.Where(a => (int)a[1] == item.Id)
-                //          .Select(row => Convert.ToBoolean(row[2]))
-                //        .FirstOrDefault();
-                //if (!isRead) tempChild.Enabled = false;
-                //tempChild.Click += MenuItem_Click;
                 var parent = menuItemsLevel0.FirstOrDefault(m => m.Id == item.ParentId);
                 int parentIndex = menuItemsLevel0.IndexOf(parent);
                 var index = menuItemsLevel0[parentIndex].Number;
@@ -97,6 +84,11 @@ namespace DataBaseCourseWork.Main
 
         }
 
+        /// <summary>
+        /// Рефлексивный вызов dll без подключения ссылки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuItem_Click(object sender, EventArgs e)
         {
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;

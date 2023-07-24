@@ -8,6 +8,7 @@ namespace DataBaseCourseWork.Common
         IEnumerable<object[]> ReadAll();
         IEnumerable<object[]> GetAllForeignKeys();
         IEnumerable<object> ReadAllNamesFromTable(string tableName);
+        IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName);
         object AddOrUpdate(object obj);
         void Delete(int id);
         void CloseConnection();
@@ -15,5 +16,6 @@ namespace DataBaseCourseWork.Common
         bool IsExist(object obj);
         object Find(int id);
         object Find(object obj);
+        int GetRowsNumber(string tableName);
     }
 }
