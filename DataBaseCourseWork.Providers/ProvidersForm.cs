@@ -2,6 +2,7 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.Utils.Extensions;
 
 namespace DataBaseCourseWork.Providers
 {
@@ -47,25 +48,36 @@ namespace DataBaseCourseWork.Providers
 
             int colsCount = _columnsNames.Length;
             for (int i = 0; i < colsCount; i++)
+            {
                 _dataTable.Columns.Add(new DataColumn(_columnsNames[i]));
+            }
 
             foreach (var provider in providers)
+            {
                 _dataTable.Rows.Add(provider);
+            }
+            
+            this.dataViewerDevexpressUserControl.GridControl.DataSource = _dataTable;
+            this.dataViewerDevexpressUserControl.GridView.Columns[0].Visible = false;
 
-            RefreshDataGridView();
-        }
+            foreach (var fKey in foreignKeys)
+            {
+                string tableName = fKey[1].ToString();
+                var data = _repository.ReadAllNamesFromTable(tableName);
+                int colIndex = Convert.ToInt32(fKey[0].ToString());
+                this.dataViewerDevexpressUserControl.AddRepositoryCmbbox(data, colIndex - 1);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void RefreshDataGridView()
-        {
-            this.dataViewerUserControl.DataGridView.DataSource = null;
-            this.dataViewerUserControl.DataGridView.DataSource = _dataTable;
-            this.dataViewerUserControl.DataGridView.Columns[0].Visible = false;
-            for (int i = 0; i < this.dataViewerUserControl.DataGridView.Columns.Count; i++)
-                this.dataViewerUserControl.DataGridView.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-            GC.Collect();
+                // установить значения вторичного ключа
+                int rowsCount = ((DataTable)this.dataViewerDevexpressUserControl.GridControl.DataSource).Rows.Count;
+                for (int i = 0; i < rowsCount; i++)
+                {
+                    var cellValue =
+                        ((DataTable)this.dataViewerDevexpressUserControl.GridControl.DataSource).Rows[i][colIndex - 1];
+                    string id = cellValue.ToString();
+                    string name = _repository.Find(new Tuple<string, string>(id, tableName)).ToString();
+                    ((DataTable)this.dataViewerDevexpressUserControl.GridControl.DataSource).Rows[i][colIndex - 1] = name;
+                }
+            }
         }
     }
 }

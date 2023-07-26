@@ -36,6 +36,9 @@
     <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,6 +63,12 @@
     <Compile Include="AuthorizationUserControl.Designer.cs">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataViewerDevexpressUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataViewerDevexpressUserControl.Designer.cs">
+      <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataViewerUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,11 +87,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RepositoryCmbboxContent.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AuthorizationUserControl.resx">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataViewerDevexpressUserControl.resx">
+      <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataViewerUserControl.resx">
       <DependentUpon>DataViewerUserControl.cs</DependentUpon>

@@ -7,7 +7,7 @@ namespace DataBaseCourseWork.Common
     {
         IEnumerable<object[]> ReadAll();
         IEnumerable<object[]> GetAllForeignKeys();
-        IEnumerable<object> ReadAllNamesFromTable(string tableName);
+        IEnumerable<string> ReadAllNamesFromTable(string tableName);
         IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName);
         object AddOrUpdate(object obj);
         void Delete(int id);

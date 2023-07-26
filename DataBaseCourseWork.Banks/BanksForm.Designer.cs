@@ -47,6 +47,7 @@
             this.Controls.Add(this.dataViewerUserControl);
             this.Name = "BanksForm";
             this.Text = "Банки";
+            this.Load += new System.EventHandler(this.BanksForm_Load);
             this.ResumeLayout(false);
 
         }

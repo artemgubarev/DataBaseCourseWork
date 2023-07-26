@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DataBaseCourseWork.Providers
 {
@@ -35,10 +36,15 @@ namespace DataBaseCourseWork.Providers
             return _dataBase.ExecuteReader(query, _connection);
         }
 
-        public IEnumerable<object> ReadAllNamesFromTable(string tableName)
+        public IEnumerable<string> ReadAllNamesFromTable(string tableName)
         {
             string query = "SELECT Name FROM " + tableName;
-            return _dataBase.ExecuteReader(query, _connection);
+            var data = _dataBase.ExecuteReader(query, _connection);
+            int count = data.Count();
+            string[] str_data = new string[count];
+            for (int i = 0; i < count; i++)
+                str_data[i] = data.ElementAt(i)[0].ToString();
+            return str_data;
         }
 
         public object AddOrUpdate(object obj)
@@ -73,7 +79,9 @@ namespace DataBaseCourseWork.Providers
 
         public object Find(object obj)
         {
-            throw new NotImplementedException();
+            var info = (Tuple<string, string>)obj;
+            string query = "SELECT Name FROM " + info.Item2 + " WHERE Id = " + info.Item1;
+            return _dataBase.ExecuteScalar(query, _connection);
         }
 
         public IEnumerable<object> GetUniqueValuesFromColumn(string tableName, string columnName)

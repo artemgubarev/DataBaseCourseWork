@@ -28,7 +28,7 @@ namespace DataBaseCourseWork.Banks
             throw new NotImplementedException();
         }
 
-        public IEnumerable<object> ReadAllNamesFromTable(string tableName)
+        public IEnumerable<string> ReadAllNamesFromTable(string tableName)
         {
             throw new NotImplementedException();
         }
