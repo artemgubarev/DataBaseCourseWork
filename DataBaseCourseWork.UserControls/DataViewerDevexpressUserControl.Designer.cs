@@ -64,7 +64,7 @@
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(144, 36);
             this.createButton.TabIndex = 6;
-            this.createButton.Text = "Создать";
+            this.createButton.Text = "Добавить";
             this.createButton.UseVisualStyleBackColor = true;
             // 
             // gridControl
@@ -87,7 +87,10 @@
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridView.OptionsView.ShowIndicator = false;
+            this.gridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView_RowStyle);
             this.gridView.CustomRowCellEdit += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.gridView_CustomRowCellEdit);
+            this.gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView_InitNewRow);
+            this.gridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView_CellValueChanged);
             // 
             // DataViewerDevexpressUserControl
             // 

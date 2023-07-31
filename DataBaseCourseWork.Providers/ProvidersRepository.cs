@@ -49,7 +49,7 @@ namespace DataBaseCourseWork.Providers
 
         public object AddOrUpdate(object obj)
         {
-            throw new NotImplementedException();
+           // string query = 
         }
 
         public void Delete(int id)

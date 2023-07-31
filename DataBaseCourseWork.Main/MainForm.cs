@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DataBaseCourseWork.Main
 {
@@ -85,7 +83,7 @@ namespace DataBaseCourseWork.Main
         }
 
         /// <summary>
-        /// Рефлексивный вызов dll без подключения ссылки
+        /// Рефлексивный вызов dll без подключения ссылки на проект
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

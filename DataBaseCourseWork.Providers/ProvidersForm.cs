@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.Utils.Extensions;
@@ -26,7 +27,28 @@ namespace DataBaseCourseWork.Providers
             InitializeComponent();
 
             this.Disposed += ProvidersForm_Disposed;
+            this.dataViewerDevexpressUserControl.CreateButton.Click += CreateButton_Click;
             LoadProviders();
+        }
+
+        /// <summary>
+        /// Добавление записи в БД
+        /// </summary>
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            var indexes = this.dataViewerDevexpressUserControl.AddedRowsIndexes;
+
+            foreach (var index in indexes)
+            {
+                var row = _dataTable.Rows[index];
+                for (int i = 0; i < _dataTable.Columns.Count; i++)
+                {
+                    Debug.Write(row[i] + " ");
+                }
+                Debug.WriteLine(" ");
+            }
+
+            this.dataViewerDevexpressUserControl.AddedRowsIndexes.Clear();
         }
 
         private void ProvidersForm_Disposed(object sender, System.EventArgs e)
