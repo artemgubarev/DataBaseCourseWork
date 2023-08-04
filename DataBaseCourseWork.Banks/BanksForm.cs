@@ -88,9 +88,7 @@ namespace DataBaseCourseWork.Banks
                 }
             }
         }
-
-      
-
+        
         /// <summary>
         /// 
         /// </summary>

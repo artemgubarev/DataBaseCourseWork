@@ -3,7 +3,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
-using DevExpress.Utils.Extensions;
 
 namespace DataBaseCourseWork.Providers
 {
@@ -37,15 +36,17 @@ namespace DataBaseCourseWork.Providers
         private void CreateButton_Click(object sender, EventArgs e)
         {
             var indexes = this.dataViewerDevexpressUserControl.AddedRowsIndexes;
+            int colsCount = _dataTable.Columns.Count;
 
+            // обход добавляемых строк
             foreach (var index in indexes)
             {
+                var data = new object[colsCount];
                 var row = _dataTable.Rows[index];
-                for (int i = 0; i < _dataTable.Columns.Count; i++)
+                for (int i = 0; i < colsCount; i++)
                 {
                     Debug.Write(row[i] + " ");
                 }
-                Debug.WriteLine(" ");
             }
 
             this.dataViewerDevexpressUserControl.AddedRowsIndexes.Clear();
