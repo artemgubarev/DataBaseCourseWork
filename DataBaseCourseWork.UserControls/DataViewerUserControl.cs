@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
-using DevExpress.XtraExport.Xls;
 
 namespace DataBaseCourseWork.UserControls
 {
     public partial class DataViewerUserControl : UserControl
     {
+        public List<int> AddedRowsIndexes = new List<int>();
+        private object[] _editableRow;
+        public List<int> RowIndexesToUpdate = new List<int>();
+
         public DataViewerUserControl()
         {
             InitializeComponent();
@@ -18,16 +20,7 @@ namespace DataBaseCourseWork.UserControls
             int colsCount = dataGridView.Columns.Count;
             _editableRow = new object[colsCount - 1];
         }
-
-        private object[] _editableRow;
-        private List<int> _rowIndexesToUpdate = new List<int>();
-
-        public List<int> RowIndexesToUpdate
-        {
-            get => _rowIndexesToUpdate;
-            set => _rowIndexesToUpdate = value;
-        }
-
+        
         public object[] EditableRow {
             get => _editableRow ;
             set => _editableRow = value;
@@ -74,7 +67,8 @@ namespace DataBaseCourseWork.UserControls
 
         private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            SetRowColor(dataGridView.Rows.Count - 1, System.Drawing.Color.Aqua);
+            //SetRowColor(dataGridView.Rows.Count - 1, System.Drawing.Color.Aqua);
+            AddedRowsIndexes.Add(dataGridView.Rows.Count - 1);
         }
 
         private void dataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -83,7 +77,9 @@ namespace DataBaseCourseWork.UserControls
             int rowIndex = e.RowIndex;
             if (dataTable.Rows.Count == rowIndex) return;
             for (int i = 1; i < dataTable.Columns.Count; i++)
+            {
                 _editableRow[i - 1] = dataTable.Rows[rowIndex]?[i];
+            }
         }
 
         private void dataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -91,6 +87,23 @@ namespace DataBaseCourseWork.UserControls
             // если были внесены изменения
             var dataTable = (DataTable)dataGridView.DataSource;
             int rowIndex = e.RowIndex;
+
+            if (AddedRowsIndexes.Contains(rowIndex) && rowIndex != dataTable.Rows.Count)
+            {
+                SetRowColor(rowIndex, System.Drawing.Color.Aqua);
+
+                //bool isEdited = false;
+                //for (int i = 0; i < dataTable.Columns.Count; i++)
+                //{
+                //    if (dataTable.Rows[rowIndex][i] != null)
+                //    {
+                //        isEdited = true;
+                //        SetRowColor(rowIndex, System.Drawing.Color.Aqua);
+                //        break;
+                //    }
+                //}
+            }
+
             if (dataTable.Rows.Count == rowIndex ||
                 string.IsNullOrEmpty(dataTable.Rows[rowIndex][0].ToString())) return;
             for (int i = 1; i < dataTable.Columns.Count; i++)
@@ -100,12 +113,10 @@ namespace DataBaseCourseWork.UserControls
                 if (!string.Equals(value1.ToString(), value2.ToString()))
                 {
                     SetRowColor(e.RowIndex, System.Drawing.Color.IndianRed);
-                    _rowIndexesToUpdate.Add(rowIndex);
+                    RowIndexesToUpdate.Add(rowIndex);
                     break;
                 }
             }
         }
-
-        
     }
 }

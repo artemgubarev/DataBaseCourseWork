@@ -124,7 +124,7 @@
   <data name="pictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAARxJREFUOE+t0r9LgkEcx3H/OpeGFgeXlhaXhpYWl5YGl5YGl4YeQkIDjRApQqKI
+        vQAADr0BR/uQrQAAARxJREFUOE+t0r9LgkEcx3H/OpeGFgeXlhaXhpYWl5YGl5YGl4YeQkIDjRApQqKI
         ingQEUQexIgMC6TFx8fHfslHnwe/3Jfj6e4B7w0HN724+94lsMiyLCMrKBFs3j9H6A9HeP5w4QxctN9c
         NF/HsF/GeOh5uO16qDseLjoTVNsTVFo+Sk0fhYaPI3uKw6cp8o9fIRqCJrCDewaqMLn/sP07BsbFqCgs
         d8NAHcavScnY3jUDo2ZGyTOjZGy3/i3AuA/Ak7HsFQNNYDuXDDSBbdd+BKj7Z5QK26oyUPdpKRWWOf8V
@@ -135,7 +135,7 @@
   <data name="pictureBox.ToolTip" xml:space="preserve">
     <value>Голубым цветом выделены 'Добавляемые' строки в базу данных.
 Красным цветом выделены 'Обновляемые' строки в базе данных.
-После нажатия на кнопку 'Создать' все строки которые были выделены голубым цветом
+После нажатия на кнопку 'Добавить' все строки которые были выделены голубым цветом
 добавятся в базу данных, и станут белыми.
 Аналогично со строками которые выделены красным цветом, после нажатия  на кнопку 'Обновить', строки
 в базе данных обновяться, и станут белыми.

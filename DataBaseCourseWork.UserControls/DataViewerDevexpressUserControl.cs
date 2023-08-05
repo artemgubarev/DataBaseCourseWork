@@ -1,8 +1,10 @@
-﻿using DevExpress.XtraEditors.Repository;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,11 +13,13 @@ namespace DataBaseCourseWork.UserControls
 {
     public partial class DataViewerDevexpressUserControl : UserControl
     {
-        private List<RepositoryCmbboxContent> _repositoryCmbboxContent = new List<RepositoryCmbboxContent>();
-        private RepositoryItemComboBox _repositoryItemComboBox = new RepositoryItemComboBox();
+        private readonly List<RepositoryCmbboxContent> _repositoryCmbboxContent = new List<RepositoryCmbboxContent>();
+        private readonly RepositoryItemComboBox _repositoryItemComboBox = new RepositoryItemComboBox();
+
         public List<int> AddedRowsIndexes = new List<int>();
         public List<int> UpdatedRowsIndexes = new List<int>();
-        public void AddRepositoryCmbbox(IEnumerable<string> data, int colIndex)
+
+        public void AddRepositoryCmbbox(IEnumerable<object[]> data, int colIndex)
         {
             if (colIndex >= gridView.Columns.Count || colIndex < 0)
                 throw new ArgumentException("ColIndex out of range");
@@ -23,7 +27,14 @@ namespace DataBaseCourseWork.UserControls
             if (data == null)
                 throw new ArgumentException("Data is null");
 
-            _repositoryCmbboxContent.Add(new RepositoryCmbboxContent(data, colIndex));
+            int count = data.Count();
+            string[] str_data = new string[count];
+            for (int i = 0; i < count; i++)
+            {
+                str_data[i] = data.ElementAt(i)[1].ToString();
+            }
+
+            _repositoryCmbboxContent.Add(new RepositoryCmbboxContent(str_data, colIndex));
         }
 
         public DataViewerDevexpressUserControl()
@@ -66,12 +77,23 @@ namespace DataBaseCourseWork.UserControls
             if (content == null) return;
             _repositoryItemComboBox.Items.Clear();
             _repositoryItemComboBox.Items.AddRange(content.ToArray());
+            if (AddedRowsIndexes.Contains(e.RowHandle))
+            {
+                gridView.SetRowCellValue(e.RowHandle, gridView.Columns[columnIndex], content.ElementAt(0));
+            }
             e.RepositoryItem = _repositoryItemComboBox;
         }
 
         private void gridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
-            AddedRowsIndexes.Add(gridView.RowCount - 1);
+            int rowIndex = gridView.RowCount - 1;
+            AddedRowsIndexes.Add(rowIndex);
+            //foreach (var content in _repositoryCmbboxContent)
+            //{
+            //    gridView.SetRowCellValue(rowIndex, gridView.Columns[content.ColIndex], content.Data.ElementAt(0));
+            //    gridView.RefreshRowCell(rowIndex, gridView.Columns[content.ColIndex]);
+            //}
+            gridView.RefreshRow(rowIndex);
         }
 
         private void gridView_RowStyle(object sender, RowStyleEventArgs e)
@@ -90,8 +112,17 @@ namespace DataBaseCourseWork.UserControls
 
         private void gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            if (e.RowHandle == -int.MaxValue) return;
-            UpdatedRowsIndexes.Add(e.RowHandle);
+            int rowIndex = e.RowHandle;
+            if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
+            UpdatedRowsIndexes.Add(rowIndex);
+        }
+
+        public void RefreshRows()
+        {
+            for (int i = 0; i < gridView.RowCount; i++)
+            {
+                gridView.RefreshRow(i);
+            }
         }
     }
 }

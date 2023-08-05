@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DataBaseCourseWork.Banks;
+using DataBaseCourseWork.Providers;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Main
@@ -92,16 +92,31 @@ namespace DataBaseCourseWork.Main
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
             if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
             {
-                string dllName = "DataBaseCourseWork." + menuItem.Dllname;
-                string path = Path.Combine( @"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
-                var asm = Assembly.LoadFrom(path);
-                string className = menuItem.Dllname + "Form";
-                var types = asm.GetTypes();
-                var type = types?.FirstOrDefault(t => t.Name == className);
-                object instance = Activator.CreateInstance(type);
-                var form = (Form)instance;
-                form.ShowDialog();
+                if (menuItem.Name == "Поставщики")
+                {
+                    var form = new ProvidersForm();
+                    form.ShowDialog();
+                }
+                if (menuItem.Name == "Банки")
+                {
+                    var form = new BanksForm();
+                    form.ShowDialog();
+                }
+                //string dllName = "DataBaseCourseWork." + menuItem.Dllname;
+                //string path = Path.Combine( @"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+                //var asm = Assembly.LoadFrom(path);
+                //string className = menuItem.Dllname + "Form";
+                //var types = asm.GetTypes();
+                //var type = types?.FirstOrDefault(t => t.Name == className);
+                //object instance = Activator.CreateInstance(type);
+                //var form = (Form)instance;
+                //form.ShowDialog();
             }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

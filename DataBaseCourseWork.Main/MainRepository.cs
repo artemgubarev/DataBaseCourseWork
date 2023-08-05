@@ -23,7 +23,7 @@ namespace DataBaseCourseWork.Main
             throw new NotImplementedException();
         }
 
-        public IEnumerable<string> ReadAllNamesFromTable(string tableName)
+        public IEnumerable<object[]> ReadAllNamesFromTable(string tableName)
         {
             throw new NotImplementedException();
         }

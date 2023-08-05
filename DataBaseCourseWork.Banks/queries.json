@@ -1,0 +1,7 @@
+{
+  "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
+  "readAll": "SELECT * FROM Banks",
+  "update":  "UPDATE Banks SET Name = @Name WHERE Id = @Id",
+  "insert":  "INSERT INTO Banks(Name) VALUES (@Name) SELECT SCOPE_IDENTITY();",
+  "delete":  "DELETE FROM Banks WHERE Id = "
+}

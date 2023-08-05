@@ -36,20 +36,18 @@ namespace DataBaseCourseWork.Providers
             return _dataBase.ExecuteReader(query, _connection);
         }
 
-        public IEnumerable<string> ReadAllNamesFromTable(string tableName)
+        public IEnumerable<object[]> ReadAllNamesFromTable(string tableName)
         {
-            string query = "SELECT Name FROM " + tableName;
+            string query = "SELECT * FROM " + tableName;
             var data = _dataBase.ExecuteReader(query, _connection);
-            int count = data.Count();
-            string[] str_data = new string[count];
-            for (int i = 0; i < count; i++)
-                str_data[i] = data.ElementAt(i)[0].ToString();
-            return str_data;
+            return data;
         }
 
         public object AddOrUpdate(object obj)
         {
-           // string query = 
+           
+            string query = "";
+            return null;
         }
 
         public void Delete(int id)

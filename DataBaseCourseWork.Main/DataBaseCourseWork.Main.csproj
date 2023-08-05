@@ -54,9 +54,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBaseCourseWork.Banks\DataBaseCourseWork.Banks.csproj">
+      <Project>{BC2219F7-72D7-47A6-8089-D0677566945E}</Project>
+      <Name>DataBaseCourseWork.Banks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
       <Project>{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}</Project>
       <Name>DataBaseCourseWork.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Providers\DataBaseCourseWork.Providers.csproj">
+      <Project>{8FAE60EE-4D1B-4D58-B427-9CE049CC48B4}</Project>
+      <Name>DataBaseCourseWork.Providers</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.UserControls\DataBaseCourseWork.UserControls.csproj">
       <Project>{E425B6D4-E495-450F-9B99-6F4CEB1EE22E}</Project>
@@ -67,6 +75,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
