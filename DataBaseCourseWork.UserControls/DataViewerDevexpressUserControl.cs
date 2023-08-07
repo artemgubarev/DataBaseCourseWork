@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Repository;
+﻿using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
@@ -15,9 +14,9 @@ namespace DataBaseCourseWork.UserControls
     {
         private readonly List<RepositoryCmbboxContent> _repositoryCmbboxContent = new List<RepositoryCmbboxContent>();
         private readonly RepositoryItemComboBox _repositoryItemComboBox = new RepositoryItemComboBox();
-
         public List<int> AddedRowsIndexes = new List<int>();
         public List<int> UpdatedRowsIndexes = new List<int>();
+        private object[] _updatedRow;
 
         public void AddRepositoryCmbbox(IEnumerable<object[]> data, int colIndex)
         {
@@ -33,7 +32,6 @@ namespace DataBaseCourseWork.UserControls
             {
                 str_data[i] = data.ElementAt(i)[1].ToString();
             }
-
             _repositoryCmbboxContent.Add(new RepositoryCmbboxContent(str_data, colIndex));
         }
 
@@ -72,27 +70,28 @@ namespace DataBaseCourseWork.UserControls
 
         private void gridView_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
         {
+            var table = (DataTable)gridControl.DataSource;
+            int rowIndex = e.RowHandle;
             int columnIndex = e.Column.AbsoluteIndex;
-            var content = _repositoryCmbboxContent.FirstOrDefault(r => r.ColIndex == columnIndex)?.Data;
+            var content = 
+                _repositoryCmbboxContent.FirstOrDefault(r => r.ColIndex == columnIndex)?.Data;
             if (content == null) return;
+            e.RepositoryItem = _repositoryItemComboBox;
+            if (rowIndex == -int.MaxValue) return;
             _repositoryItemComboBox.Items.Clear();
             _repositoryItemComboBox.Items.AddRange(content.ToArray());
-            if (AddedRowsIndexes.Contains(e.RowHandle))
+            if (AddedRowsIndexes.Contains(rowIndex))
             {
-                gridView.SetRowCellValue(e.RowHandle, gridView.Columns[columnIndex], content.ElementAt(0));
+                var value = table.Rows[rowIndex][columnIndex].ToString();
+                if (string.IsNullOrEmpty(value)) value = content.ElementAt(0);
+                gridView.SetRowCellValue(rowIndex, gridView.Columns[columnIndex], value);
             }
-            e.RepositoryItem = _repositoryItemComboBox;
         }
 
         private void gridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             int rowIndex = gridView.RowCount - 1;
             AddedRowsIndexes.Add(rowIndex);
-            //foreach (var content in _repositoryCmbboxContent)
-            //{
-            //    gridView.SetRowCellValue(rowIndex, gridView.Columns[content.ColIndex], content.Data.ElementAt(0));
-            //    gridView.RefreshRowCell(rowIndex, gridView.Columns[content.ColIndex]);
-            //}
             gridView.RefreshRow(rowIndex);
         }
 
@@ -112,9 +111,33 @@ namespace DataBaseCourseWork.UserControls
 
         private void gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
+            var table = (DataTable)gridControl.DataSource;
             int rowIndex = e.RowHandle;
             if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
-            UpdatedRowsIndexes.Add(rowIndex);
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                if (_updatedRow[i].ToString() != table.Rows[rowIndex][i].ToString())
+                {
+                    UpdatedRowsIndexes.Add(rowIndex);
+                    break;
+                }
+            }
+        }
+        
+        private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var table = (DataTable)gridControl.DataSource;
+            int colsCount = table.Columns.Count;
+            int rowIndex = e.RowHandle;
+            if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
+            if (_updatedRow == null)
+            {
+                _updatedRow = new object[colsCount];
+            }
+            for (int i = 0; i < colsCount; i++)
+            {
+                _updatedRow[i] = table.Rows[rowIndex][i];
+            }
         }
 
         public void RefreshRows()

@@ -4,5 +4,6 @@
   "readAll": "SELECT * FROM Providers",
   "getnamesfromtable": "SELECT * FROM ",
   "insert": "INSERT INTO Providers(Name,Address,DirectorName,PhoneNumber,BankId,BankAccountNumber,INN) VALUES (@Name,@Address,@DirectorName,@PhoneNumber,@BankId,@BankAccountNumber,@INN) SELECT SCOPE_IDENTITY();",
-  "delete":  "DELETE FROM Providers WHERE Id = "
+  "delete": "DELETE FROM Providers WHERE Id = ",
+  "update": "UPDATE Providers SET Name=@Name,Address=@Address,DirectorName=@DirectorName,PhoneNumber=@PhoneNumber,BankId=@BankId,BankAccountNumber=@BankAccountNumber,INN=@INN WHERE Id = @Id;"
 }

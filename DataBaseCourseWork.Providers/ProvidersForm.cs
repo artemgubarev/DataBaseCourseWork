@@ -10,7 +10,6 @@ namespace DataBaseCourseWork.Providers
 {
     public partial class ProvidersForm : Form
     {
-        //private readonly ProvidersRepository _repository = new ProvidersRepository();
         private readonly Repository _repository = new Repository(Properties.Resources.queries);
         private readonly DataTable _dataTable = new DataTable();
         private readonly Dictionary<int, IEnumerable<object[]>> _foreignKeys =
@@ -55,6 +54,51 @@ namespace DataBaseCourseWork.Providers
         {
             var indexes = this.dataViewerDevexpressUserControl.UpdatedRowsIndexes;
             int colsCount = _dataTable.Columns.Count;
+
+            try
+            {
+                // обход добавляемых строк
+                foreach (var index in indexes)
+                {
+                    var data = new object[colsCount];
+                    var row = _dataTable.Rows[index];
+                    for (int i = 0; i < colsCount; i++)
+                    {
+                        data[i] = row[i];
+                    }
+                    _foreignKeys.ForEach(fkey =>
+                    {
+                        int colIndex = fkey.Key;
+                        var value = fkey.Value.FirstOrDefault(f => f[1].ToString() == data[colIndex - 1].ToString());
+                        data[colIndex - 1] = value[0];
+                    });
+                    _repository.UpdateData(data, _sqlParameters);
+                }
+                this.dataViewerDevexpressUserControl.UpdatedRowsIndexes.Clear();
+                this.dataViewerDevexpressUserControl.RefreshRows();
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                //2628 Превышено ограничение на длину строки
+                // 547 Неверны  тип данных
+
+                //int ex_number = exception.Number;
+                //string message = string.Empty;
+                //if (ex_number == 515)
+                //{
+                //    message = "Невозможно добавить строки в таблицу имеющие пустые значения.";
+                //}
+                //if (ex_number == 245)
+                //{
+                //    message = "Неверный тип данных одного из значений.";
+                //}
+
+                //if (ex_number == 547)
+                //{
+                //    message = "";
+                //}
+                //MessageBox.Show(message);
+            }
         }
 
         private void DeleteButtonOnClick(object sender, EventArgs e)
@@ -106,21 +150,21 @@ namespace DataBaseCourseWork.Providers
             }
             catch (System.Data.SqlClient.SqlException exception)
             {
-                // был передан null
-                if (exception.Number == 515)
-                {
-                    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
-                }
-                // неверный тип данных
-                if (exception.Number == 245)
-                {
-                    MessageBox.Show("Неверный тип данных одного из значений.");
-                }
-                // ограничение на тип данных
-                if (exception.Number == 547)
-                {
-                    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
-                }
+                //// был передан null
+                //if (exception.Number == 515)
+                //{
+                //    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
+                //}
+                //// неверный тип данных
+                //if (exception.Number == 245)
+                //{
+                //    MessageBox.Show("Неверный тип данных одного из значений.");
+                //}
+                //// ограничение на тип данных
+                //if (exception.Number == 547)
+                //{
+                //    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
+                //}
             }
         }
 
