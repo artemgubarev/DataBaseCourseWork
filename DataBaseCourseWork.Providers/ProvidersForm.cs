@@ -54,11 +54,12 @@ namespace DataBaseCourseWork.Providers
         {
             var indexes = this.dataViewerDevexpressUserControl.UpdatedRowsIndexes;
             int colsCount = _dataTable.Columns.Count;
-
-            try
+            var tmpIndexes = new List<int>();
+            var errorMessages = new List<string>();
+            // обход добавляемых строк
+            foreach (var index in indexes)
             {
-                // обход добавляемых строк
-                foreach (var index in indexes)
+                try
                 {
                     var data = new object[colsCount];
                     var row = _dataTable.Rows[index];
@@ -66,39 +67,36 @@ namespace DataBaseCourseWork.Providers
                     {
                         data[i] = row[i];
                     }
+
                     _foreignKeys.ForEach(fkey =>
                     {
                         int colIndex = fkey.Key;
-                        var value = fkey.Value.FirstOrDefault(f => f[1].ToString() == data[colIndex - 1].ToString());
+                        var value = fkey.Value.FirstOrDefault(f =>
+                            f[1].ToString() == data[colIndex - 1].ToString());
                         data[colIndex - 1] = value[0];
                     });
                     _repository.UpdateData(data, _sqlParameters);
+                    tmpIndexes.Add(index);
                 }
-                this.dataViewerDevexpressUserControl.UpdatedRowsIndexes.Clear();
-                this.dataViewerDevexpressUserControl.RefreshRows();
+                catch (System.Data.SqlClient.SqlException exception)
+                {
+                    int ex_number = exception.Number;
+                    string message = string.Empty;
+                    switch (ex_number)
+                    {
+                        case 2628:
+                            message = "Превышено ограничение на длину строки"; break;
+                        case 547: message = "Превышено ограничение на тип данных одного из значений"; break;
+                        case 515: message = "Невозможно добавить строки в таблицу имеющие пустые значения."; break;
+                        case 245: message = "Неверный тип данных одного из значений."; break;
+                    }
+                    errorMessages.Add(message);
+                }
             }
-            catch (System.Data.SqlClient.SqlException exception)
-            {
-                //2628 Превышено ограничение на длину строки
-                // 547 Неверны  тип данных
+            errorMessages.ForEach(message => MessageBox.Show(message));
 
-                //int ex_number = exception.Number;
-                //string message = string.Empty;
-                //if (ex_number == 515)
-                //{
-                //    message = "Невозможно добавить строки в таблицу имеющие пустые значения.";
-                //}
-                //if (ex_number == 245)
-                //{
-                //    message = "Неверный тип данных одного из значений.";
-                //}
-
-                //if (ex_number == 547)
-                //{
-                //    message = "";
-                //}
-                //MessageBox.Show(message);
-            }
+            this.dataViewerDevexpressUserControl.RemoveUpdatedRowsIndeces(tmpIndexes);
+            this.dataViewerDevexpressUserControl.RefreshRows();
         }
 
         private void DeleteButtonOnClick(object sender, EventArgs e)
@@ -125,11 +123,11 @@ namespace DataBaseCourseWork.Providers
         {
             var indexes = this.dataViewerDevexpressUserControl.AddedRowsIndexes;
             int colsCount = _dataTable.Columns.Count;
-
-            try
+            var tmpIndexes = new List<int>();
+            // обход добавляемых строк
+            foreach (var index in indexes)
             {
-                // обход добавляемых строк
-                foreach (var index in indexes)
+                try
                 {
                     var data = new object[colsCount];
                     var row = _dataTable.Rows[index];
@@ -137,35 +135,35 @@ namespace DataBaseCourseWork.Providers
                     {
                         data[i] = row[i];
                     }
+
                     _foreignKeys.ForEach(fkey =>
                     {
                         int colIndex = fkey.Key;
-                        var value = fkey.Value.FirstOrDefault(f => f[1] == data[colIndex - 1]);
+                        var value = fkey.Value.FirstOrDefault(f =>
+                            f[1].ToString() == data[colIndex - 1].ToString());
                         data[colIndex - 1] = value[0];
                     });
-                    _repository.InsertData(data, _sqlParameters);
+                    var id= _repository.InsertData(data, _sqlParameters);
+                    _dataTable.Rows[index][0] = id;
+                    tmpIndexes.Add(index);
                 }
-                this.dataViewerDevexpressUserControl.AddedRowsIndexes.Clear();
-                this.dataViewerDevexpressUserControl.RefreshRows();
+                catch (System.Data.SqlClient.SqlException exception)
+                {
+                    int ex_number = exception.Number;
+                    string message = string.Empty;
+                    switch (ex_number)
+                    {
+                        case 2628:
+                            message = "Превышено ограничение на длину строки"; break;
+                        case 547: message = "Превышено ограничение на тип данных одного из значений"; break;
+                        case 515: message = "Невозможно добавить строки в таблицу имеющие пустые значения."; break;
+                        case 245: message = "Неверный тип данных одного из значений."; break;
+                    }
+                    MessageBox.Show(message);
+                }
             }
-            catch (System.Data.SqlClient.SqlException exception)
-            {
-                //// был передан null
-                //if (exception.Number == 515)
-                //{
-                //    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
-                //}
-                //// неверный тип данных
-                //if (exception.Number == 245)
-                //{
-                //    MessageBox.Show("Неверный тип данных одного из значений.");
-                //}
-                //// ограничение на тип данных
-                //if (exception.Number == 547)
-                //{
-                //    MessageBox.Show("Невозможно добавить строки в таблицу имеющие пустые значения.");
-                //}
-            }
+            this.dataViewerDevexpressUserControl.RemoveAddedRowsIndeces(tmpIndexes);
+            this.dataViewerDevexpressUserControl.RefreshRows();
         }
 
         private void ProvidersForm_Disposed(object sender, System.EventArgs e)

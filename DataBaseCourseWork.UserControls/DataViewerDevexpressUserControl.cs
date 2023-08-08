@@ -38,6 +38,8 @@ namespace DataBaseCourseWork.UserControls
         public DataViewerDevexpressUserControl()
         {
             InitializeComponent();
+            _repositoryItemComboBox.AutoComplete = true;
+            _repositoryItemComboBox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
         }
 
         public Button CreateButton
@@ -146,6 +148,28 @@ namespace DataBaseCourseWork.UserControls
             {
                 gridView.RefreshRow(i);
             }
+        }
+
+        public void RemoveUpdatedRowsIndeces(IEnumerable<int> indeces)
+        {
+            foreach (var index in indeces)
+            {
+                UpdatedRowsIndexes.Remove(index);
+            }
+        }
+
+        public void RemoveAddedRowsIndeces(IEnumerable<int> indeces)
+        {
+            foreach (var index in indeces)
+            {
+                AddedRowsIndexes.Remove(index);
+            }
+        }
+
+        private void gridView_ShownEditor(object sender, EventArgs e)
+        {
+            //if (e. == UndesiredRow)
+            //    gridView.ActiveEditor.Properties.ReadOnly = true;
         }
     }
 }
