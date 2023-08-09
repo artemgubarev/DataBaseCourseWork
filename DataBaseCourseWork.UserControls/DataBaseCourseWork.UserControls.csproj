@@ -35,6 +35,7 @@
     <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -62,6 +63,12 @@
     </Compile>
     <Compile Include="AuthorizationUserControl.Designer.cs">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePassUserControl.Designer.cs">
+      <DependentUpon>ChangePassUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DataViewerDevexpressUserControl.cs">
       <SubType>UserControl</SubType>
@@ -93,6 +100,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AuthorizationUserControl.resx">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassUserControl.resx">
+      <DependentUpon>ChangePassUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataViewerDevexpressUserControl.resx">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>

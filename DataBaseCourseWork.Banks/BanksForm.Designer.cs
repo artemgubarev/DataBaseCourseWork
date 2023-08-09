@@ -28,34 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BanksForm));
-            this.dataViewerUserControl = new DataBaseCourseWork.UserControls.DataViewerUserControl();
-            this.SuspendLayout();
-            // 
-            // dataViewerUserControl
-            // 
-            this.dataViewerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataViewerUserControl.EditableRow = null;
-            this.dataViewerUserControl.Location = new System.Drawing.Point(0, 0);
-            this.dataViewerUserControl.Name = "dataViewerUserControl";
-            this.dataViewerUserControl.RowIndexesToUpdate = ((System.Collections.Generic.List<int>)(resources.GetObject("dataViewerUserControl.RowIndexesToUpdate")));
-            this.dataViewerUserControl.Size = new System.Drawing.Size(530, 403);
-            this.dataViewerUserControl.TabIndex = 0;
-            // 
-            // BanksForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 403);
-            this.Controls.Add(this.dataViewerUserControl);
-            this.Name = "BanksForm";
-            this.Text = "Банки";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "BanksForm";
         }
 
         #endregion
-
-        private UserControls.DataViewerUserControl dataViewerUserControl;
     }
 }

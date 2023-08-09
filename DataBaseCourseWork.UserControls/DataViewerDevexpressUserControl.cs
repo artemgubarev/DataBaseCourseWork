@@ -150,11 +150,12 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        public void RemoveUpdatedRowsIndeces(IEnumerable<int> indeces)
+        public void RemoveTmpRowsIndeces(IEnumerable<int> indeces, bool insert = true)
         {
+            var collection = insert ? AddedRowsIndexes : UpdatedRowsIndexes;
             foreach (var index in indeces)
             {
-                UpdatedRowsIndexes.Remove(index);
+               collection.Remove(index);
             }
         }
 

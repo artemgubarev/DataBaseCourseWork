@@ -1,48 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.UserControls
 {
     public partial class DataViewerUserControl : UserControl
     {
-        public List<int> AddedRowsIndexes = new List<int>();
-        private object[] _editableRow;
-        public List<int> RowIndexesToUpdate = new List<int>();
-
         public DataViewerUserControl()
         {
             InitializeComponent();
         }
 
+        public List<int> AddedRowsIndexes = new List<int>();
+        private object[] _editableRow;
+        public List<int> RowIndexesToUpdate = new List<int>();
+        
         private void DataViewerUserControl_Load(object sender, System.EventArgs e)
         {
             int colsCount = dataGridView.Columns.Count;
             _editableRow = new object[colsCount - 1];
         }
-        
-        public object[] EditableRow {
-            get => _editableRow ;
+
+        public object[] EditableRow
+        {
+            get => _editableRow;
             set => _editableRow = value;
         }
 
-        public Button CreateButton 
+        public Button CreateButton
         {
             get => this.createButton;
             set => this.createButton = value;
         }
-        public Button DeleteButton 
-        { 
+        public Button DeleteButton
+        {
             get => this.deleteButton;
             set => this.deleteButton = value;
         }
-        public Button UpdateButton 
-        { 
+        public Button UpdateButton
+        {
             get => this.updateButton;
             set => this.updateButton = value;
         }
-        public DataGridView DataGridView 
-        { 
+        public DataGridView DataGridView
+        {
             get => this.dataGridView;
             set => this.dataGridView = value;
         }

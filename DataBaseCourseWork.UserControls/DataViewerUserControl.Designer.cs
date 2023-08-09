@@ -35,10 +35,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataViewerUserControl));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.createButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.updateButton = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -79,50 +79,47 @@
             this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(594, 352);
-            this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_CellBeginEdit);
-            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
-            this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
+            this.dataGridView.Size = new System.Drawing.Size(686, 356);
+            this.dataGridView.TabIndex = 1;
             // 
             // createButton
             // 
             this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.createButton.Location = new System.Drawing.Point(3, 361);
+            this.createButton.Location = new System.Drawing.Point(4, 365);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(144, 36);
-            this.createButton.TabIndex = 1;
+            this.createButton.TabIndex = 4;
             this.createButton.Text = "Добавить";
             this.createButton.UseVisualStyleBackColor = true;
-            // 
-            // updateButton
-            // 
-            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.updateButton.Location = new System.Drawing.Point(153, 361);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(144, 36);
-            this.updateButton.TabIndex = 2;
-            this.updateButton.Text = "Обновить";
-            this.updateButton.UseVisualStyleBackColor = true;
             // 
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteButton.Location = new System.Drawing.Point(303, 361);
+            this.deleteButton.Location = new System.Drawing.Point(304, 365);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(144, 36);
-            this.deleteButton.TabIndex = 3;
+            this.deleteButton.TabIndex = 6;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
+            // 
+            // updateButton
+            // 
+            this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.updateButton.Location = new System.Drawing.Point(154, 365);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(144, 36);
+            this.updateButton.TabIndex = 5;
+            this.updateButton.Text = "Обновить";
+            this.updateButton.UseVisualStyleBackColor = true;
             // 
             // pictureBox
             // 
             this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-            this.pictureBox.Location = new System.Drawing.Point(576, 361);
+            this.pictureBox.Location = new System.Drawing.Point(668, 365);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox.TabIndex = 4;
+            this.pictureBox.TabIndex = 7;
             this.pictureBox.TabStop = false;
             this.toolTip1.SetToolTip(this.pictureBox, resources.GetString("pictureBox.ToolTip"));
             // 
@@ -131,13 +128,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
+            this.Controls.Add(this.dataGridView);
             this.Name = "DataViewerUserControl";
-            this.Size = new System.Drawing.Size(600, 400);
-            this.Load += new System.EventHandler(this.DataViewerUserControl_Load);
+            this.Size = new System.Drawing.Size(692, 404);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -148,9 +144,9 @@
 
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
