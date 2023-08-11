@@ -1,8 +1,8 @@
 {
   "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
   "fkeys": "SELECT fkc.parent_column_id AS ColumnNumber, OBJECT_NAME(fkc.referenced_object_id) AS TableName FROM sys.foreign_key_columns AS fkc WHERE OBJECT_NAME(fkc.parent_object_id) = ",
-  "readAll": "SELECT * FROM Providers",
   "getnamesfromtable": "SELECT * FROM ",
+  "readAll": "SELECT * FROM Providers",
   "insert": "INSERT INTO Providers(Name,Address,DirectorName,PhoneNumber,BankId,BankAccountNumber,INN) VALUES (@Name,@Address,@DirectorName,@PhoneNumber,@BankId,@BankAccountNumber,@INN) SELECT SCOPE_IDENTITY();",
   "delete": "DELETE FROM Providers WHERE Id = ",
   "update": "UPDATE Providers SET Name=@Name,Address=@Address,DirectorName=@DirectorName,PhoneNumber=@PhoneNumber,BankId=@BankId,BankAccountNumber=@BankAccountNumber,INN=@INN WHERE Id = @Id;"

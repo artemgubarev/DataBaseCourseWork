@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataViewerUserControl = new DataBaseCourseWork.UserControls.DataViewerUserControl();
+            this.SuspendLayout();
+            // 
+            // dataViewerUserControl
+            // 
+            this.dataViewerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataViewerUserControl.EditableRow = null;
+            this.dataViewerUserControl.Location = new System.Drawing.Point(0, 0);
+            this.dataViewerUserControl.Name = "dataViewerUserControl";
+            this.dataViewerUserControl.Size = new System.Drawing.Size(696, 411);
+            this.dataViewerUserControl.TabIndex = 0;
+            // 
+            // UnitsForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "UnitsForm";
+            this.ClientSize = new System.Drawing.Size(696, 411);
+            this.Controls.Add(this.dataViewerUserControl);
+            this.Name = "UnitsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Единицы измерения";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private UserControls.DataViewerUserControl dataViewerUserControl;
     }
 }

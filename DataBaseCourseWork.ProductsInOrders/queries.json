@@ -1,10 +1,9 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
+  "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
+  "fkeys": "SELECT fkc.parent_column_id AS ColumnNumber, OBJECT_NAME(fkc.referenced_object_id) AS TableName FROM sys.foreign_key_columns AS fkc WHERE OBJECT_NAME(fkc.parent_object_id) = ",
+  "getnamesfromtable": "SELECT * FROM ",
+  "readAll": "SELECT * FROM ProductsInOrders;",
+  "insert": "INSERT INTO ProductsInOrders(OrderId,ProductId,Price,Quantity) VALUES (@OrderId,@ProductId,@Price,@Quantity) SELECT SCOPE_IDENTITY();",
+  "delete": "DELETE FROM ProductsInOrders WHERE Id = ",
+  "update": "UPDATE ProductsInOrders SET OrderId=@OrderId,ProductId=@ProductId,Price=@Price,Quantity=@Quantity WHERE Id = @Id;"
 }

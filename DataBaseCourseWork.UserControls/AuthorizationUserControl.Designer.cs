@@ -31,26 +31,26 @@
             this.loginNameTextBox = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.loginErrorLabel = new System.Windows.Forms.Label();
+            this.loginPasswordTextBox = new System.Windows.Forms.TextBox();
             this.loginPasswordErrorLabel = new System.Windows.Forms.Label();
             this.loginNameErrorLabel = new System.Windows.Forms.Label();
-            this.loginButton = new System.Windows.Forms.Button();
-            this.loginPasswordTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPageRegistration = new System.Windows.Forms.TabPage();
+            this.registrationButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.registrationErrorLabel = new System.Windows.Forms.Label();
+            this.registrationRepeatPasswordTextBox = new System.Windows.Forms.TextBox();
             this.registrationRepeatPasswordErrorLabel = new System.Windows.Forms.Label();
-            this.registrationPasswordErrorLabel = new System.Windows.Forms.Label();
             this.registrationNameErrorLabel = new System.Windows.Forms.Label();
             this.registrationNameTextBox = new System.Windows.Forms.TextBox();
-            this.registrationRepeatPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.registrationPasswordErrorLabel = new System.Windows.Forms.Label();
             this.registrationPasswordTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.registrationButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPageLogin.SuspendLayout();
             this.tabPageRegistration.SuspendLayout();
@@ -58,7 +58,9 @@
             // 
             // loginNameTextBox
             // 
-            this.loginNameTextBox.Location = new System.Drawing.Point(6, 28);
+            this.loginNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loginNameTextBox.Location = new System.Drawing.Point(5, 20);
             this.loginNameTextBox.Name = "loginNameTextBox";
             this.loginNameTextBox.Size = new System.Drawing.Size(430, 20);
             this.loginNameTextBox.TabIndex = 0;
@@ -92,22 +94,55 @@
             this.tabPageLogin.TabIndex = 0;
             this.tabPageLogin.Text = "Вход";
             // 
+            // loginButton
+            // 
+            this.loginButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loginButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.loginButton.Location = new System.Drawing.Point(151, 280);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(140, 40);
+            this.loginButton.TabIndex = 4;
+            this.loginButton.Text = "Войти";
+            this.loginButton.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(5, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Имя";
+            // 
             // loginErrorLabel
             // 
+            this.loginErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.loginErrorLabel.AutoSize = true;
             this.loginErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginErrorLabel.Location = new System.Drawing.Point(155, 100);
+            this.loginErrorLabel.Location = new System.Drawing.Point(148, 264);
             this.loginErrorLabel.Name = "loginErrorLabel";
             this.loginErrorLabel.Size = new System.Drawing.Size(151, 13);
             this.loginErrorLabel.TabIndex = 12;
             this.loginErrorLabel.Text = "Неверный логин или пароль";
             this.loginErrorLabel.Visible = false;
             // 
+            // loginPasswordTextBox
+            // 
+            this.loginPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.loginPasswordTextBox.Location = new System.Drawing.Point(5, 100);
+            this.loginPasswordTextBox.Name = "loginPasswordTextBox";
+            this.loginPasswordTextBox.Size = new System.Drawing.Size(430, 20);
+            this.loginPasswordTextBox.TabIndex = 3;
+            this.loginPasswordTextBox.UseSystemPasswordChar = true;
+            // 
             // loginPasswordErrorLabel
             // 
+            this.loginPasswordErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loginPasswordErrorLabel.AutoSize = true;
             this.loginPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginPasswordErrorLabel.Location = new System.Drawing.Point(142, 51);
+            this.loginPasswordErrorLabel.Location = new System.Drawing.Point(150, 85);
             this.loginPasswordErrorLabel.Name = "loginPasswordErrorLabel";
             this.loginPasswordErrorLabel.Size = new System.Drawing.Size(165, 13);
             this.loginPasswordErrorLabel.TabIndex = 11;
@@ -116,50 +151,24 @@
             // 
             // loginNameErrorLabel
             // 
+            this.loginNameErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.loginNameErrorLabel.AutoSize = true;
             this.loginNameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginNameErrorLabel.Location = new System.Drawing.Point(119, 3);
+            this.loginNameErrorLabel.Location = new System.Drawing.Point(150, 5);
             this.loginNameErrorLabel.Name = "loginNameErrorLabel";
             this.loginNameErrorLabel.Size = new System.Drawing.Size(149, 13);
             this.loginNameErrorLabel.TabIndex = 10;
             this.loginNameErrorLabel.Text = "Имя не может быть пустым";
             this.loginNameErrorLabel.Visible = false;
             // 
-            // loginButton
-            // 
-            this.loginButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.loginButton.Location = new System.Drawing.Point(10, 100);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(139, 42);
-            this.loginButton.TabIndex = 4;
-            this.loginButton.Text = "Войти";
-            this.loginButton.UseVisualStyleBackColor = false;
-            // 
-            // loginPasswordTextBox
-            // 
-            this.loginPasswordTextBox.Location = new System.Drawing.Point(6, 77);
-            this.loginPasswordTextBox.Name = "loginPasswordTextBox";
-            this.loginPasswordTextBox.Size = new System.Drawing.Size(430, 20);
-            this.loginPasswordTextBox.TabIndex = 3;
-            this.loginPasswordTextBox.UseSystemPasswordChar = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 51);
+            this.label2.Location = new System.Drawing.Point(5, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пароль";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Имя";
             // 
             // tabPageRegistration
             // 
@@ -182,44 +191,67 @@
             this.tabPageRegistration.TabIndex = 1;
             this.tabPageRegistration.Text = "Регистрация";
             // 
+            // registrationButton
+            // 
+            this.registrationButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.registrationButton.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.registrationButton.Location = new System.Drawing.Point(151, 280);
+            this.registrationButton.Name = "registrationButton";
+            this.registrationButton.Size = new System.Drawing.Size(140, 40);
+            this.registrationButton.TabIndex = 8;
+            this.registrationButton.Text = "Зарегистрироваться";
+            this.registrationButton.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(5, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Имя";
+            // 
             // registrationErrorLabel
             // 
+            this.registrationErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.registrationErrorLabel.AutoSize = true;
             this.registrationErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.registrationErrorLabel.Location = new System.Drawing.Point(96, 257);
+            this.registrationErrorLabel.Location = new System.Drawing.Point(108, 264);
             this.registrationErrorLabel.Name = "registrationErrorLabel";
             this.registrationErrorLabel.Size = new System.Drawing.Size(250, 13);
             this.registrationErrorLabel.TabIndex = 12;
             this.registrationErrorLabel.Text = "Пользователь с таким именем уже существует";
             this.registrationErrorLabel.Visible = false;
             // 
+            // registrationRepeatPasswordTextBox
+            // 
+            this.registrationRepeatPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.registrationRepeatPasswordTextBox.Location = new System.Drawing.Point(5, 180);
+            this.registrationRepeatPasswordTextBox.Name = "registrationRepeatPasswordTextBox";
+            this.registrationRepeatPasswordTextBox.Size = new System.Drawing.Size(430, 20);
+            this.registrationRepeatPasswordTextBox.TabIndex = 6;
+            this.registrationRepeatPasswordTextBox.UseSystemPasswordChar = true;
+            // 
             // registrationRepeatPasswordErrorLabel
             // 
+            this.registrationRepeatPasswordErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.registrationRepeatPasswordErrorLabel.AutoSize = true;
             this.registrationRepeatPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.registrationRepeatPasswordErrorLabel.Location = new System.Drawing.Point(144, 112);
+            this.registrationRepeatPasswordErrorLabel.Location = new System.Drawing.Point(150, 165);
             this.registrationRepeatPasswordErrorLabel.Name = "registrationRepeatPasswordErrorLabel";
             this.registrationRepeatPasswordErrorLabel.Size = new System.Drawing.Size(118, 13);
             this.registrationRepeatPasswordErrorLabel.TabIndex = 11;
             this.registrationRepeatPasswordErrorLabel.Text = "Пароли не совпадают";
             this.registrationRepeatPasswordErrorLabel.Visible = false;
             // 
-            // registrationPasswordErrorLabel
-            // 
-            this.registrationPasswordErrorLabel.AutoSize = true;
-            this.registrationPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.registrationPasswordErrorLabel.Location = new System.Drawing.Point(119, 62);
-            this.registrationPasswordErrorLabel.Name = "registrationPasswordErrorLabel";
-            this.registrationPasswordErrorLabel.Size = new System.Drawing.Size(165, 13);
-            this.registrationPasswordErrorLabel.TabIndex = 10;
-            this.registrationPasswordErrorLabel.Text = "Пароль не может быть пустым";
-            this.registrationPasswordErrorLabel.Visible = false;
-            // 
             // registrationNameErrorLabel
             // 
+            this.registrationNameErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.registrationNameErrorLabel.AutoSize = true;
             this.registrationNameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.registrationNameErrorLabel.Location = new System.Drawing.Point(96, 23);
+            this.registrationNameErrorLabel.Location = new System.Drawing.Point(150, 5);
             this.registrationNameErrorLabel.Name = "registrationNameErrorLabel";
             this.registrationNameErrorLabel.Size = new System.Drawing.Size(149, 13);
             this.registrationNameErrorLabel.TabIndex = 9;
@@ -228,22 +260,39 @@
             // 
             // registrationNameTextBox
             // 
-            this.registrationNameTextBox.Location = new System.Drawing.Point(6, 39);
+            this.registrationNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.registrationNameTextBox.Location = new System.Drawing.Point(5, 20);
             this.registrationNameTextBox.Name = "registrationNameTextBox";
             this.registrationNameTextBox.Size = new System.Drawing.Size(430, 20);
             this.registrationNameTextBox.TabIndex = 7;
             // 
-            // registrationRepeatPasswordTextBox
+            // label4
             // 
-            this.registrationRepeatPasswordTextBox.Location = new System.Drawing.Point(10, 128);
-            this.registrationRepeatPasswordTextBox.Name = "registrationRepeatPasswordTextBox";
-            this.registrationRepeatPasswordTextBox.Size = new System.Drawing.Size(430, 20);
-            this.registrationRepeatPasswordTextBox.TabIndex = 6;
-            this.registrationRepeatPasswordTextBox.UseSystemPasswordChar = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 165);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Повторите пароль";
+            // 
+            // registrationPasswordErrorLabel
+            // 
+            this.registrationPasswordErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.registrationPasswordErrorLabel.AutoSize = true;
+            this.registrationPasswordErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.registrationPasswordErrorLabel.Location = new System.Drawing.Point(150, 85);
+            this.registrationPasswordErrorLabel.Name = "registrationPasswordErrorLabel";
+            this.registrationPasswordErrorLabel.Size = new System.Drawing.Size(165, 13);
+            this.registrationPasswordErrorLabel.TabIndex = 10;
+            this.registrationPasswordErrorLabel.Text = "Пароль не может быть пустым";
+            this.registrationPasswordErrorLabel.Visible = false;
             // 
             // registrationPasswordTextBox
             // 
-            this.registrationPasswordTextBox.Location = new System.Drawing.Point(13, 89);
+            this.registrationPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.registrationPasswordTextBox.Location = new System.Drawing.Point(5, 100);
             this.registrationPasswordTextBox.Name = "registrationPasswordTextBox";
             this.registrationPasswordTextBox.Size = new System.Drawing.Size(430, 20);
             this.registrationPasswordTextBox.TabIndex = 5;
@@ -252,39 +301,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 73);
+            this.label5.Location = new System.Drawing.Point(5, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Пароль";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 112);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Повторите пароль";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Имя";
-            // 
-            // registrationButton
-            // 
-            this.registrationButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.registrationButton.Location = new System.Drawing.Point(147, 329);
-            this.registrationButton.Name = "registrationButton";
-            this.registrationButton.Size = new System.Drawing.Size(139, 29);
-            this.registrationButton.TabIndex = 8;
-            this.registrationButton.Text = "Зарегистрироваться";
-            this.registrationButton.UseVisualStyleBackColor = false;
             // 
             // AuthorizationUserControl
             // 

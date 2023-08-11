@@ -58,17 +58,73 @@
       <Project>{BC2219F7-72D7-47A6-8089-D0677566945E}</Project>
       <Name>DataBaseCourseWork.Banks</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.ChangePass\DataBaseCourseWork.ChangePass.csproj">
+      <Project>{dd5e335d-8ca5-4b08-be91-b659dfc1707b}</Project>
+      <Name>DataBaseCourseWork.ChangePass</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
       <Project>{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}</Project>
       <Name>DataBaseCourseWork.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Departments\DataBaseCourseWork.Departments.csproj">
+      <Project>{0ea1fae3-687b-4eee-b52f-883912fc893d}</Project>
+      <Name>DataBaseCourseWork.Departments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Orders\DataBaseCourseWork.Orders.csproj">
+      <Project>{fc6f70ed-ef72-4eca-98ef-7348fbdf6f22}</Project>
+      <Name>DataBaseCourseWork.Orders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.ProductsInOrders\DataBaseCourseWork.ProductsInOrders.csproj">
+      <Project>{2af58dd6-8ff8-4da9-8acb-7de2b57c6db2}</Project>
+      <Name>DataBaseCourseWork.ProductsInOrders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.ProductsInStock\DataBaseCourseWork.ProductsInStock.csproj">
+      <Project>{8726cd16-bc62-41e3-b08a-29b68c1681f3}</Project>
+      <Name>DataBaseCourseWork.ProductsInStock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.ProductsInSupplies\DataBaseCourseWork.ProductsInSupplies.csproj">
+      <Project>{babd62e6-46ca-46f4-b72d-f38ffd909482}</Project>
+      <Name>DataBaseCourseWork.ProductsInSupplies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Products\DataBaseCourseWork.Products.csproj">
+      <Project>{81248d54-914f-4250-ad5e-eea22f77f223}</Project>
+      <Name>DataBaseCourseWork.Products</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.Providers\DataBaseCourseWork.Providers.csproj">
       <Project>{8FAE60EE-4D1B-4D58-B427-9CE049CC48B4}</Project>
       <Name>DataBaseCourseWork.Providers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Qualifications\DataBaseCourseWork.Qualifications.csproj">
+      <Project>{72652bf9-da92-417f-beae-05bc0619e7b9}</Project>
+      <Name>DataBaseCourseWork.Qualifications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Sales\DataBaseCourseWork.Sales.csproj">
+      <Project>{c4ef385b-ebf7-4c8a-930e-b70b9a933d6e}</Project>
+      <Name>DataBaseCourseWork.Sales</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Shops\DataBaseCourseWork.Shops.csproj">
+      <Project>{db785d4a-000d-48b8-8660-4a12ac592118}</Project>
+      <Name>DataBaseCourseWork.Shops</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Supplies\DataBaseCourseWork.Supplies.csproj">
+      <Project>{2a46a39e-63bb-4b02-a72e-82874e8d74c9}</Project>
+      <Name>DataBaseCourseWork.Supplies</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.TestDataGenerator\DataBaseCourseWork.TestDataGenerator.csproj">
+      <Project>{dbcc5071-c092-41de-ba93-ea79ed72c694}</Project>
+      <Name>DataBaseCourseWork.TestDataGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Units\DataBaseCourseWork.Units.csproj">
+      <Project>{8edf8311-45df-4e6f-94a5-8ca714e0aa4a}</Project>
+      <Name>DataBaseCourseWork.Units</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.UserControls\DataBaseCourseWork.UserControls.csproj">
       <Project>{E425B6D4-E495-450F-9B99-6F4CEB1EE22E}</Project>
       <Name>DataBaseCourseWork.UserControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataBaseCourseWork.Workers\DataBaseCourseWork.Workers.csproj">
+      <Project>{8f912c9f-0b84-4c81-a39d-6267a434249d}</Project>
+      <Name>DataBaseCourseWork.Workers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.Banks
+﻿namespace DataBaseCourseWork.ChangePass
 {
-    partial class BanksForm
+    partial class ChangePassForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataViewerUserControl = new DataBaseCourseWork.UserControls.DataViewerUserControl();
+            this.changePassUserControl = new DataBaseCourseWork.UserControls.ChangePassUserControl();
             this.SuspendLayout();
             // 
-            // dataViewerUserControl
+            // changePassUserControl
             // 
-            this.dataViewerUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataViewerUserControl.EditableRow = null;
-            this.dataViewerUserControl.Location = new System.Drawing.Point(0, 0);
-            this.dataViewerUserControl.Name = "dataViewerUserControl";
-            this.dataViewerUserControl.Size = new System.Drawing.Size(696, 409);
-            this.dataViewerUserControl.TabIndex = 0;
+            this.changePassUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changePassUserControl.Location = new System.Drawing.Point(0, 0);
+            this.changePassUserControl.Name = "changePassUserControl";
+            this.changePassUserControl.Size = new System.Drawing.Size(411, 307);
+            this.changePassUserControl.TabIndex = 0;
             // 
-            // BanksForm
+            // ChangePassForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 409);
-            this.Controls.Add(this.dataViewerUserControl);
-            this.Name = "BanksForm";
+            this.ClientSize = new System.Drawing.Size(411, 307);
+            this.Controls.Add(this.changePassUserControl);
+            this.Name = "ChangePassForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Банки";
+            this.Text = "Смена пароля";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.DataViewerUserControl dataViewerUserControl;
+        private UserControls.ChangePassUserControl changePassUserControl;
     }
 }
