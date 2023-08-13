@@ -1,28 +1,62 @@
-﻿using DataBaseCourseWork.Banks;
-using DataBaseCourseWork.Providers;
+﻿using DataBaseCourseWork.Common;
+using DataBaseCourseWork.Main.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Main
 {
     public partial class MainForm : Form
     {
-        private MainRepository _repository = new MainRepository();
+        private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
+        private readonly SqlConnection _connection;
         private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
+        private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
+
         public MainForm()
         {
             InitializeComponent();
 
+            var sqlQueryFile = Resources.queries;
+            if (sqlQueryFile.GetType() != typeof(byte[]))
+                throw new ArgumentException("Файл с запросами должен иметь тип byte[]");
+
+            string jsonString = System.Text.Encoding.UTF8.GetString((byte[])sqlQueryFile);
+
+            using (var document = JsonDocument.Parse(jsonString))
+            {
+                var queries = document.RootElement;
+                foreach (var prop in queries.EnumerateObject())
+                {
+                    _queries.Add(prop.Name.ToString(), prop.Value.ToString());
+                }
+            }
+
+            if (_queries.ContainsKey("connStr"))
+            {
+                _connection = new SqlConnection(_queries["connStr"]);
+                _connection.Open();
+            }
+            else
+            {
+                throw new ArgumentException("Файл с запросами не содержит connectionString");
+            }
+
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 4/5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 3/5;
             LoadMenuStrip();
             this.Disposed += MainForm_Disposed;
         }
 
         private void MainForm_Disposed(object sender, EventArgs e)
         {
-            _repository.CloseConnection();
+            _connection.Dispose();
         }
 
         public MainForm(Form form) : this()
@@ -35,7 +69,7 @@ namespace DataBaseCourseWork.Main
         /// </summary>
         private void LoadMenuStrip()
         {
-            var menuItems = _repository.ReadAll().ToArray();
+            var menuItems = _dataBase.ExecuteReader(_queries["readAll"], _connection).ToArray();
 
             // init
             for (int i = 0; i < menuItems.Length; i++)
@@ -79,7 +113,7 @@ namespace DataBaseCourseWork.Main
             this.mainUserControl.MenuStrip.Items[0]?.Select();
             this.mainUserControl.MenuStrip.TabStop = true;
             this.mainUserControl.MenuStrip.Focus();
-
+            _connection.Close();
         }
 
         /// <summary>
@@ -92,25 +126,15 @@ namespace DataBaseCourseWork.Main
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
             if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
             {
-                if (menuItem.Name == "Поставщики")
-                {
-                    var form = new ProvidersForm();
-                    form.ShowDialog();
-                }
-                if (menuItem.Name == "Банки")
-                {
-                    var form = new BanksForm();
-                    form.ShowDialog();
-                }
-                //string dllName = "DataBaseCourseWork." + menuItem.Dllname;
-                //string path = Path.Combine( @"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
-                //var asm = Assembly.LoadFrom(path);
-                //string className = menuItem.Dllname + "Form";
-                //var types = asm.GetTypes();
-                //var type = types?.FirstOrDefault(t => t.Name == className);
-                //object instance = Activator.CreateInstance(type);
-                //var form = (Form)instance;
-                //form.ShowDialog();
+                string dllName = "DataBaseCourseWork." + menuItem.Dllname;
+                string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+                var asm = Assembly.LoadFrom(path);
+                string className = menuItem.Dllname + "Form";
+                var types = asm.GetTypes();
+                var type = types?.FirstOrDefault(t => t.Name == className);
+                object instance = Activator.CreateInstance(type);
+                var form = (Form)instance;
+                form.ShowDialog();
             }
         }
 

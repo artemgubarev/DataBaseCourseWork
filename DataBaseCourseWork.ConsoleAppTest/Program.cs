@@ -1,9 +1,8 @@
-﻿using DataBaseCourseWork.TestDataGenerator;
-using System;
-using System.IO;
-using System.Reflection;
-using System.Resources;
-using System.Text.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using DataBaseCourseWork.TestDataGenerator;
 
 namespace DataBaseCourseWork.ConsoleAppTest
 {
@@ -11,27 +10,23 @@ namespace DataBaseCourseWork.ConsoleAppTest
     {
         static void Main(string[] args)
         {
-            //using(var generator = new Generator())
+            //using (var generator = new Generator())
             //{
-            //    generator.Run();
+                //generator.LoadMenuItems();
             //}
 
-            // var resources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            string query =
+                "INSERT INTO Providers(Name,Address,DirectorName,PhoneNumber,BankId,BankAccountNumber,INN) VALUES (@Name,@Address,@DirectorName,@PhoneNumber,@BankId,@BankAccountNumber,@INN) SELECT SCOPE_IDENTITY();";
 
-            //var file = Properties.Resources.test;
-            //string result = System.Text.Encoding.UTF8.GetString(file);
-
-            //using (JsonDocument document = JsonDocument.Parse(result))
-            //{
-            //    // Получаем корневой элемент JSON
-            //    JsonElement root = document.RootElement;
-
-            //    // Получаем значение по ключу
-            //    if (root.TryGetProperty("query1", out JsonElement value1))
-            //    {
-            //        Console.WriteLine($"Value for key1: {value1.GetString()}");
-            //    }
-            //}
+            string pattern = @"@(\w+)";
+            var regex = new Regex(pattern);
+            var matches = regex.Matches(query);
+            
+            foreach (Match match in matches)
+            {
+                string word = match.Groups[1].Value;
+                Console.WriteLine(word);
+            }
         }
     }
 }

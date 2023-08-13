@@ -81,6 +81,9 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(686, 356);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_CellBeginEdit);
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
             // 
             // createButton
             // 
@@ -134,6 +137,7 @@
             this.Controls.Add(this.dataGridView);
             this.Name = "DataViewerUserControl";
             this.Size = new System.Drawing.Size(692, 404);
+            this.Load += new System.EventHandler(this.DataViewerUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);

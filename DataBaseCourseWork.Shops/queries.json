@@ -2,6 +2,6 @@
   "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
   "readAll": "SELECT * FROM Shops",
   "update": "UPDATE Shops SET Name = @Name,Address=@Address WHERE Id = @Id",
-  "insert": "INSERT INTO Shops(Name,Adderss) VALUES (@Name,@Adderss) SELECT SCOPE_IDENTITY();",
+  "insert": "INSERT INTO Shops(Name,Address) VALUES (@Name,@Address) SELECT SCOPE_IDENTITY();",
   "delete": "DELETE FROM Shops WHERE Id = "
 }

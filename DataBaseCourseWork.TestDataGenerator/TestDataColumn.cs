@@ -24,7 +24,7 @@ namespace DataBaseCourseWork.TestDataGenerator
 			get { return _leftBorder; }
             set
             {
-                if (value >= _rigthBorder)
+                if (value > _rigthBorder && _rigthBorder != 0)
                     throw new ArgumentException("Левая граница не может быть больше правой");
                 _leftBorder = value;
             }

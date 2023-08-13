@@ -47,7 +47,6 @@ namespace DataBaseCourseWork.TestDataGenerator
 
         public object AddOrUpdate(object obj)
         {
-          
             var testData = (TestDataRow)obj;
             var dataArray = testData.Data.ToArray();
             var parameters = new SqlParameter[dataArray.Length];

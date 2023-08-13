@@ -20,7 +20,7 @@ namespace DataBaseCourseWork.Common
         public DataViewerDevexpressController(DataViewerDevexpressUserControl userControl, KeyValuePair<string, int>[] sqlParameters, byte[] queries)
         {
             _sqlParameters = sqlParameters;
-            _repository = new Repository(queries);
+            //_repository = new Repository(queries);
             _userControl = userControl;
         }
         public void DeleteData()

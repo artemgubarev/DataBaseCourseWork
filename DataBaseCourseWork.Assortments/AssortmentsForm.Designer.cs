@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.Main
+﻿namespace DataBaseCourseWork.Assortments
 {
-    partial class MainForm
+    partial class AssortmentsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainUserControl = new DataBaseCourseWork.UserControls.MainUserControl();
+            this.dataViewerDevexpressUserControl = new DataBaseCourseWork.UserControls.DataViewerDevexpressUserControl();
             this.SuspendLayout();
             // 
-            // mainUserControl
+            // dataViewerDevexpressUserControl
             // 
-            this.mainUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainUserControl.Location = new System.Drawing.Point(0, 0);
-            this.mainUserControl.Name = "mainUserControl";
-            this.mainUserControl.Size = new System.Drawing.Size(926, 450);
-            this.mainUserControl.TabIndex = 0;
+            this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
+            this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
+            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(633, 420);
+            this.dataViewerDevexpressUserControl.TabIndex = 0;
             // 
-            // MainForm
+            // AssortmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 450);
-            this.Controls.Add(this.mainUserControl);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.ClientSize = new System.Drawing.Size(633, 420);
+            this.Controls.Add(this.dataViewerDevexpressUserControl);
+            this.Name = "AssortmentsForm";
+            this.Text = "Товары в магазинах";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.MainUserControl mainUserControl;
+        private UserControls.DataViewerDevexpressUserControl dataViewerDevexpressUserControl;
     }
 }

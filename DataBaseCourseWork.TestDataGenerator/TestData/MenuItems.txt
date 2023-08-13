@@ -1,1 +1,28 @@
-﻿1 0 Справочники NULL NULL 0
+﻿1,0,Справочники,NULL,NULL,0
+2,1,Банки,Banks,BanksForm,0
+3,1,Отделы,Departments,DepartmentsForm,1
+4,1,Квалификации,Qualifications,QualificationsForm,2
+5,1,Единицы измерения,Units,UnitsForm,3
+6,0,Товары,NULL,NULL,1
+7,6,Все товары,Products,ProductsForm,0
+8,6,Товары в заявках,ProductsInOrders,ProductsInOrdersForm,1
+9,6,Товары в поставках,ProductsInSupplies,ProductsInSuppliesForm,2
+10,6,Товары на складе,ProductsInStock,ProductsInStockForm,3
+11,6,Товары в магазинах,Assortments,AssortmentsForm,4
+12,0,Заявки,Orders,OrdersForm,2
+13,0,Поставки,Supplies,SuppliesForm,3 
+14,0,Магазины,Shops,ShopsForm,4
+15,0,Поставщики,Providers,ProvidersForm,5
+16,0,Продавцы,Workers,WorkersForm,6
+17,0,Продажи,Sales,SalesForm,7
+18,0,Документы,NULL,NULL,8
+19,18,Выручка от продаж,NULL,NULL,0
+20,18,Ассортименты магазинов,NULL,NULL,1
+21,18,Товары на центральном складе,NULL,NULL,2
+22,0,Справка,NULL,NULL,9
+23,22,Содержание,NULL,NULL,0
+24,22,О программе,AboutProgram,AboutProgramForm,1
+25,0,Разное,NULL,NULL,10
+26,25,Настройка,NULL,NULL,0
+27,25,Сменить пароль,ChangePass,ChangePassForm,1
+28,0,Панель администратора,AdminPanel,AdminPanelForm,11

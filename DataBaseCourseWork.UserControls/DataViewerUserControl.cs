@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.UserControls
@@ -16,16 +11,15 @@ namespace DataBaseCourseWork.UserControls
         {
             InitializeComponent();
         }
-
-        public List<int> AddedRowsIndexes = new List<int>();
-        private object[] _editableRow;
-        public List<int> RowIndexesToUpdate = new List<int>();
-        
-        private void DataViewerUserControl_Load(object sender, System.EventArgs e)
+        private void DataViewerUserControl_Load(object sender, EventArgs e)
         {
             int colsCount = dataGridView.Columns.Count;
             _editableRow = new object[colsCount - 1];
         }
+
+        public List<int> AddedRowsIndexes = new List<int>();
+        private object[] _editableRow;
+        public List<int> RowIndexesToUpdate = new List<int>();
 
         public object[] EditableRow
         {
@@ -33,6 +27,7 @@ namespace DataBaseCourseWork.UserControls
             set => _editableRow = value;
         }
 
+        #region Buttons
         public Button CreateButton
         {
             get => this.createButton;
@@ -53,29 +48,21 @@ namespace DataBaseCourseWork.UserControls
             get => this.dataGridView;
             set => this.dataGridView = value;
         }
+        #endregion
 
-        public PictureBox HintPictureBox
-        {
-            get => this.pictureBox;
-            set => this.pictureBox = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rowIndex"></param>
-        /// <param name="color"></param>
         public void SetRowColor(int rowIndex, System.Drawing.Color color)
         {
             int cellsCount = dataGridView.Rows[0].Cells.Count;
             for (int i = 0; i < cellsCount; i++)
+            {
                 dataGridView.Rows[rowIndex].Cells[i].Style.BackColor = color;
+            }
         }
-
+        
         private void dataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            //SetRowColor(dataGridView.Rows.Count - 1, System.Drawing.Color.Aqua);
-            AddedRowsIndexes.Add(dataGridView.Rows.Count - 1);
+            
+
         }
 
         private void dataGridView_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -95,33 +82,36 @@ namespace DataBaseCourseWork.UserControls
             var dataTable = (DataTable)dataGridView.DataSource;
             int rowIndex = e.RowIndex;
 
-            if (AddedRowsIndexes.Contains(rowIndex) && rowIndex != dataTable.Rows.Count)
-            {
-                SetRowColor(rowIndex, System.Drawing.Color.Aqua);
+            //if (dataTable.Rows.Count == rowIndex ||
+            //    string.IsNullOrEmpty(dataTable.Rows[rowIndex][0].ToString())) return;
 
-                //bool isEdited = false;
-                //for (int i = 0; i < dataTable.Columns.Count; i++)
-                //{
-                //    if (dataTable.Rows[rowIndex][i] != null)
-                //    {
-                //        isEdited = true;
-                //        SetRowColor(rowIndex, System.Drawing.Color.Aqua);
-                //        break;
-                //    }
-                //}
+            if (rowIndex == dataGridView.Rows.Count)
+            {
+                SetRowColor(e.RowIndex, System.Drawing.Color.Aqua);
+                AddedRowsIndexes.Add(dataGridView.Rows.Count - 1);
             }
-
-            if (dataTable.Rows.Count == rowIndex ||
-                string.IsNullOrEmpty(dataTable.Rows[rowIndex][0].ToString())) return;
-            for (int i = 1; i < dataTable.Columns.Count; i++)
+            else
             {
-                var value1 = dataTable.Rows[rowIndex][i];
-                var value2 = _editableRow[i - 1];
-                if (!string.Equals(value1.ToString(), value2.ToString()))
+                for (int i = 1; i < dataTable.Columns.Count; i++)
                 {
-                    SetRowColor(e.RowIndex, System.Drawing.Color.IndianRed);
-                    RowIndexesToUpdate.Add(rowIndex);
-                    break;
+                    var value1 = dataTable.Rows[rowIndex][i];
+                    var value2 = _editableRow[i - 1];
+                    if (!string.Equals(value1.ToString(), value2.ToString()))
+                    {
+                        if (rowIndex == dataTable.Rows.Count)
+                        {
+                            SetRowColor(rowIndex, System.Drawing.Color.Aqua);
+                            AddedRowsIndexes.Add(rowIndex);
+                            break;
+                        }
+                        else if (rowIndex != dataTable.Rows.Count - 1 && !AddedRowsIndexes.Contains(rowIndex))
+                        {
+                            SetRowColor(rowIndex, System.Drawing.Color.IndianRed);
+                            RowIndexesToUpdate.Add(rowIndex);
+                            break;
+                        }
+
+                    }
                 }
             }
         }

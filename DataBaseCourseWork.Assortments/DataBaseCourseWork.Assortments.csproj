@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBCC5071-C092-41DE-BA93-EA79ED72C694}</ProjectGuid>
+    <ProjectGuid>{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataBaseCourseWork.TestDataGenerator</RootNamespace>
-    <AssemblyName>DataBaseCourseWork.TestDataGenerator</AssemblyName>
+    <RootNamespace>DataBaseCourseWork.Assortments</RootNamespace>
+    <AssemblyName>DataBaseCourseWork.Assortments</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,9 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,50 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+    <Compile Include="AssortmentsForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestDataColumn.cs" />
-    <Compile Include="Generator.cs" />
-    <Compile Include="TestDataGeneratorRepository.cs" />
-    <Compile Include="TestDataRow.cs" />
+    <Compile Include="AssortmentsForm.Designer.cs">
+      <DependentUpon>AssortmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
-      <Project>{9f0b31d4-3adf-472f-89ea-aa932ef8ff23}</Project>
-      <Name>DataBaseCourseWork.Common</Name>
+    <ProjectReference Include="..\DataBaseCourseWork.UserControls\DataBaseCourseWork.UserControls.csproj">
+      <Project>{E425B6D4-E495-450F-9B99-6F4CEB1EE22E}</Project>
+      <Name>DataBaseCourseWork.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestData\Banks.txt" />
-    <Content Include="TestData\Departments.txt" />
-    <Content Include="TestData\Designations.txt" />
-    <Content Include="TestData\INN.txt" />
-    <Content Include="TestData\MenuItems.txt" />
-    <Content Include="TestData\Products.txt" />
-    <Content Include="TestData\Providers.txt" />
-    <Content Include="TestData\ProvidersAddresses.txt" />
-    <Content Include="TestData\ProvidersBankAccountNumber.txt" />
-    <Content Include="TestData\ProvidersDirectorNames.txt" />
-    <Content Include="TestData\ProvidersPhoneNumbers.txt" />
-    <Content Include="TestData\Qualifications.txt" />
-    <Content Include="TestData\Shops.txt" />
-    <Content Include="TestData\ShopsAddresses.txt" />
-    <Content Include="TestData\Units.txt" />
-    <Content Include="TestData\UserNames.txt" />
-    <Content Include="TestData\UserPasswords.txt" />
-    <Content Include="TestData\WorkersNames.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="AssortmentsForm.resx">
+      <DependentUpon>AssortmentsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

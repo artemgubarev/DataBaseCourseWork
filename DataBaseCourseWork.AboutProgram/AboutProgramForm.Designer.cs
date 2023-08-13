@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.Main
+﻿namespace DataBaseCourseWork.AboutProgram
 {
-    partial class MainForm
+    partial class AboutProgramForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainUserControl = new DataBaseCourseWork.UserControls.MainUserControl();
             this.SuspendLayout();
             // 
-            // mainUserControl
-            // 
-            this.mainUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainUserControl.Location = new System.Drawing.Point(0, 0);
-            this.mainUserControl.Name = "mainUserControl";
-            this.mainUserControl.Size = new System.Drawing.Size(926, 450);
-            this.mainUserControl.TabIndex = 0;
-            // 
-            // MainForm
+            // AboutProgramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 450);
-            this.Controls.Add(this.mainUserControl);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "AboutProgramForm";
+            this.Text = "О программе";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private UserControls.MainUserControl mainUserControl;
     }
 }
