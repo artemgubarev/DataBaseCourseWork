@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
+using DataBaseCourseWork.Providers;
 
 namespace DataBaseCourseWork.Main
 {
@@ -18,7 +19,6 @@ namespace DataBaseCourseWork.Main
         private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
         private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
-
         public MainForm()
         {
             InitializeComponent();
@@ -124,18 +124,25 @@ namespace DataBaseCourseWork.Main
         private void MenuItem_Click(object sender, EventArgs e)
         {
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
-            if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
+            if (menuItem.Dllname == "Providers")
             {
-                string dllName = "DataBaseCourseWork." + menuItem.Dllname;
-                string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
-                var asm = Assembly.LoadFrom(path);
-                string className = menuItem.Dllname + "Form";
-                var types = asm.GetTypes();
-                var type = types?.FirstOrDefault(t => t.Name == className);
-                object instance = Activator.CreateInstance(type);
-                var form = (Form)instance;
+                var form = new ProvidersForm();
                 form.ShowDialog();
             }
+
+           
+            //if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
+            //{
+            //    string dllName = "DataBaseCourseWork." + menuItem.Dllname;
+            //    string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+            //    var asm = Assembly.LoadFrom(path);
+            //    string className = menuItem.Dllname + "Form";
+            //    var types = asm.GetTypes();
+            //    var type = types?.FirstOrDefault(t => t.Name == className);
+            //    object instance = Activator.CreateInstance(type);
+            //    var form = (Form)instance;
+            //    form.ShowDialog();
+            //}
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

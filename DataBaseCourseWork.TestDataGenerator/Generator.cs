@@ -1,12 +1,9 @@
-﻿using System;
+﻿using DataBaseCourseWork.Common;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters;
-using DataBaseCourseWork.Common;
 
 namespace DataBaseCourseWork.TestDataGenerator
 {
@@ -16,8 +13,8 @@ namespace DataBaseCourseWork.TestDataGenerator
     public class Generator : IDisposable
     {
         //private TestDataGeneratorRepository _repository = new TestDataGeneratorRepository();
-        private Repository _repository = new Repository();
-
+        //private Repository _repository = new Repository();
+        
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
         private readonly SqlConnection _connection;
 
@@ -31,10 +28,12 @@ namespace DataBaseCourseWork.TestDataGenerator
 
         public void Run()
         {
-            var banksData = GenerateTestData(new TestDataColumn[]
-            {
-                new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
-            });
+            SendData();
+
+            //var banksData = GenerateTestData(new TestDataColumn[]
+            //{
+            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
+            //});
 
             var providersData = GenerateTestData(new TestDataColumn[]
             {
@@ -133,9 +132,13 @@ namespace DataBaseCourseWork.TestDataGenerator
             //});
         }
 
+        private void SendData(IEnumerable<TestDataColumn> dataColumns)
+        {
+
+        }
+
         public void LoadMenuItems()
         {
-            //string[] menuData = File.ReadAllLines(Properties.Resources.MenuItems);
             var menuData = Properties.Resources.MenuItems.Split(new string[] { "\r\n" }, StringSplitOptions.None);
             foreach (var menuItem in menuData)
             {

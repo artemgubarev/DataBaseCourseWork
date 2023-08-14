@@ -88,12 +88,6 @@
     <Compile Include="DataViewerDevexpressUserControl.Designer.cs">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataViewerUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataViewerUserControl.Designer.cs">
-      <DependentUpon>DataViewerUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,9 +115,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataViewerDevexpressUserControl.resx">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataViewerUserControl.resx">
-      <DependentUpon>DataViewerUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainUserControl.resx">
       <DependentUpon>MainUserControl.cs</DependentUpon>

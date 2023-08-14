@@ -57,7 +57,6 @@
     <Compile Include="ProvidersForm.Designer.cs">
       <DependentUpon>ProvidersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProvidersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">

@@ -9,24 +9,23 @@ namespace DataBaseCourseWork.AuthorizationSystem
 {
     public partial class AuthorizationForm : Form
     {
-        private AuthorizationSystemRepository _repository;
+        //private AuthorizationSystemRepository _repository;
         public AuthorizationForm()
         {
             InitializeComponent();
            
-            _repository = new AuthorizationSystemRepository();
+           // _repository = new AuthorizationSystemRepository();
             this.authorizationUserControl.Focus();
             this.authorizationUserControl.LoginButton.Click += LoginButton_Click;
             this.authorizationUserControl.RegistrationButton.Click += RegistrationButton_Click;
             this.Disposed += AuthorizationForm_Disposed;
-            
         }
 
         private void AuthorizationForm_Disposed(object sender, EventArgs e)
         {
             this.authorizationUserControl.LoginButton.Click -= LoginButton_Click;
             this.authorizationUserControl.RegistrationButton.Click -= RegistrationButton_Click;
-            _repository.CloseConnection();
+          //  _repository.CloseConnection();
         }
 
         /// <summary>
@@ -60,19 +59,19 @@ namespace DataBaseCourseWork.AuthorizationSystem
             else
             {
                 var user = new User(name);
-                bool isExist = _repository.IsExist(user);
-                if (isExist)
-                {
-                    authorizationUserControl.RegistrationErrorLabel.Visible = true;
-                }
-                else
-                {
-                    string hashedPassword = CalculateMD5Hash(password);
-                    user.Password = hashedPassword; 
-                    user.Id = (int?)_repository.AddOrUpdate(user);
+              //  bool isExist = _repository.IsExist(user);
+                //if (isExist)
+                //{
+                //    authorizationUserControl.RegistrationErrorLabel.Visible = true;
+                //}
+                //else
+                //{
+                //    string hashedPassword = CalculateMD5Hash(password);
+                //    user.Password = hashedPassword; 
+                //    user.Id = (int?)_repository.AddOrUpdate(user);
 
-                    ShowMainForm(); 
-                }
+                //    ShowMainForm(); 
+                //}
             }
         }
 
@@ -101,17 +100,17 @@ namespace DataBaseCourseWork.AuthorizationSystem
             else
             {
                 var user = new User(name);
-                string hashedPasswordFromDataBase = (string)_repository.Find(user);
+                //string hashedPasswordFromDataBase = (string)_repository.Find(user);
                 string hashedPassword = CalculateMD5Hash(password);
 
-                if (!string.Equals(hashedPasswordFromDataBase, hashedPassword))
-                {
-                    authorizationUserControl.LoginErrorLabel.Visible = true;
-                }
-                else
-                {
-                    ShowMainForm();
-                }
+                //if (!string.Equals(hashedPasswordFromDataBase, hashedPassword))
+                //{
+                //    authorizationUserControl.LoginErrorLabel.Visible = true;
+                //}
+                //else
+                //{
+                //    ShowMainForm();
+                //}
             }
         }
 

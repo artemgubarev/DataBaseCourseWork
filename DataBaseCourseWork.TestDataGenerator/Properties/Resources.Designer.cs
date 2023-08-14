@@ -61,21 +61,362 @@ namespace DataBaseCourseWork.TestDataGenerator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1, 0 Справочники NULL NULL 0
-        ///2, 1 Банки Banks BanksForm 0
-        ///3, 1 Отделы Departments DepartmentsForm 1
-        ///4, 1 Квалификации Qualifications QualificationsForm 2
-        ///5, 1 Единицы измерения Units UnitsForm 3
-        ///6, 0 Товары NULL NULL 1
-        ///7, 6 Все товары Products ProductsForm 0
-        ///8, 6 Товары в заявках ProductsInOrders ProductsInOrdersForm 1
-        ///9, 6 Товары в поставках ProductsInSupplies ProductsInSuppliesForm 2
-        ///10, 6 Товары на складе ProductsInStock ProductsInStockForm 3
-        ///11, 6 Товары в магазинах Assortments AssortmentsForm [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Сбербанк России
+        ///ВТБ Банк
+        ///Газпромбанк
+        ///Альфа-Банк
+        ///Россельхозбанк
+        ///Промсвязьбанк
+        ///Райффайзенбанк
+        ///Тинькофф Банк
+        ///Банк Москвы
+        ///ЮниКредит Банк.
+        /// </summary>
+        internal static string Banks {
+            get {
+                return ResourceManager.GetString("Banks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отдел свежих продуктов
+        ///Отдел хозяйственных товаров
+        ///Отдел косметики и парфюмерии
+        ///Отдел детских товаров
+        ///Отдел электроники и бытовой техники.
+        /// </summary>
+        internal static string Departments {
+            get {
+                return ResourceManager.GetString("Departments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to кг
+        ///г
+        ///мг
+        ///т
+        ///oz
+        ///lb
+        ///л
+        ///мл
+        ///gal
+        ///шт
+        ///пр
+        ///м
+        ///см
+        ///мм
+        ///м²
+        ///м³
+        ///пал
+        ///ct (драгоценные камни)
+        ///В (электрическое напряжение)
+        ///А (электрический ток).
+        /// </summary>
+        internal static string Designations {
+            get {
+                return ResourceManager.GetString("Designations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 8537492815
+        ///4092865179
+        ///7251938406
+        ///6248719305
+        ///1389520476
+        ///2958730194
+        ///7104823695
+        ///9346871025
+        ///5720193846
+        ///2468091537.
+        /// </summary>
+        internal static string INN {
+            get {
+                return ResourceManager.GetString("INN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1,0,Справочники,NULL,NULL,0
+        ///2,1,Банки,Banks,BanksForm,0
+        ///3,1,Отделы,Departments,DepartmentsForm,1
+        ///4,1,Квалификации,Qualifications,QualificationsForm,2
+        ///5,1,Единицы измерения,Units,UnitsForm,3
+        ///6,0,Товары,NULL,NULL,1
+        ///7,6,Все товары,Products,ProductsForm,0
+        ///8,6,Товары в заявках,ProductsInOrders,ProductsInOrdersForm,1
+        ///9,6,Товары в поставках,ProductsInSupplies,ProductsInSuppliesForm,2
+        ///10,6,Товары на складе,ProductsInStock,ProductsInStockForm,3
+        ///11,6,Товары в магазинах,Assortments,AssortmentsForm,4
+        ///12,0,За [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MenuItems {
             get {
                 return ResourceManager.GetString("MenuItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Яблоки &quot;Гала&quot;
+        ///Телевизор LED Samsung 55&quot;
+        ///Шампунь Pantene &quot;Против выпадения волос&quot;
+        ///Парфюм Chanel No. 5
+        ///Чай &quot;Ассам Черный&quot;
+        ///Стиральная машина LG Inverter Direct Drive
+        ///Джинсы Levi&apos;s 501
+        ///Колготки &quot;Классика&quot;
+        ///Кофемолка Bosch MKM 6000
+        ///Телефон Apple iPhone 13 Pro
+        ///Сок &quot;Томатный&quot;
+        ///Пылесос Dyson V11
+        ///Крем для лица Nivea &quot;Увлажнение&quot;
+        ///Молоко &quot;Домик в деревне&quot;
+        ///Шоколад &quot;Alpen Gold&quot; с орехами
+        ///Кофе молотый &quot;Jacobs Monarch&quot;
+        ///Сок &quot;Апельсиновый 100% сок&quot;
+        ///Кондиционер для волос L&apos;Oreal Elseve
+        ///Тостер Moulinex LT1215        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Products {
+            get {
+                return ResourceManager.GetString("Products", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Золотой Кирпич
+        ///МегастройМастер
+        ///СтройПрофиСервис
+        ///АльфаСтройМатериалы
+        ///ТитанСтройКомплект
+        ///Эко-СтройМаркет
+        ///ВиватСтройПартнер
+        ///ПрогрессСтройТехника
+        ///Архитектурный Камень
+        ///СтальГрадИмпорт.
+        /// </summary>
+        internal static string Providers {
+            get {
+                return ResourceManager.GetString("Providers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Москва, ул. Ленина, д. 10, кв. 5
+        ///Санкт-Петербург, пр. Невский, д. 20, кв. 3
+        ///Екатеринбург, ул. Пушкина, д. 15, кв. 8
+        ///Новосибирск, пр. Ленинградский, д. 50, кв. 12
+        ///Казань, ул. Гагарина, д. 30, кв. 7
+        ///Омск, пр. Кирова, д. 25, кв. 1
+        ///Челябинск, ул. Советская, д. 18, кв. 9
+        ///Самара, пр. Ленина, д. 60, кв. 22
+        ///Уфа, ул. Карла Маркса, д. 7, кв. 4
+        ///Ростов-на-Дону, пр. Буденновский, д. 12, кв. 6.
+        /// </summary>
+        internal static string ProvidersAddresses {
+            get {
+                return ResourceManager.GetString("ProvidersAddresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 93582049817650392174
+        ///21784306593847195203
+        ///40938174629581730281
+        ///58712093570138465219
+        ///20938471593716582049
+        ///39846570218349017456
+        ///50127384962158730694
+        ///61749582038916547203
+        ///82039471620593841765
+        ///10485693071859462032.
+        /// </summary>
+        internal static string ProvidersBankAccountNumber {
+            get {
+                return ResourceManager.GetString("ProvidersBankAccountNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Иванова Анастасия Павловна
+        ///Козлов Максим Игоревич
+        ///Петрова Екатерина Александровна
+        ///Смирнов Артем Сергеевич
+        ///Морозова Ольга Дмитриевна
+        ///Николаев Денис Александрович
+        ///Васильева Алина Владимировна
+        ///Кузнецов Андрей Викторович
+        ///Лебедева Мария Ивановна
+        ///Соколов Егор Николаевич.
+        /// </summary>
+        internal static string ProvidersDirectorNames {
+            get {
+                return ResourceManager.GetString("ProvidersDirectorNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 12345678910
+        ///47891234567
+        ///93219876543
+        ///36789012345
+        ///18765432109
+        ///62345678901
+        ///79012345678
+        ///67890123456
+        ///98765432109
+        ///52345678901.
+        /// </summary>
+        internal static string ProvidersPhoneNumbers {
+            get {
+                return ResourceManager.GetString("ProvidersPhoneNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продавец-консультант
+        ///Кассир
+        ///Менеджер по продажам
+        ///Заведующий отделом
+        ///Оператор call-центра
+        ///Старший продавец
+        ///Администратор магазина
+        ///Товаровед
+        ///Мерчендайзер
+        ///Директор магазина..
+        /// </summary>
+        internal static string Qualifications {
+            get {
+                return ResourceManager.GetString("Qualifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Магия моды
+        ///ЭлектроМир
+        ///КосметикАрт
+        ///ЗооРай
+        ///Дом и Сад
+        ///СладкоеНебо
+        ///Книжный Мир
+        ///СпортПро
+        ///МегаТехника
+        ///ФудЛенд.
+        /// </summary>
+        internal static string Shops {
+            get {
+                return ResourceManager.GetString("Shops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Улица Ленина, дом 123, город Новосибирск, Россия
+        ///123 Main Street, Los Angeles, CA 90001, USA
+        ///Rue de la Paix, 8ème arrondissement, Paris, France
+        ///Calle Gran Vía, número 5, Madrid, España
+        ///Via Roma, 123, Roma, Italia
+        ///Shibuya Crossing, 2-2-1 Dogenzaka, Shibuya City, Tokyo, Japan
+        ///Karl-Liebknecht-Straße 5, Berlin, Deutschland
+        ///Passeig de Gràcia, 123, Barcelona, España
+        ///10 Downing Street, London, United Kingdom
+        ///Rua Augusta, 123, São Paulo, Brasil..
+        /// </summary>
+        internal static string ShopsAddresses {
+            get {
+                return ResourceManager.GetString("ShopsAddresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Килограмм (кг)
+        ///Грамм (г)
+        ///Миллиграмм (мг)
+        ///Тонна (т)
+        ///Унция (oz)
+        ///Фунт (lb)
+        ///Литр (л)
+        ///Миллилитр (мл)
+        ///Галлон (gal)
+        ///Штука (шт)
+        ///Пара (пр) (например, обувь)
+        ///Метр (м)
+        ///Сантиметр (см)
+        ///Миллиметр (мм)
+        ///Метр квадратный (м²)
+        ///Кубический метр (м³)
+        ///Паллета (пал)
+        ///Карат (ct) (драгоценные камни)
+        ///Вольт (В) (электрическое напряжение)
+        ///Ампер (А) (электрический ток).
+        /// </summary>
+        internal static string Units {
+            get {
+                return ResourceManager.GetString("Units", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SilverShadow92
+        ///RubyDreamer
+        ///EchoWhisper
+        ///NovaStarlight
+        ///LunaSerenade.
+        /// </summary>
+        internal static string UserNames {
+            get {
+                return ResourceManager.GetString("UserNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Y7r#E9fW5s
+        ///P4*mS2nK8d
+        ///X6v@G3jQ2h
+        ///R9a&amp;J1pC7k
+        ///T5b$N8wH3r.
+        /// </summary>
+        internal static string UserPasswords {
+            get {
+                return ResourceManager.GetString("UserPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Иванов И.В.
+        ///Смирнов Д.А.
+        ///Петрова Е.С.
+        ///Федоров И.М.
+        ///Васильева О.Г.
+        ///Николаев А.П.
+        ///Соколова А.М.
+        ///Морозов М.В.
+        ///Козлова Е.Н.
+        ///Попов С.С.
+        ///Лебедева М.А.
+        ///Ковалев А.И.
+        ///Соловьева Н.П.
+        ///Медведев П.В.
+        ///Кузнецова Ю.И.
+        ///Орлов В.Г.
+        ///Егорова Т.А.
+        ///Белов А.А.
+        ///Дмитриева А.В.
+        ///Андреева А.С.
+        ///Крылов Г.Ф.
+        ///Тимофеева О.Н.
+        ///Павлов Р.Д.
+        ///Семенова Л.В.
+        ///Жуков К.А.
+        ///Макарова С.П.
+        ///Фомин И.Г.
+        ///Борисова В.И.
+        ///Киселев Д.О.
+        ///Григорьева А.Е..
+        /// </summary>
+        internal static string WorkersNames {
+            get {
+                return ResourceManager.GetString("WorkersNames", resourceCulture);
             }
         }
     }

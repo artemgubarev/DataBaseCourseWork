@@ -118,7 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Banks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Banks.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Departments" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Departments.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Designations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Designations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="INN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\INN.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="MenuItems" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\TestData\MenuItems.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Products" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Products.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Providers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Providers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProvidersAddresses" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ProvidersAddresses.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProvidersBankAccountNumber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ProvidersBankAccountNumber.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProvidersDirectorNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ProvidersDirectorNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ProvidersPhoneNumbers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ProvidersPhoneNumbers.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Qualifications" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Qualifications.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Shops" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Shops.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ShopsAddresses" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\ShopsAddresses.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Units" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\Units.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="UserNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\UserNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="UserPasswords" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\UserPasswords.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="WorkersNames" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\TestData\WorkersNames.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

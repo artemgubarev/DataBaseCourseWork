@@ -1,24 +1,24 @@
 ﻿using DataBaseCourseWork.Common;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Banks
 {
     public partial class BanksForm : Form
     {
-        private readonly DataViewerController _controller;
-
+        private readonly DataViewerDevexpressController _controller;
         public BanksForm()
         {
             InitializeComponent();
 
+            string tableName = "Banks";
             string[] colNames =
             {
                 "Id",
                 "Наименование"
             };
-            _controller = new DataViewerController(dataViewerUserControl,colNames, Properties.Resources.queries);
+            _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl, Properties.Resources.queries,
+                tableName, colNames);
             this.Disposed += BanksForm_Disposed;
         }
         

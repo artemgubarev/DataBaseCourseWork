@@ -50,7 +50,6 @@
     </Compile>
     <Compile Include="TestDataColumn.cs" />
     <Compile Include="Generator.cs" />
-    <Compile Include="TestDataGeneratorRepository.cs" />
     <Compile Include="TestDataRow.cs" />
   </ItemGroup>
   <ItemGroup>

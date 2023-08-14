@@ -3,11 +3,11 @@ using System;
 
 namespace DataBaseCourseWork.AuthorizationSystem
 {
-    internal class User : NamedElement
+    internal class User 
     {
 		public User(string name)
 		{
-			Name = name;
+			//Name = name;
 		}
 
 		private string _password;

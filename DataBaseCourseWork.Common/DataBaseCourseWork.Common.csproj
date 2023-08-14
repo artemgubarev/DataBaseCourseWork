@@ -73,14 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataViewerController.cs" />
     <Compile Include="DataViewerDevexpressController.cs" />
-    <Compile Include="IRepository.cs" />
     <Compile Include="MSSQLDataBase.cs" />
     <Compile Include="MyApplicationContext.cs" />
-    <Compile Include="NamedElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
