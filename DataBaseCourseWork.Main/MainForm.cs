@@ -124,25 +124,23 @@ namespace DataBaseCourseWork.Main
         private void MenuItem_Click(object sender, EventArgs e)
         {
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
-            if (menuItem.Dllname == "Providers")
-            {
-                var form = new ProvidersForm();
-                form.ShowDialog();
-            }
-
-           
-            //if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
+            //if (menuItem.Dllname == "Providers")
             //{
-            //    string dllName = "DataBaseCourseWork." + menuItem.Dllname;
-            //    string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
-            //    var asm = Assembly.LoadFrom(path);
-            //    string className = menuItem.Dllname + "Form";
-            //    var types = asm.GetTypes();
-            //    var type = types?.FirstOrDefault(t => t.Name == className);
-            //    object instance = Activator.CreateInstance(type);
-            //    var form = (Form)instance;
+            //    var form = new ProvidersForm();
             //    form.ShowDialog();
             //}
+            if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
+            {
+                string dllName = "DataBaseCourseWork." + menuItem.Dllname;
+                string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+                var asm = Assembly.LoadFrom(path);
+                string className = menuItem.Dllname + "Form";
+                var types = asm.GetTypes();
+                var type = types?.FirstOrDefault(t => t.Name == className);
+                object instance = Activator.CreateInstance(type);
+                var form = (Form)instance;
+                form.ShowDialog();
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

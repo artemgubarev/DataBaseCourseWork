@@ -1,9 +1,11 @@
 ﻿using DataBaseCourseWork.Common;
+using DataBaseCourseWork.TestDataGenerator.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace DataBaseCourseWork.TestDataGenerator
 {
@@ -12,9 +14,6 @@ namespace DataBaseCourseWork.TestDataGenerator
     /// </summary>
     public class Generator : IDisposable
     {
-        //private TestDataGeneratorRepository _repository = new TestDataGeneratorRepository();
-        //private Repository _repository = new Repository();
-        
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
         private readonly SqlConnection _connection;
 
@@ -28,113 +27,125 @@ namespace DataBaseCourseWork.TestDataGenerator
 
         public void Run()
         {
-            SendData();
-
-            //var banksData = GenerateTestData(new TestDataColumn[]
+            //SendData(tableName: "Departments", new TestDataColumn[]
             //{
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Banks.txt", 0)
+            //    new TestDataColumn("Name") { TextFile = Resources.Departments },
             //});
 
-            var providersData = GenerateTestData(new TestDataColumn[]
-            {
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Providers.txt", 0),
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\ProvidersAddresses.txt", 1),
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\ProvidersDirectorNames.txt", 2),
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\ProvidersPhoneNumbers.txt", 3),
-                //new TestDataColumn(_repository.GetUniqueValuesFromColumn("Banks", "Id"), 4),
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\ProvidersBankAccountNumber.txt", 5),
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\INN.txt", 6),
-            }).ToList();
-
-            //var departmentsData = GenerateTestData(new TestDataColumn[]
+            //SendData(tableName: "Banks", new TestDataColumn[]
             //{
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Departments.txt", 0)
+            //    new TestDataColumn("Name") { TextFile = Resources.Banks },
             //});
 
-            //var qualificationsData = GenerateTestData(new TestDataColumn[]
+            //SendData(tableName: "Qualifications", new TestDataColumn[]
             //{
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Qualifications.txt", 0)
+            //     new TestDataColumn("Name") { TextFile = Resources.Qualifications },
             //});
 
-            //var shopsData = GenerateTestData(new TestDataColumn[]
+            //SendData(tableName: "Units", new TestDataColumn[]
             //{
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Shops.txt", 0),
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\ShopsAddresses.txt", 1)
+            //     new TestDataColumn("Name") { TextFile = Resources.Units },
+            //     new TestDataColumn("Designation") { TextFile = Resources.Designations },
             //});
 
-            //var unitsData = GenerateTestData(new TestDataColumn[]
+            //SendData(tableName: "Products", new TestDataColumn[]
             //{
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Units.txt", 0),
-            //    new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Designations.txt", 1),
+            //     new TestDataColumn("Name") { TextFile = Resources.Products },
+            //     new TestDataColumn("UnitId") { ForeignKeyTableName = "Units" },
             //});
 
-            var productsData = GenerateTestData(new TestDataColumn[]
-            {
-                //new TestDataColumn(@"..\..\..\DataBaseCourseWork.TestDataGenerator\TestData\Products.txt", 0),
-                //new TestDataColumn(new NumberRange(1, _repository.GetRowsNumber("Units")), 1),
-            });
-
-
-            //var departmentsQuery = "INSERT INTO Departments(Name) VALUES (@Name) SELECT SCOPE_IDENTITY();";
-            //foreach (var data in departmentsData)
+            //SendData(tableName: "Shops", new TestDataColumn[]
             //{
-            //    SendToDataBase(departmentsQuery, data, new string[]
-            //    {
-            //        "Name"
-            //    });
-            //}
-
-
-            //var qualificationsQuery = "INSERT INTO Qualifications(Name) VALUES (@Name) SELECT SCOPE_IDENTITY();";
-            //foreach (var data in qualificationsData)
-            //{
-            //    SendToDataBase(qualificationsQuery, data, new string[]
-            //    {
-            //        "Name"
-            //    });
-            //}
-
-            //var shopsQuery = "INSERT INTO Shops(Name,Address) VALUES (@Name,@Address) SELECT SCOPE_IDENTITY();";
-            //foreach (var data in shopsData)
-            //{
-            //    SendToDataBase(shopsQuery, data, new string[]
-            //    {
-            //        "Name","Address"
-            //    });
-            //}
-
-            //var unitsQuery = "INSERT INTO Units(Name,Designation) VALUES (@Name,@Designation) SELECT SCOPE_IDENTITY();";
-            //foreach (var data in unitsData)
-            //{
-            //    SendToDataBase(unitsQuery, data, new string[]
-            //    {
-            //        "Name","Designation"
-            //    });
-            //}
-
-            //var productsQuery = "INSERT INTO Products(Name,UnitId) VALUES (@Name,@UnitId) SELECT SCOPE_IDENTITY();";
-            //foreach (var data in unitsData)
-            //{
-            //    SendToDataBase(productsQuery, data, new string[]
-            //    {
-            //        "Name","UnitId"
-            //    });
-            //}
-
-            //string providersQuery = "INSERT INTO Providers (Name, Address, DirectorName, PhoneNumber, BankId, BankAccountNumber,INN)" +
-            //   "VALUES (@Name, @Address, @DirectorName, @PhoneNumber, @BankId, @BankAccountNumber,@INN);";
-            //providersData.ForEach(p =>
-            //{
-            //    SendToDataBase(providersQuery, p, new string[]
-            //    {
-            //        "Name", "Address", "DirectorName", "PhoneNumber", "BankId", "BankAccountNumber", "INN"
-            //    });
+            //     new TestDataColumn("Name") { TextFile = Resources.Shops },
+            //     new TestDataColumn("Address") { TextFile = Resources.ShopsAddresses },
             //});
+
+           // SendData(tableName: "Providers", new TestDataColumn[]
+           //{
+           //      new TestDataColumn("Name") { TextFile = Resources.Providers },
+           //      new TestDataColumn("Address") { TextFile = Resources.ProvidersAddresses },
+           //      new TestDataColumn("DirectorName") { TextFile = Resources.ProvidersDirectorNames },
+           //      new TestDataColumn("PhoneNumber") { TextFile = Resources.ProvidersPhoneNumbers },
+           //      new TestDataColumn("BankId") { ForeignKeyTableName = "Banks" },
+           //      new TestDataColumn("BankAccountNumber") { TextFile = Resources.ProvidersBankAccountNumber },
+           //      new TestDataColumn("INN") { TextFile = Resources.INN },
+           //});
         }
 
-        private void SendData(IEnumerable<TestDataColumn> dataColumns)
+        private void SendData(string tableName, IEnumerable<TestDataColumn> dataColumns)
         {
+            var columns = new List<(string, string[])>();
+            var fkeyColumns = new List<(string, string[])>();
 
+            int minLen = int.MaxValue;
+            string query = "INSERT INTO " + tableName + "(";
+            string fkeyQuery = "SELECT Id FROM ";
+
+            foreach (var col in dataColumns)
+            {
+                var splittedFile = col.GetSplittedTextFile();
+                if (splittedFile != null)
+                {
+                    query += $"{col.Name},";
+                    columns.Add((col.Name, splittedFile));
+                    if (splittedFile.Length < minLen)
+                    {
+                        minLen = splittedFile.Length;
+                    }
+                }
+            }
+
+            foreach (var col in dataColumns)
+            {
+                string fkeyTableName = col.ForeignKeyTableName;
+                if (fkeyTableName != null)
+                {
+                    query += $"{col.Name},";
+                    string tempFkeyQuery = fkeyQuery + fkeyTableName;
+                    var fkeys = _dataBase.ExecuteReader(tempFkeyQuery, _connection);
+                    string[] fkeysStr = new string[fkeys.Count()];
+                    for (int i = 0; i < fkeysStr.Length; i++)
+                    {
+                        fkeysStr[i] = fkeys.ElementAt(i)[0].ToString();
+                    }
+                    fkeyColumns.Add((col.Name, fkeysStr));
+                }
+            }
+
+            RemoveLastSymbol(ref query);
+            query += ") VALUES(";
+
+            //var q = new List<string>();
+            var rand = new Random();
+            for (int i = 0; i < minLen; i++)
+            {
+                string temp = query;
+                foreach (var col in columns)
+                {
+                    temp +=  $"N'{col.Item2[i]}',";
+                }
+
+                foreach (var col in fkeyColumns)
+                {
+                    int index = rand.Next(0, col.Item2.Length);
+                    temp += $"N'{col.Item2[index]}',";
+                }
+
+                // remove last
+                RemoveLastSymbol(ref temp);
+
+                temp += ");";
+
+                _dataBase.ExecuteNonQuery(temp, _connection);
+                //q.Add(temp);
+            }
+        }
+
+        private void RemoveLastSymbol(ref string str)
+        {
+            var sb = new StringBuilder(str);
+            sb.Length--;
+            str = sb.ToString();
         }
 
         public void LoadMenuItems()
@@ -149,97 +160,11 @@ namespace DataBaseCourseWork.TestDataGenerator
             }
         }
 
-        /// <summary>
-        /// Генерируем таблицу с тестовыми данными
-        /// </summary>
-        /// <param name="dataColumns"></param>
-        /// <returns></returns>
-        public IEnumerable<object[]> GenerateTestData(IEnumerable<TestDataColumn> dataColumns)
-        {
-            var data = new List<object[]>();
-            var cols = dataColumns.ToList();
-            cols.Sort();
-            var textData = new List<string[]>();
-            cols.ForEach(col =>
-            {
-                var uniqueValues = col.UniqueValuesFromTable?.ToArray();
-                if (uniqueValues != null)
-                {
-                    var rnd = new Random();
-                    int count = uniqueValues.Length;
-                    int dataCount = textData[0]?.Length ?? uniqueValues.Length;
-                    string[] testData = new string[dataCount];
-                    for (int i = 0; i < dataCount; i++)
-                    {
-                        int index = rnd.Next(0, count);
-                        testData[i] = uniqueValues[index].ToString();
-                    }
-                    textData.Add(testData);
-                }
-                // получаем все данные из файлов
-                else
-                {
-                    textData.Add(File.ReadAllLines(col.DataSource));
-                }
-            });
-
-            //количество строк в таблице будет равно
-            // количеству строк в файле который имеет минимальное количество
-            // строк из всех
-            
-
-            int minRowsCount = textData[0].Length;  
-            textData.ForEach(txt =>
-            {
-                int length = txt.Length;
-                if (length < minRowsCount)
-                    minRowsCount = length;
-            });
-
-            // заполняем таблицу
-            for (int i = 0; i < minRowsCount; i++)
-            {
-                object[] row = new object[cols.Count];
-                for (int j = 0; j < cols.Count; j++)
-                {
-                    row[j] = textData[j][i];
-                }
-                data.Add(row);
-            }
-
-            return data; 
-        }
-
-        /// <summary>
-        /// отправить тестовые данные в базу данных
-        /// </summary>
-        /// <param name="data"></param>
-        private void SendToDataBase(string query, IEnumerable<object> data, string[] parameterNames)
-        {
-            //var testDataRow = new TestDataRow(query,data, parameterNames);
-            //_repository.AddOrUpdate(testDataRow);
-
-        }
-
-        private bool _disposed = false;
-
         public void Dispose()
-        {
-            Dispose(true);
-        }
-
-        protected virtual void Dispose(bool disposing)
         {
             _connection.Close();
             _connection.Dispose();
-            //if (!_disposed)
-            //{
-            //    if (disposing)
-            //    {
-            //        _repository.CloseConnection();
-            //    }
-            //    _disposed = true;
-            //}
         }
+
     }
 }

@@ -1,10 +1,10 @@
-﻿Улица Ленина, дом 123, город Новосибирск, Россия
-123 Main Street, Los Angeles, CA 90001, USA
-Rue de la Paix, 8ème arrondissement, Paris, France
-Calle Gran Vía, número 5, Madrid, España
-Via Roma, 123, Roma, Italia
-Shibuya Crossing, 2-2-1 Dogenzaka, Shibuya City, Tokyo, Japan
-Karl-Liebknecht-Straße 5, Berlin, Deutschland
-Passeig de Gràcia, 123, Barcelona, España
-10 Downing Street, London, United Kingdom
-Rua Augusta, 123, São Paulo, Brasil.
+﻿Ул. Цветочная 5, Москва
+Пр. Солнечный 27, СПб
+Пер. Лесной 10, Екатеринбург
+Ул. Речная 42, Новосибирск
+Пр. Парковый 15, Красноярск
+Ул. Садовая 8, Казань
+Пер. Центральный 3, Самара
+Пр. Зеленый 20, Ростов
+Ул. Пушкинская 18, Н. Новгород
+Пер. Мирный 6, Владивосток

@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dataViewerDevexpressUserControl = new DataBaseCourseWork.UserControls.DataViewerDevexpressUserControl();
             this.SuspendLayout();
+            // 
+            // dataViewerDevexpressUserControl
+            // 
+            this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
+            this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
+            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(699, 414);
+            this.dataViewerDevexpressUserControl.TabIndex = 0;
             // 
             // DepartmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 414);
+            this.Controls.Add(this.dataViewerDevexpressUserControl);
             this.Name = "DepartmentsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отделы";
@@ -42,8 +52,9 @@
 
         }
 
+
         #endregion
 
-        
+        private UserControls.DataViewerDevexpressUserControl dataViewerDevexpressUserControl;
     }
 }

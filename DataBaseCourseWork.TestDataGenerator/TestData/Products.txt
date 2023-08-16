@@ -1,10 +1,10 @@
 ﻿Яблоки "Гала"
-Телевизор LED Samsung 55"
+Телевизор LED Samsung 55
 Шампунь Pantene "Против выпадения волос"
 Парфюм Chanel No. 5
 Чай "Ассам Черный"
 Стиральная машина LG Inverter Direct Drive
-Джинсы Levi's 501
+Джинсы Levis 501
 Колготки "Классика"
 Кофемолка Bosch MKM 6000
 Телефон Apple iPhone 13 Pro
@@ -15,7 +15,7 @@
 Шоколад "Alpen Gold" с орехами
 Кофе молотый "Jacobs Monarch"
 Сок "Апельсиновый 100% сок"
-Кондиционер для волос L'Oreal Elseve
+Кондиционер для волос Oreal Elseve
 Тостер Moulinex LT1215
 Куртка Columbia "Канада"
 Сыр "Эдамский"

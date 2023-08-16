@@ -53,70 +53,90 @@ namespace DataBaseCourseWork.TestDataGenerator
 	/// Для формирования таблицы тестовых данных
 	/// Каждый столбец береться из отдельного источника данных
     /// </summary>
-	public class TestDataColumn : IComparable<TestDataColumn>
+	public class TestDataColumn /*: IComparable<TestDataColumn>*/
     {
-		public TestDataColumn(string dataSource, int colNumber)
+		public TestDataColumn(string name)
 		{
-			DataSource = dataSource;	
-			ColNumber = colNumber;
+			Name = name;
 		}
 
-        public TestDataColumn(NumberRange randomNumberRange, int colNumber)
-        {
-            RandomNumberRange = randomNumberRange;
-            ColNumber = colNumber;
-        }
+		public string TextFile { get; set; } = null;
 
-        public TestDataColumn(IEnumerable<object> uniqueValuesFromTable, int colNumber)
-        {
-            UniqueValuesFromTable = uniqueValuesFromTable;
-			ColNumber = colNumber;
-        }
+		public string ForeignKeyTableName { get; set; } = null;
 
-        /// <summary>
-        /// Уникальные значения столбца из другой таблицы
-        /// которая связанная с таблицей для которой генерируются тестовые данные
-        /// вторичным ключом
-        /// </summary>
-        public IEnumerable<object> UniqueValuesFromTable { get; set; } = null;
+		public string Name { get; set; } = null;
+
+		public string[] GetSplittedTextFile()
+		{
+			if (TextFile != null)
+			{
+				return TextFile.Split(new string[] {"\r\n"}, StringSplitOptions.None);
+			}
+			else return null;
+		}
+
+		//public TestDataColumn(string dataSource, int colNumber)
+		//{
+		//	DataSource = dataSource;	
+		//	ColNumber = colNumber;
+		//}
+
+		//      public TestDataColumn(NumberRange randomNumberRange, int colNumber)
+		//      {
+		//          RandomNumberRange = randomNumberRange;
+		//          ColNumber = colNumber;
+		//      }
+
+		//      public TestDataColumn(IEnumerable<object> uniqueValuesFromTable, int colNumber)
+		//      {
+		//          UniqueValuesFromTable = uniqueValuesFromTable;
+		//	ColNumber = colNumber;
+		//      }
+
+		/// <summary>
+		/// Уникальные значения столбца из другой таблицы
+		/// которая связанная с таблицей для которой генерируются тестовые данные
+		/// вторичным ключом
+		/// </summary>
+		//public IEnumerable<object> UniqueValuesFromTable { get; set; } = null;
 
 		/// <summary>
 		/// Диапозон для рандомного числа
 		/// </summary>
-        public NumberRange RandomNumberRange { get; set; } = null; 
+		//      public NumberRange RandomNumberRange { get; set; } = null; 
 
-		private string _dataSource;
+		//private string _dataSource;
 
 		/// <summary>
 		/// Источник данных для столбца
 		/// путь к файлу
 		/// </summary>
-		public string DataSource
-		{
-			get { return _dataSource; }
-			set 
-			{
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException("DataSource can not be null or empty.");
-                _dataSource = value; 
-			}
-		}
+		//public string DataSource
+		//{
+		//	get { return _dataSource; }
+		//	set 
+		//	{
+		//              if (string.IsNullOrEmpty(value))
+		//                  throw new ArgumentException("DataSource can not be null or empty.");
+		//              _dataSource = value; 
+		//	}
+		//}
 
-		private int _colNumber;
+		//private int _colNumber;
 
 		/// <summary>
 		/// Номер столбца в таблице
 		/// </summary>
-		public int ColNumber
-		{
-			get { return _colNumber; }
-			set 
-			{
-                if (value < 0)
-                    throw new ArgumentException("ColNumber can not be negative.");
-                _colNumber = value; 
-			}
-		}
+		//public int ColNumber
+		//{
+		//	get { return _colNumber; }
+		//	set 
+		//	{
+		//              if (value < 0)
+		//                  throw new ArgumentException("ColNumber can not be negative.");
+		//              _colNumber = value; 
+		//	}
+		//}
 
 		/// <summary>
 		/// Для того чтобы стобцы в таблице шли в заданном порядке
@@ -124,11 +144,11 @@ namespace DataBaseCourseWork.TestDataGenerator
 		/// </summary>
 		/// <param name="other"></param>
 		/// <returns></returns>
-        public int CompareTo(TestDataColumn other)
-        {
-            if (other == null)
-                return 1;
-            return this.ColNumber.CompareTo(other.ColNumber);
-        }
-    }
+		//public int CompareTo(TestDataColumn other)
+		//{
+		//    if (other == null)
+		//        return 1;
+		//    return this.ColNumber.CompareTo(other.ColNumber);
+		//}
+	}
 }

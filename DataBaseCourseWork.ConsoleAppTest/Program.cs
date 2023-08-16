@@ -10,23 +10,23 @@ namespace DataBaseCourseWork.ConsoleAppTest
     {
         static void Main(string[] args)
         {
-            //using (var generator = new Generator())
-            //{
-                //generator.LoadMenuItems();
-            //}
-
-            string query =
-                "INSERT INTO Providers(Name,Address,DirectorName,PhoneNumber,BankId,BankAccountNumber,INN) VALUES (@Name,@Address,@DirectorName,@PhoneNumber,@BankId,@BankAccountNumber,@INN) SELECT SCOPE_IDENTITY();";
-
-            string pattern = @"@(\w+)";
-            var regex = new Regex(pattern);
-            var matches = regex.Matches(query);
-            
-            foreach (Match match in matches)
+            using (var generator = new Generator())
             {
-                string word = match.Groups[1].Value;
-                Console.WriteLine(word);
+                generator.Run();
             }
+
+            //string query =
+            //    "INSERT INTO Providers(Name,Address,DirectorName,PhoneNumber,BankId,BankAccountNumber,INN) VALUES (@Name,@Address,@DirectorName,@PhoneNumber,@BankId,@BankAccountNumber,@INN) SELECT SCOPE_IDENTITY();";
+
+            //string pattern = @"@(\w+)";
+            //var regex = new Regex(pattern);
+            //var matches = regex.Matches(query);
+
+            //foreach (Match match in matches)
+            //{
+            //    string word = match.Groups[1].Value;
+            //    Console.WriteLine(word);
+            //}
         }
     }
 }
