@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseCourseWork.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,29 @@ namespace DataBaseCourseWork.Workers
 {
     public partial class WorkersForm : Form
     {
+        private readonly DataViewerDevexpressController _controller;
         public WorkersForm()
         {
             InitializeComponent();
+
+            string tableName = "Workers";
+            string[] colNames =
+            {
+                "Id",
+                "ФИО",
+                "Возраст",
+                "Магазин",
+                "Отдел",
+                "Квалификация"
+            };
+            _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
+                Properties.Resources.queries, tableName, colNames);
+            this.Disposed += WorkersForm_Disposed;
+        }
+
+        private void WorkersForm_Disposed(object sender, EventArgs e)
+        {
+            _controller.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseCourseWork.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,26 @@ namespace DataBaseCourseWork.Orders
 {
     public partial class OrdersForm : Form
     {
+        private readonly DataViewerDevexpressController _controller;
         public OrdersForm()
         {
             InitializeComponent();
+
+            string tableName = "Orders";
+            string[] colNames =
+            {
+                "Id",
+                "Магазин",
+                "Дата"
+            };
+            _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
+                Properties.Resources.queries, tableName, colNames);
+            this.Disposed += OrdersForm_Disposed;
+        }
+
+        private void OrdersForm_Disposed(object sender, EventArgs e)
+        {
+            _controller.Dispose();
         }
     }
 }
