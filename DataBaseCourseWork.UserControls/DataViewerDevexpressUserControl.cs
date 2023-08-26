@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors.Repository;
+﻿using DevExpress.Utils.MVVM;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
@@ -12,17 +13,13 @@ namespace DataBaseCourseWork.UserControls
 {
     public partial class DataViewerDevexpressUserControl : UserControl
     {
-        private readonly List<RepositoryCmbboxContent> _repositoryCmbboxContent = new List<RepositoryCmbboxContent>();
-        private readonly RepositoryItemComboBox _repositoryItemComboBox = new RepositoryItemComboBox();
         public List<int> AddedRowsIndexes = new List<int>();
         public List<int> UpdatedRowsIndexes = new List<int>();
         private object[] _updatedRow;
 
-        #region Buttons
+        public bool IsNoData = false; 
 
-        /// <summary>
-        /// 
-        /// </summary>
+        #region Buttons
 
         public Button CreateButton
         {
@@ -38,6 +35,12 @@ namespace DataBaseCourseWork.UserControls
         {
             get => this.updateButton;
             set => this.updateButton = value;
+        }
+
+        public Button PrintButton
+        {
+            get => this.printButton;
+            set => this.printButton = value;
         }
         #endregion
 
@@ -55,8 +58,6 @@ namespace DataBaseCourseWork.UserControls
         public DataViewerDevexpressUserControl()
         {
             InitializeComponent();
-            _repositoryItemComboBox.AutoComplete = true;
-            _repositoryItemComboBox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
         }
 
         public void AddRepositoryCmbbox(IEnumerable<object[]> data, int colIndex)
@@ -73,34 +74,55 @@ namespace DataBaseCourseWork.UserControls
             {
                 str_data[i] = data.ElementAt(i)[1].ToString();
             }
-            _repositoryCmbboxContent.Add(new RepositoryCmbboxContent(str_data, colIndex));
+
+            var rCombobox = new RepositoryItemComboBox();
+            rCombobox.AutoComplete = true;
+            rCombobox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            rCombobox.Items.AddRange(str_data);
+            gridControl.RepositoryItems.Add(rCombobox);
+            gridView.Columns[colIndex].ColumnEdit = rCombobox;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        public void AddRepositoryDateEdit(int colIndex)
+        {
+            if (colIndex > gridView.Columns.Count - 1 || colIndex < 0)
+            {
+                throw new ArgumentException("col index out of range");
+            }
+            var repositoryItemDateEdit = new RepositoryItemDateEdit();
+            repositoryItemDateEdit.EditMask = "dd.MM.yyyy";
+            repositoryItemDateEdit.MaskSettings.UseMaskAsDisplayFormat = true;
+            gridControl.RepositoryItems.Add(repositoryItemDateEdit);
+            gridView.Columns[colIndex].ColumnEdit = repositoryItemDateEdit;
+        }
+
         private void gridView_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
         {
-            var table = (DataTable)gridControl.DataSource;
             int rowIndex = e.RowHandle;
-            int columnIndex = e.Column.AbsoluteIndex;
-            var content = _repositoryCmbboxContent.FirstOrDefault(r => r.ColIndex == columnIndex)?.Data;
-            if (content == null) return;
-            e.RepositoryItem = _repositoryItemComboBox;
-            if (rowIndex == -int.MaxValue) return;
-            _repositoryItemComboBox.Items.Clear();
-            _repositoryItemComboBox.Items.AddRange(content.ToArray());
-            if (AddedRowsIndexes.Contains(rowIndex))
+            int colIndex = e.Column.AbsoluteIndex;
+            var table = (DataTable)gridControl.DataSource;
+            var columnEdit = gridView.Columns[colIndex].ColumnEdit;
+
+            var _value = table.Rows[rowIndex][colIndex].ToString();
+
+            if (AddedRowsIndexes.Contains(rowIndex) || IsNoData)
             {
-                var value = table.Rows[rowIndex][columnIndex].ToString();
-                if (string.IsNullOrEmpty(value)) value = content.ElementAt(0);
-                gridView.SetRowCellValue(rowIndex, gridView.Columns[columnIndex], value);
+                var value = table.Rows[rowIndex][colIndex].ToString();
+                if (string.IsNullOrEmpty(value))
+                {
+                    if (columnEdit is RepositoryItemComboBox)
+                    {
+                        value = ((RepositoryItemComboBox)columnEdit).Items[0].ToString();
+                    }
+                    if (columnEdit is RepositoryItemDateEdit)
+                    {
+                        value = "01.01.1899";
+                    }
+                }
+                gridView.SetRowCellValue(rowIndex, gridView.Columns[colIndex], value);
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         private void gridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             int rowIndex = gridView.RowCount - 1;
@@ -109,8 +131,10 @@ namespace DataBaseCourseWork.UserControls
         }
 
         /// <summary>
-        /// 
+        /// Настройка цвета строк
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridView_RowStyle(object sender, RowStyleEventArgs e)
         {
             int row = e.RowHandle;
@@ -125,33 +149,40 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         private void gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var table = (DataTable)gridControl.DataSource;
             int rowIndex = e.RowHandle;
-            if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
-            for (int i = 0; i < table.Columns.Count; i++)
+            if (!IsNoData)
             {
-                if (_updatedRow[i].ToString() != table.Rows[rowIndex][i].ToString())
+                if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
+                for (int i = 0; i < table.Columns.Count; i++)
                 {
-                    UpdatedRowsIndexes.Add(rowIndex);
-                    break;
+                    if (_updatedRow[i].ToString() != table.Rows[rowIndex][i].ToString())
+                    {
+                        UpdatedRowsIndexes.Add(rowIndex);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if (!RowIsEmpty(rowIndex))
+                {
+                    AddedRowsIndexes.Add(rowIndex);
+                    IsNoData = false;
+                    gridView.OptionsView.NewItemRowPosition = NewItemRowPosition.Bottom;
                 }
             }
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
         private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var table = (DataTable)gridControl.DataSource;
             int colsCount = table.Columns.Count;
             int rowIndex = e.RowHandle;
-            if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex)) return;
+
+            if (rowIndex == -int.MaxValue || AddedRowsIndexes.Contains(rowIndex) || IsNoData) return;
             if (_updatedRow == null)
             {
                 _updatedRow = new object[colsCount];
@@ -162,9 +193,19 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        private bool RowIsEmpty(int rowIndex)
+        {
+            for (int i = 1; i < gridView.Columns.Count; i++)
+            {
+                string cellValue = gridView.GetRowCellValue(rowIndex, gridView.Columns[i]).ToString();
+                if (string.IsNullOrEmpty(cellValue))
+                {
+                    return true;
+                }
+            }
+            return false;  
+        }
+
         public void RefreshRows()
         {
             for (int i = 0; i < gridView.RowCount; i++)
@@ -173,9 +214,6 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void RemoveTmpRowsIndeces(IEnumerable<int> indeces, bool insert = true)
         {
             var collection = insert ? AddedRowsIndexes : UpdatedRowsIndexes;
@@ -185,9 +223,6 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         public void RemoveAddedRowsIndeces(IEnumerable<int> indeces)
         {
             foreach (var index in indeces)

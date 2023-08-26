@@ -37,6 +37,8 @@
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.printButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -45,9 +47,9 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.deleteButton.Location = new System.Drawing.Point(303, 371);
+            this.deleteButton.Location = new System.Drawing.Point(162, 371);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(144, 36);
+            this.deleteButton.Size = new System.Drawing.Size(80, 36);
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -55,9 +57,9 @@
             // updateButton
             // 
             this.updateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.updateButton.Location = new System.Drawing.Point(153, 371);
+            this.updateButton.Location = new System.Drawing.Point(80, 371);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(144, 36);
+            this.updateButton.Size = new System.Drawing.Size(76, 36);
             this.updateButton.TabIndex = 5;
             this.updateButton.Text = "Обновить";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -67,7 +69,7 @@
             this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.createButton.Location = new System.Drawing.Point(3, 371);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(144, 36);
+            this.createButton.Size = new System.Drawing.Size(71, 36);
             this.createButton.TabIndex = 6;
             this.createButton.Text = "Добавить";
             this.createButton.UseVisualStyleBackColor = true;
@@ -87,13 +89,19 @@
             // 
             // gridView
             // 
-            this.gridView.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.gridView.Appearance.FocusedCell.BackColor = System.Drawing.Color.LightGray;
+            this.gridView.Appearance.FocusedCell.BackColor2 = System.Drawing.Color.LightGray;
+            this.gridView.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView.Appearance.SelectedRow.BackColor = System.Drawing.Color.LightGray;
+            this.gridView.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.LightGray;
             this.gridView.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
             this.gridView.Appearance.SelectedRow.Options.UseBackColor = true;
             this.gridView.Appearance.SelectedRow.Options.UseForeColor = true;
+            this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click;
             this.gridView.OptionsCustomization.AllowSort = false;
             this.gridView.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridView.OptionsSelection.MultiSelect = true;
@@ -117,10 +125,31 @@
             this.pictureBox.TabStop = false;
             this.toolTip.SetToolTip(this.pictureBox, resources.GetString("pictureBox.ToolTip"));
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl1.Location = new System.Drawing.Point(541, 371);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(61, 13);
+            this.labelControl1.TabIndex = 9;
+            this.labelControl1.Text = "Подсказка :";
+            // 
+            // printButton
+            // 
+            this.printButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.printButton.Location = new System.Drawing.Point(248, 371);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(80, 36);
+            this.printButton.TabIndex = 10;
+            this.printButton.Text = "Печать";
+            this.printButton.UseVisualStyleBackColor = true;
+            // 
             // DataViewerDevexpressUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.printButton);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.createButton);
@@ -132,6 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,5 +174,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.ToolTip toolTip;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.Button printButton;
     }
 }

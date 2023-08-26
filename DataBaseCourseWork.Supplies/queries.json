@@ -6,5 +6,6 @@
   "insert": "INSERT INTO Supplies(ProviderId,SuppliesDate) VALUES (@ProviderId,@SuppliesDate) SELECT SCOPE_IDENTITY();",
   "delete": "DELETE FROM Supplies WHERE Id = ",
   "update": "UPDATE Supplies SET ProviderId=@ProviderId,SuppliesDate=@SuppliesDate WHERE Id = @Id;",
-  "find": "SELECT Name FROM @Table WHERE Id = @Id"
+  "find": "SELECT Name FROM @Table WHERE Id = @Id",
+  "datatypes": "SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "
 }

@@ -59,5 +59,15 @@ namespace DataBaseCourseWork.Assortments.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] queries {
+            get {
+                object obj = ResourceManager.GetObject("queries", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

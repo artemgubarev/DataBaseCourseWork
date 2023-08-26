@@ -21,16 +21,17 @@ namespace DataBaseCourseWork.Assortments
             string tableName = "Assortments";
             string[] colNames =
             {
-                "Id",
-                "Наименование",
-                "Обозначение"
+                "Магазин",
+                "Товар",
+                "Цена",
+                "Количество"
             };
-            //_controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-            //    Properties.Resources.queries, tableName, colNames);
-            //this.Disposed += AssortmentsForm_Disposed;
+            _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
+                Properties.Resources.queries, tableName, colNames, firstColumnIsVisible: true);
+            this.Disposed += ProductsForm_Disposed;
         }
 
-        private void AssortmentsForm_Disposed(object sender, EventArgs e)
+        private void ProductsForm_Disposed(object sender, EventArgs e)
         {
             _controller.Dispose();
         }

@@ -44,6 +44,7 @@
             this.ClientSize = new System.Drawing.Size(643, 418);
             this.Controls.Add(this.dataViewerDevexpressUserControl);
             this.Name = "BanksForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Банки";
             this.ResumeLayout(false);
 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DataBaseCourseWork.UserControls
 {
-    public partial class AddNewRowUserControl : UserControl
+    public partial class DocumentUserControl : UserControl
     {
-        public AddNewRowUserControl()
+        public DocumentUserControl()
         {
             InitializeComponent();
         }

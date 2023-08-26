@@ -46,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(633, 420);
             this.Controls.Add(this.dataViewerDevexpressUserControl);
             this.Name = "AssortmentsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Товары в магазинах";
             this.ResumeLayout(false);
 

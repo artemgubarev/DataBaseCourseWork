@@ -64,12 +64,6 @@
     <Compile Include="AboutProgramUserControl.Designer.cs">
       <DependentUpon>AboutProgramUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewRowUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AddNewRowUserControl.Designer.cs">
-      <DependentUpon>AddNewRowUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminPanelUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +88,12 @@
     <Compile Include="DataViewerDevexpressUserControl.Designer.cs">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DocumentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentUserControl.Designer.cs">
+      <DependentUpon>DocumentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,15 +106,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RepositoryCmbboxContent.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutProgramUserControl.resx">
       <DependentUpon>AboutProgramUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddNewRowUserControl.resx">
-      <DependentUpon>AddNewRowUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationUserControl.resx">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
@@ -125,6 +121,9 @@
     <EmbeddedResource Include="DataViewerDevexpressUserControl.resx">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DocumentUserControl.resx">
+      <DependentUpon>DocumentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainUserControl.resx">
       <DependentUpon>MainUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,7 +133,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Hint.png" />
   </ItemGroup>
