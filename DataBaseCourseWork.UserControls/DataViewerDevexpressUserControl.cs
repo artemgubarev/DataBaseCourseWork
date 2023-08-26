@@ -18,6 +18,47 @@ namespace DataBaseCourseWork.UserControls
         public List<int> UpdatedRowsIndexes = new List<int>();
         private object[] _updatedRow;
 
+        #region Buttons
+
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public Button CreateButton
+        {
+            get => this.createButton;
+            set => this.createButton = value;
+        }
+        public Button DeleteButton
+        {
+            get => this.deleteButton;
+            set => this.deleteButton = value;
+        }
+        public Button UpdateButton
+        {
+            get => this.updateButton;
+            set => this.updateButton = value;
+        }
+        #endregion
+
+        public GridControl GridControl
+        {
+            get => this.gridControl;
+            set => this.gridControl = value;
+        }
+
+        public GridView GridView
+        {
+            get => this.gridView;
+            set => this.gridView = value;
+        }
+        public DataViewerDevexpressUserControl()
+        {
+            InitializeComponent();
+            _repositoryItemComboBox.AutoComplete = true;
+            _repositoryItemComboBox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+        }
+
         public void AddRepositoryCmbbox(IEnumerable<object[]> data, int colIndex)
         {
             if (colIndex >= gridView.Columns.Count || colIndex < 0)
@@ -35,48 +76,15 @@ namespace DataBaseCourseWork.UserControls
             _repositoryCmbboxContent.Add(new RepositoryCmbboxContent(str_data, colIndex));
         }
 
-        public DataViewerDevexpressUserControl()
-        {
-            InitializeComponent();
-            _repositoryItemComboBox.AutoComplete = true;
-            _repositoryItemComboBox.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-        }
-
-        public Button CreateButton
-        {
-            get => this.createButton;
-            set => this.createButton = value;
-        }
-        public Button DeleteButton
-        {
-            get => this.deleteButton;
-            set => this.deleteButton = value;
-        }
-        public Button UpdateButton
-        {
-            get => this.updateButton;
-            set => this.updateButton = value;
-        }
-
-        public GridControl GridControl
-        {
-            get => this.gridControl;
-            set => this.gridControl = value;
-        }
-
-        public GridView GridView
-        {
-            get => this.gridView;
-            set => this.gridView = value;
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void gridView_CustomRowCellEdit(object sender, CustomRowCellEditEventArgs e)
         {
             var table = (DataTable)gridControl.DataSource;
             int rowIndex = e.RowHandle;
             int columnIndex = e.Column.AbsoluteIndex;
-            var content = 
-                _repositoryCmbboxContent.FirstOrDefault(r => r.ColIndex == columnIndex)?.Data;
+            var content = _repositoryCmbboxContent.FirstOrDefault(r => r.ColIndex == columnIndex)?.Data;
             if (content == null) return;
             e.RepositoryItem = _repositoryItemComboBox;
             if (rowIndex == -int.MaxValue) return;
@@ -90,6 +98,9 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void gridView_InitNewRow(object sender, InitNewRowEventArgs e)
         {
             int rowIndex = gridView.RowCount - 1;
@@ -97,6 +108,9 @@ namespace DataBaseCourseWork.UserControls
             gridView.RefreshRow(rowIndex);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void gridView_RowStyle(object sender, RowStyleEventArgs e)
         {
             int row = e.RowHandle;
@@ -111,6 +125,9 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void gridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var table = (DataTable)gridControl.DataSource;
@@ -126,6 +143,9 @@ namespace DataBaseCourseWork.UserControls
             }
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
         private void gridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var table = (DataTable)gridControl.DataSource;
@@ -142,6 +162,9 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void RefreshRows()
         {
             for (int i = 0; i < gridView.RowCount; i++)
@@ -150,6 +173,9 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void RemoveTmpRowsIndeces(IEnumerable<int> indeces, bool insert = true)
         {
             var collection = insert ? AddedRowsIndexes : UpdatedRowsIndexes;
@@ -159,18 +185,15 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void RemoveAddedRowsIndeces(IEnumerable<int> indeces)
         {
             foreach (var index in indeces)
             {
                 AddedRowsIndexes.Remove(index);
             }
-        }
-
-        private void gridView_ShownEditor(object sender, EventArgs e)
-        {
-            //if (e. == UndesiredRow)
-            //    gridView.ActiveEditor.Properties.ReadOnly = true;
         }
     }
 }

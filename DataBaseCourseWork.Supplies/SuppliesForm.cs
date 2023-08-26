@@ -22,8 +22,8 @@ namespace DataBaseCourseWork.Supplies
             string[] colNames =
             {
                 "Id",
-                "Наименование",
-                "Обозначение"
+                "Поставщик",
+                "Дата поставки"
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
                 Properties.Resources.queries, tableName, colNames);

@@ -64,6 +64,12 @@
     <Compile Include="AboutProgramUserControl.Designer.cs">
       <DependentUpon>AboutProgramUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewRowUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddNewRowUserControl.Designer.cs">
+      <DependentUpon>AddNewRowUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanelUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutProgramUserControl.resx">
       <DependentUpon>AboutProgramUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddNewRowUserControl.resx">
+      <DependentUpon>AddNewRowUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationUserControl.resx">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>

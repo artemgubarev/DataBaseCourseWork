@@ -13,8 +13,7 @@ namespace DataBaseCourseWork.Common
 {
     public class DataViewerDevexpressController : IDisposable
     {
-        private readonly Dictionary<int, IEnumerable<object[]>> _foreignKeys =
-            new Dictionary<int, IEnumerable<object[]>>();
+        private readonly Dictionary<int, IEnumerable<object[]>> _foreignKeys = new Dictionary<int, IEnumerable<object[]>>();
         private readonly DataViewerDevexpressUserControl _userControl;
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
         private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
@@ -45,6 +44,12 @@ namespace DataBaseCourseWork.Common
             }
 
             ReadData(tableName, colNames);
+
+            var dataTable = (DataTable)_userControl.GridControl.DataSource;
+            if (dataTable.Rows.Count == 0)
+            {
+                dataTable.Rows.Add(dataTable.NewRow());
+            }
 
             this._userControl.CreateButton.Click += CreateButton_Click;
             this._userControl.DeleteButton.Click += DeleteButton_Click;
@@ -92,7 +97,13 @@ namespace DataBaseCourseWork.Common
                 dataTable.Columns.Add(new DataColumn(columnsNames[i]));
             }
             var dataBaseData = _dataBase.ExecuteReader(query: _queries["readAll"], _connection);
-            if (!dataBaseData.Any()) return;
+            if (!dataBaseData.Any())
+            {
+                _userControl.GridControl.DataSource = dataTable;
+                _userControl.GridView.OptionsView.NewItemRowPosition
+                    = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+                return;
+            }
             foreach (var data in dataBaseData)
             {
                 dataTable.Rows.Add(data);
