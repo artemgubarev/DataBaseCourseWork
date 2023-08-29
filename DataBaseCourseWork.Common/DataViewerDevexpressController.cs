@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -25,7 +25,7 @@ namespace DataBaseCourseWork.Common
         private readonly bool _firstColumnIsVisible;
 
         public DataViewerDevexpressController(DataViewerDevexpressUserControl userControl, 
-            byte[] sqlQueryFile, string tableName, string[] colNames, bool firstColumnIsVisible = false)
+            byte[] sqlQueryFile, string tableName, DataColumn[] columns, bool firstColumnIsVisible = false)
         {
             _userControl = userControl;
             _tableName = tableName;
@@ -47,16 +47,10 @@ namespace DataBaseCourseWork.Common
             }
             else
             {
-                throw new ArgumentException("Файл с запросами не содержит connectionString");
+                throw new ArgumentException("Файл с запросами не содержит connectionString (строка подключения)");
             }
 
-            ReadData(tableName, colNames);
-
-            var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
-            if (dataTable.Rows.Count == 0)
-            {
-                dataTable.Rows.Add(dataTable.NewRow());
-            }
+            ReadData(tableName, columns);
 
             this._userControl.CreateButton.Click += CreateButton_Click;
             this._userControl.DeleteButton.Click += DeleteButton_Click;
@@ -81,7 +75,8 @@ namespace DataBaseCourseWork.Common
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            InsertOrUpdateData(insert: true);
+            InsertData();
+            //InsertOrUpdateData(insert: true);
         }
 
         public void DeleteData()
@@ -102,31 +97,27 @@ namespace DataBaseCourseWork.Common
             }
         }
 
-        public void ReadData(string table, string[] columnsNames)
+        public void ReadData(string table, DataColumn[] columns)
         {
             var dataTable = new System.Data.DataTable();
+            var dataTableInsertingData = new System.Data.DataTable();
             //инициализация столбцов в таблице
-            for (int i = 0; i < columnsNames.Length; i++)
+            for (int i = 0; i < columns.Length; i++)
             {
-                dataTable.Columns.Add(new DataColumn(columnsNames[i]));
+                dataTable.Columns.Add(columns[i]);
+                var iColumn = new DataColumn(columns[i].ColumnName, columns[i].DataType);
+                dataTableInsertingData.Columns.Add(iColumn);
             }
+            
             // получить данные из базы данных
             var dataBaseData = _dataBase.ExecuteReader(query: _queries["readAll"], _connection);
-            // данных нет ?
-            if (!dataBaseData.Any())
+            // заполняем строки
+            foreach (var data in dataBaseData)
             {
-                _userControl.IsNoData = true;
-                _userControl.GridView.OptionsView.NewItemRowPosition 
-                    = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+                dataTable.Rows.Add(data);
             }
-            else
-            {
-                // инициализировать строки таблицы
-                foreach (var data in dataBaseData)
-                {
-                    dataTable.Rows.Add(data);
-                }
-            }
+            _userControl.GridControlInserting.DataSource = dataTableInsertingData;
+            this._userControl.GridViewInsertignData.AddNewRow();
             _userControl.GridControl.DataSource = dataTable;
 
             // внешние ключи
@@ -156,6 +147,7 @@ namespace DataBaseCourseWork.Common
             if (!_firstColumnIsVisible)
             {
                 _userControl.GridView.Columns[0].Visible = false;
+                _userControl.GridViewInsertignData.Columns[0].Visible = false;
             }
 
             // поиск столбцов имеющих тип date, для отображения календарика в ячейке таблицы
@@ -174,9 +166,39 @@ namespace DataBaseCourseWork.Common
             }
         }
 
+        public void InsertData()
+        {
+            var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
+            var dataTableIns = (System.Data.DataTable)_userControl.GridControlInserting.DataSource;
+            int colsCount = dataTable.Columns.Count;
+
+            for (int i = 0; i < dataTableIns.Rows.Count; i++)
+            {
+                var data = new object[colsCount];
+                var row = dataTableIns.Rows[i];
+                for (int j = 0; j < colsCount; j++)
+                {
+                    data[i] = row[i];
+                }
+                _foreignKeys.ForEach(fkey =>
+                {
+                    int colIndex = fkey.Key;
+                    var value = fkey.Value.FirstOrDefault(f =>
+                        f[1].ToString() == data[colIndex - 1].ToString());
+                    data[colIndex - 1] = value[0];
+                });
+                var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
+                var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
+                dataTable.Rows.Add(data);
+                dataTable.Rows[dataTable.Rows.Count - 1][0] = id;
+            }
+
+            dataTableIns.Clear();
+        }
+
         public void InsertOrUpdateData(bool insert = true)
         {
-            var indexes = insert ? _userControl.AddedRowsIndexes : _userControl.UpdatedRowsIndexes;
+            var indexes = _userControl.UpdatedRowsIndexes;
             var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
             int colsCount = dataTable.Columns.Count;
             var tmpIndexes = new List<int>();

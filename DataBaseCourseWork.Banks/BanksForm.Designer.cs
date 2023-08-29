@@ -36,12 +36,12 @@
             this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
             this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
-            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(643, 418);
+            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(735, 558);
             this.dataViewerDevexpressUserControl.TabIndex = 0;
             // 
             // BanksForm
             // 
-            this.ClientSize = new System.Drawing.Size(643, 418);
+            this.ClientSize = new System.Drawing.Size(735, 558);
             this.Controls.Add(this.dataViewerDevexpressUserControl);
             this.Name = "BanksForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

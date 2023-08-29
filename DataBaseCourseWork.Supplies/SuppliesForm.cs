@@ -1,4 +1,5 @@
 ﻿using DataBaseCourseWork.Common;
+using DevExpress.XtraEditors.Design;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,14 +20,14 @@ namespace DataBaseCourseWork.Supplies
             InitializeComponent();
 
             string tableName = "Supplies";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id",
-                "Поставщик",
-                "Дата поставки"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Поставщик", typeof(string)),
+                new DataColumn("Дата поставки", typeof(DateTime)),
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += SuppliesForm_Disposed;
         }
 

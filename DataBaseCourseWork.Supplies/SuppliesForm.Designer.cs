@@ -36,14 +36,14 @@
             this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
             this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
-            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(637, 423);
+            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(792, 543);
             this.dataViewerDevexpressUserControl.TabIndex = 0;
             // 
             // SuppliesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 423);
+            this.ClientSize = new System.Drawing.Size(792, 543);
             this.Controls.Add(this.dataViewerDevexpressUserControl);
             this.Name = "SuppliesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

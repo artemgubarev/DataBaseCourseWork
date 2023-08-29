@@ -1,5 +1,6 @@
 ﻿using DataBaseCourseWork.Common;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Banks
@@ -12,13 +13,13 @@ namespace DataBaseCourseWork.Banks
             InitializeComponent();
 
             string tableName = "Banks";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id",
-                "Наименование"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Наименование", typeof(string))
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl, Properties.Resources.queries,
-                tableName, colNames);
+                tableName, columns);
             this.Disposed += BanksForm_Disposed;
         }
         
