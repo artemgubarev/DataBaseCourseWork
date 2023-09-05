@@ -19,13 +19,15 @@ namespace DataBaseCourseWork.Qualifications
             InitializeComponent();
 
             string tableName = "Qualifications";
-            string[] colNames =
+
+            DataColumn[] columns =
             {
-                "Id",
-                "Наименование"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Наименование", typeof(string)),
             };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += QualificationsForm_Disposed;
         }
 

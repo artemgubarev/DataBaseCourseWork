@@ -185,6 +185,7 @@
             this.gridViewInsertingData.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.gridViewInsertingData.OptionsView.ShowGroupPanel = false;
             this.gridViewInsertingData.OptionsView.ShowIndicator = false;
+            this.gridViewInsertingData.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridViewInsertingData_RowStyle);
             this.gridViewInsertingData.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridViewInsertingData_InitNewRow);
             this.gridViewInsertingData.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewInsertingData_CellValueChanged);
             // 

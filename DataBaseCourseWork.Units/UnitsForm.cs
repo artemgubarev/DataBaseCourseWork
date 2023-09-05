@@ -19,14 +19,14 @@ namespace DataBaseCourseWork.Units
             InitializeComponent();
 
             string tableName = "Units";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id",
-                "Наименование",
-                "Обозначение"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Наименование", typeof(string)),
+                new DataColumn("Обозначение", typeof(string)),
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += UnitsForm_Disposed;
         }
 

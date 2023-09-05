@@ -19,16 +19,18 @@ namespace DataBaseCourseWork.Sales
             InitializeComponent();
 
             string tableName = "Sales";
-            string[] colNames =
-            {
-                "Продавец",
-                "Дата",
-                "Товар",
-                "Доход",
-                "Количество"
+
+            DataColumn[] columns =
+           {
+                new DataColumn("Продавец", typeof(string)),
+                new DataColumn("Дата", typeof(DateTime)),
+                new DataColumn("Товар", typeof(string)),
+                new DataColumn("Доход", typeof(int)),
+                new DataColumn("Количество", typeof(int)),
             };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += SalesForm_Disposed;
         }
 

@@ -19,15 +19,16 @@ namespace DataBaseCourseWork.ProductsInSupplies
             InitializeComponent();
 
             string tableName = "ProductsInSupplies";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id Поставки",
-                "Товар",
-                "Цена",
-                "Количество"
+                new DataColumn("Id Поставки", typeof(int)),
+                new DataColumn("Товар", typeof(string)),
+                new DataColumn("Цена", typeof(int)),
+                new DataColumn("Количество", typeof(int)),
             };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += ProductsInSuppliesForm_Disposed;
         }
 

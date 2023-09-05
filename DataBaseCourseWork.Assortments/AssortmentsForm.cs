@@ -19,15 +19,15 @@ namespace DataBaseCourseWork.Assortments
             InitializeComponent();
 
             string tableName = "Assortments";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Магазин",
-                "Товар",
-                "Цена",
-                "Количество"
+                new DataColumn("Магазин", typeof(string)),
+                new DataColumn("Товар", typeof(string)),
+                new DataColumn("Цена", typeof(int)),
+                new DataColumn("Количество", typeof(int)),
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames, firstColumnIsVisible: true);
+                Properties.Resources.queries, tableName, columns, firstColumnIsVisible: true);
             this.Disposed += ProductsForm_Disposed;
         }
 

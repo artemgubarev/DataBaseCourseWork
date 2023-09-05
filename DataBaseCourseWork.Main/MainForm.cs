@@ -1,4 +1,5 @@
-﻿using DataBaseCourseWork.Common;
+﻿using DataBaseCourseWork.Banks;
+using DataBaseCourseWork.Common;
 using DataBaseCourseWork.Main.Properties;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
-using DataBaseCourseWork.Providers;
-using DataBaseCourseWork.Banks;
 
 namespace DataBaseCourseWork.Main
 {
@@ -20,6 +19,7 @@ namespace DataBaseCourseWork.Main
         private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
         private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
+        private int _userId;
         public MainForm()
         {
             InitializeComponent();
@@ -49,10 +49,47 @@ namespace DataBaseCourseWork.Main
                 throw new ArgumentException("Файл с запросами не содержит connectionString");
             }
 
-            this.Width = Screen.PrimaryScreen.Bounds.Width * 4/5;
-            this.Height = Screen.PrimaryScreen.Bounds.Height * 3/5;
-            LoadMenuStrip();
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 4 / 5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 3 / 5;
             this.Disposed += MainForm_Disposed;
+        }
+
+        private void SetUserAccess()
+        {
+            string query = _queries["access"] + "'" + _userId.ToString() + "';";
+            var access = _dataBase.ExecuteReader(query, _connection).ToArray();
+            bool admin = Convert.ToBoolean(access[0][2].ToString());
+            var adminPanelItem = FindItemByText(this.mainUserControl.MenuStrip.Items, "Панель администратора");
+            adminPanelItem.Visible = admin;
+            foreach (var item in access)
+            {
+                bool read = Convert.ToBoolean(access[0][3].ToString());
+                if (!read)
+                {
+                    var toolStripItem = FindItemByText(this.mainUserControl.MenuStrip.Items, access[0][1].ToString());
+                    toolStripItem.Enabled = false;
+                }
+            }
+        }
+
+        private ToolStripItem FindItemByText(ToolStripItemCollection items, string text)
+        {
+            foreach (ToolStripItem item in items)
+            {
+                if (item.Text == text)
+                {
+                    return item;
+                }
+                if (item is ToolStripMenuItem subMenu)
+                {
+                    var foundItem = FindItemByText(subMenu.DropDownItems, text);
+                    if (foundItem != null)
+                    {
+                        return foundItem;
+                    }
+                }
+            }
+            return null;
         }
 
         private void MainForm_Disposed(object sender, EventArgs e)
@@ -60,9 +97,13 @@ namespace DataBaseCourseWork.Main
             _connection.Dispose();
         }
 
-        public MainForm(Form form) : this()
+        public MainForm(Form form, int userId) : this()
         {
             prevForm = form;
+            _userId = userId;
+            LoadMenuStrip();
+            SetUserAccess();
+            _connection.Close();
         }
 
         /// <summary>
@@ -114,7 +155,6 @@ namespace DataBaseCourseWork.Main
             this.mainUserControl.MenuStrip.Items[0]?.Select();
             this.mainUserControl.MenuStrip.TabStop = true;
             this.mainUserControl.MenuStrip.Focus();
-            _connection.Close();
         }
 
         /// <summary>
@@ -149,7 +189,7 @@ namespace DataBaseCourseWork.Main
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

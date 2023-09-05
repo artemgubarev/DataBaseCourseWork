@@ -112,6 +112,9 @@
     <EmbeddedResource Include="AboutProgramUserControl.resx">
       <DependentUpon>AboutProgramUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminPanelUserControl.resx">
+      <DependentUpon>AdminPanelUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AuthorizationUserControl.resx">
       <DependentUpon>AuthorizationUserControl.cs</DependentUpon>
     </EmbeddedResource>

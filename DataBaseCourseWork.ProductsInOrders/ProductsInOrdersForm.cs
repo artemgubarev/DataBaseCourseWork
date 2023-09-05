@@ -19,15 +19,17 @@ namespace DataBaseCourseWork.ProductsInOrders
             InitializeComponent();
 
             string tableName = "ProductsInOrders";
-            string[] colNames =
+
+            DataColumn[] columns =
             {
-                "Id заявки",
-                "Товар",
-                "Цена",
-                "Количество"
+                new DataColumn("Id заявки", typeof(int)),
+                new DataColumn("Товар", typeof(string)),
+                new DataColumn("Цена", typeof(int)),
+                new DataColumn("Количество", typeof(int)),
             };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += ProductsInOrdersForm_Disposed;
         }
 

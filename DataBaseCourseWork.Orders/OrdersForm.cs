@@ -25,8 +25,16 @@ namespace DataBaseCourseWork.Orders
                 "Магазин",
                 "Дата"
             };
+
+            DataColumn[] columns =
+           {
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Магазин", typeof(string)),
+                new DataColumn("Дата", typeof(DateTime)),
+            };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += OrdersForm_Disposed;
         }
 

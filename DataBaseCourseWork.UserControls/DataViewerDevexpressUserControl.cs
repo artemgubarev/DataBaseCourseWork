@@ -14,6 +14,7 @@ namespace DataBaseCourseWork.UserControls
     {
         public List<int> UpdatedRowsIndexes = new List<int>();
         private object[] _updatedRow;
+        public List<int> InsertedNoValidRows = new List<int>();
 
         #region Buttons
 
@@ -129,7 +130,7 @@ namespace DataBaseCourseWork.UserControls
         }
 
         /// <summary>
-        /// Настройка цвета строк
+        /// Подсветить обновляемые строки
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -138,7 +139,21 @@ namespace DataBaseCourseWork.UserControls
             int row = e.RowHandle;
             if (UpdatedRowsIndexes.Contains(row))
             {
-                e.Appearance.BackColor = Color.IndianRed;
+                e.Appearance.BackColor = Color.LightGreen;
+            }
+        }
+
+        /// <summary>
+        /// Подсветить невалидные строки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridViewInsertingData_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            int row = e.RowHandle;
+            if (InsertedNoValidRows.Contains(row))
+            {
+                e.Appearance.BackColor = Color.Salmon;
             }
         }
 
@@ -185,19 +200,6 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        private bool RowIsEmpty(int rowIndex)
-        {
-            for (int i = 1; i < gridView.Columns.Count; i++)
-            {
-                string cellValue = gridView.GetRowCellValue(rowIndex, gridView.Columns[i]).ToString();
-                if (string.IsNullOrEmpty(cellValue))
-                {
-                    return true;
-                }
-            }
-            return false;  
-        }
-
         public void RefreshRows()
         {
             for (int i = 0; i < gridView.RowCount; i++)
@@ -215,17 +217,19 @@ namespace DataBaseCourseWork.UserControls
             }
         }
 
-        private void gridViewInsertingData_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            var dataTable = (DataTable)gridControlInsertingData.DataSource;
-            var col = e.Column;
-            int row = dataTable.Rows.Count;
-            var value = gridViewInsertingData.GetRowCellValue(row, col);
-            dataTable.Rows[row][col.AbsoluteIndex] = value;
-        }
-
         private void gridViewInsertingData_InitNewRow(object sender, InitNewRowEventArgs e)
         {
+        }
+
+        private void gridViewInsertingData_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            int rowIndex = e.RowHandle;
+            if (InsertedNoValidRows.Contains(rowIndex))
+            {
+                InsertedNoValidRows.Remove(rowIndex);
+                gridView.RefreshRow(rowIndex);
+            }
+            gridControlInsertingData.RefreshDataSource();
         }
     }
 }

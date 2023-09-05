@@ -19,17 +19,17 @@ namespace DataBaseCourseWork.Workers
             InitializeComponent();
 
             string tableName = "Workers";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id",
-                "ФИО",
-                "Возраст",
-                "Магазин",
-                "Отдел",
-                "Квалификация"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("ФИО", typeof(string)),
+                new DataColumn("Возраст", typeof(int)),
+                new DataColumn("Магазин", typeof(string)),
+                new DataColumn("Отдел", typeof(string)),
+                new DataColumn("Квалификация", typeof(string)),
             };
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, colNames);
+                Properties.Resources.queries, tableName, columns);
             this.Disposed += WorkersForm_Disposed;
         }
 

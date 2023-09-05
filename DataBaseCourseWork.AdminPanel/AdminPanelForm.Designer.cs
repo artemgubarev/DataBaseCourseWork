@@ -28,20 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.adminPanelUserControl1 = new DataBaseCourseWork.UserControls.AdminPanelUserControl();
             this.SuspendLayout();
+            // 
+            // adminPanelUserControl1
+            // 
+            this.adminPanelUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminPanelUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.adminPanelUserControl1.Name = "adminPanelUserControl1";
+            this.adminPanelUserControl1.Size = new System.Drawing.Size(499, 450);
+            this.adminPanelUserControl1.TabIndex = 0;
             // 
             // AdminPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(499, 450);
+            this.Controls.Add(this.adminPanelUserControl1);
             this.Name = "AdminPanelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminPanelForm";
+            this.Text = "Панель администратора";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private UserControls.AdminPanelUserControl adminPanelUserControl1;
     }
 }

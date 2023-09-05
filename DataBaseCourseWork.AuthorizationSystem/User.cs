@@ -7,11 +7,24 @@ namespace DataBaseCourseWork.AuthorizationSystem
     {
 		public User(string name)
 		{
-			//Name = name;
+			Name = name;
 		}
 
-		private string _password;
+		private string _name;
 
+		public string Name
+		{
+            get { return _name; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Name can not be is null or empty.");
+                _name = value;
+            }
+        }
+
+
+		private string _password;
 		/// <summary>
 		/// Храниться не пароль а его хэш код
 		/// </summary>

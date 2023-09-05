@@ -1,5 +1,6 @@
 ﻿using DataBaseCourseWork.UserControls;
 using DevExpress.Utils.Extensions;
+using DevExpress.XtraGrid.Views.Grid;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -119,7 +120,6 @@ namespace DataBaseCourseWork.Common
             _userControl.GridControlInserting.DataSource = dataTableInsertingData;
             this._userControl.GridViewInsertignData.AddNewRow();
             _userControl.GridControl.DataSource = dataTable;
-
             // внешние ключи
             if (_queries.TryGetValue("fkeys", out var query))
             {
@@ -142,14 +142,12 @@ namespace DataBaseCourseWork.Common
                     }
                 }
             }
-
             // скрыть первый столбец
             if (!_firstColumnIsVisible)
             {
                 _userControl.GridView.Columns[0].Visible = false;
                 _userControl.GridViewInsertignData.Columns[0].Visible = false;
             }
-
             // поиск столбцов имеющих тип date, для отображения календарика в ячейке таблицы
             if (_queries.TryGetValue("datatypes", out string dataTypesQuery))
             {
@@ -171,14 +169,23 @@ namespace DataBaseCourseWork.Common
             var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
             var dataTableIns = (System.Data.DataTable)_userControl.GridControlInserting.DataSource;
             int colsCount = dataTable.Columns.Count;
+            _userControl.InsertedNoValidRows.Clear();       
 
             for (int i = 0; i < dataTableIns.Rows.Count; i++)
             {
+                int isEmpty = DataTableRowEmpty(dataTableIns, i);
+                if (DataTableRowEmpty(dataTableIns, i) != 1)
+                {
+                    continue;
+                }
+
                 var data = new object[colsCount];
+                var displayedData = new object[colsCount];
                 var row = dataTableIns.Rows[i];
                 for (int j = 0; j < colsCount; j++)
                 {
-                    data[i] = row[i];
+                    data[j] = row[j];
+                    displayedData[j] = row[j];
                 }
                 _foreignKeys.ForEach(fkey =>
                 {
@@ -189,11 +196,29 @@ namespace DataBaseCourseWork.Common
                 });
                 var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
                 var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
-                dataTable.Rows.Add(data);
+                dataTable.Rows.Add(displayedData);
                 dataTable.Rows[dataTable.Rows.Count - 1][0] = id;
+                dataTableIns.Rows.RemoveAt(i);
             }
-
-            dataTableIns.Clear();
+            // подсветить невалидные
+            int rowsCount = dataTableIns.Rows.Count;
+            var temp = new List<int>();
+            for (int i = 0; i < rowsCount; i++)
+            {
+                if (DataTableRowEmpty(dataTableIns, i) == -1)
+                {
+                    temp.Add(i);
+                }
+                else
+                {
+                    _userControl.InsertedNoValidRows.Add(i);
+                    _userControl.GridViewInsertignData.RefreshRow(i);
+                }
+            }
+            foreach (var index in temp)
+            {
+                dataTable.Rows.RemoveAt(index);
+            }
         }
 
         public void InsertOrUpdateData(bool insert = true)
@@ -354,7 +379,6 @@ namespace DataBaseCourseWork.Common
                     });
                 }
             }
-
             return parameters;
         }
 
@@ -366,6 +390,29 @@ namespace DataBaseCourseWork.Common
             this._userControl.CreateButton.Click -= CreateButton_Click;
             this._userControl.DeleteButton.Click -= DeleteButton_Click;
             this._userControl.UpdateButton.Click -= UpdateButton_Click;
+        }
+
+        /// <summary>
+        /// -1
+        /// </summary>
+        /// <param name="dataTable"></param>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        private int DataTableRowEmpty(System.Data.DataTable dataTable, int rowIndex)
+        {
+            int emptyCells = 0;
+            int count = dataTable.Columns.Count;
+            int colIndex = _firstColumnIsVisible ? 0 : 1;
+            for (int j = colIndex; j < dataTable.Columns.Count; j++)
+            {
+                if (string.IsNullOrEmpty(dataTable.Rows[rowIndex][j].ToString()))
+                {
+                    emptyCells++;
+                }
+            }
+            if (emptyCells == 0) return 1;
+            else if (emptyCells == count - colIndex) return -1;
+            else return 0;
         }
     }
 }

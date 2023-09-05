@@ -1,0 +1,6 @@
+{
+  "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
+  "isExist": "SELECT * FROM Users WHERE Name = ",
+  "insert": "INSERT INTO Users(Name, PasswordHash) VALUES (@Name, @PasswordHash) SELECT SCOPE_IDENTITY();",
+  "find": "SELECT Id,PasswordHash FROM Users WHERE Name = "
+}

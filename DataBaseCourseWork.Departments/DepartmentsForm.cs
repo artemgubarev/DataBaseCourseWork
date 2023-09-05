@@ -19,13 +19,14 @@ namespace DataBaseCourseWork.Departments
             InitializeComponent();
 
             string tableName = "Departments";
-            string[] colNames =
+            DataColumn[] columns =
             {
-                "Id",
-                "Наименование"
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Наименование", typeof(string))
             };
+
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl, 
-                Properties.Resources.queries,tableName, colNames);
+                Properties.Resources.queries,tableName, columns);
             this.Disposed += DepartmentsForm_Disposed;
         }
 
