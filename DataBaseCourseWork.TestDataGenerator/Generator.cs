@@ -19,46 +19,45 @@ namespace DataBaseCourseWork.TestDataGenerator
 
         public Generator()
         {
-            string connectionString = "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;" +
-                                      "User Id=db_a9c366_coursework_admin;Password=flyg919st;";
+            string connectionString = "Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e913_coursework;User Id=db_a9e913_coursework_admin;Password=flyg919st";
             _connection = new SqlConnection(connectionString);
             _connection.Open();
         }
 
         public void Run()
         {
-            //SendData(tableName: "Departments", new TestDataColumn[]
-            //{
-            //    new TestDataColumn("Name") { TextFile = Resources.Departments },
-            //});
+           // SendData(tableName: "Departments", new TestDataColumn[]
+           // {
+           //     new TestDataColumn("Name") { TextFile = Resources.Departments },
+           // });
 
-            //SendData(tableName: "Banks", new TestDataColumn[]
-            //{
-            //    new TestDataColumn("Name") { TextFile = Resources.Banks },
-            //});
+           // SendData(tableName: "Banks", new TestDataColumn[]
+           // {
+           //     new TestDataColumn("Name") { TextFile = Resources.Banks },
+           // });
 
-            //SendData(tableName: "Qualifications", new TestDataColumn[]
-            //{
-            //     new TestDataColumn("Name") { TextFile = Resources.Qualifications },
-            //});
+           // SendData(tableName: "Qualifications", new TestDataColumn[]
+           // {
+           //      new TestDataColumn("Name") { TextFile = Resources.Qualifications },
+           // });
 
-            //SendData(tableName: "Units", new TestDataColumn[]
-            //{
-            //     new TestDataColumn("Name") { TextFile = Resources.Units },
-            //     new TestDataColumn("Designation") { TextFile = Resources.Designations },
-            //});
+           // SendData(tableName: "Units", new TestDataColumn[]
+           // {
+           //      new TestDataColumn("Name") { TextFile = Resources.Units },
+           //      new TestDataColumn("Designation") { TextFile = Resources.Designations },
+           // });
 
-            //SendData(tableName: "Products", new TestDataColumn[]
-            //{
-            //     new TestDataColumn("Name") { TextFile = Resources.Products },
-            //     new TestDataColumn("UnitId") { ForeignKeyTableName = "Units" },
-            //});
+           // SendData(tableName: "Products", new TestDataColumn[]
+           // {
+           //      new TestDataColumn("Name") { TextFile = Resources.Products },
+           //      new TestDataColumn("UnitId") { ForeignKeyTableName = "Units" },
+           // });
 
-            //SendData(tableName: "Shops", new TestDataColumn[]
-            //{
-            //     new TestDataColumn("Name") { TextFile = Resources.Shops },
-            //     new TestDataColumn("Address") { TextFile = Resources.ShopsAddresses },
-            //});
+           // SendData(tableName: "Shops", new TestDataColumn[]
+           // {
+           //      new TestDataColumn("Name") { TextFile = Resources.Shops },
+           //      new TestDataColumn("Address") { TextFile = Resources.ShopsAddresses },
+           // });
 
            // SendData(tableName: "Providers", new TestDataColumn[]
            //{

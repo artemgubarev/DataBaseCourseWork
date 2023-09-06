@@ -66,7 +66,6 @@ namespace DataBaseCourseWork.UserControls
             set => this.gridViewInsertingData = value;
         }
         #endregion
-
         public DataViewerDevexpressUserControl()
         {
             InitializeComponent();

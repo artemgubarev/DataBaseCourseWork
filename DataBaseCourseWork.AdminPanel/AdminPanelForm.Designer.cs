@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.adminPanelUserControl1 = new DataBaseCourseWork.UserControls.AdminPanelUserControl();
+            this.adminPanelUserControl = new DataBaseCourseWork.UserControls.AdminPanelUserControl();
             this.SuspendLayout();
             // 
-            // adminPanelUserControl1
+            // adminPanelUserControl
             // 
-            this.adminPanelUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.adminPanelUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.adminPanelUserControl1.Name = "adminPanelUserControl1";
-            this.adminPanelUserControl1.Size = new System.Drawing.Size(499, 450);
-            this.adminPanelUserControl1.TabIndex = 0;
+            this.adminPanelUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.adminPanelUserControl.Location = new System.Drawing.Point(0, 0);
+            this.adminPanelUserControl.Name = "adminPanelUserControl";
+            this.adminPanelUserControl.Size = new System.Drawing.Size(499, 450);
+            this.adminPanelUserControl.TabIndex = 0;
             // 
             // AdminPanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 450);
-            this.Controls.Add(this.adminPanelUserControl1);
+            this.Controls.Add(this.adminPanelUserControl);
             this.Name = "AdminPanelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Панель администратора";
@@ -54,6 +54,6 @@
 
         #endregion
 
-        private UserControls.AdminPanelUserControl adminPanelUserControl1;
+        private UserControls.AdminPanelUserControl adminPanelUserControl;
     }
 }

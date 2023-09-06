@@ -12,7 +12,8 @@ namespace DataBaseCourseWork.ConsoleAppTest
         {
             using (var generator = new Generator())
             {
-                generator.Run();
+                //generator.Run();
+                generator.LoadMenuItems();
             }
 
             //string query =

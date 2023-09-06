@@ -1,4 +1,7 @@
 {
-  "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
-  "allusers": "SELECT * FROM Users;"
+  "connStr": "Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e913_coursework;User Id=db_a9e913_coursework_admin;Password=flyg919st",
+  "allusers": "SELECT * FROM Users;",
+  "userid": "SELECT Id FROM Users WHERE Name = ",
+  "accessrights": "SELECT UserAccess.UserId,Menu.Name,UserAccess.R, UserAccess.W, UserAccess.E, UserAccess.D FROM UserAccess JOIN Menu ON UserAccess.MenuItemId = Menu.Id WHERE UserId = ",
+  "update": "UPDATE UserAccess SET R=@R,W=@W,E=@E,D=@D WHERE UserId=@UserId AND MenuItemId=@MenuItemId;"
 }

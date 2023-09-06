@@ -1,5 +1,5 @@
 {
-  "connStr": "Data Source=SQL8005.site4now.net;Initial Catalog=db_a9c366_coursework;User Id=db_a9c366_coursework_admin;Password=flyg919st;",
+  "connStr": "Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e913_coursework;User Id=db_a9e913_coursework_admin;Password=flyg919st",
   "readAll": "SELECT * FROM Menu",
   "access": "SELECT UserAccess.UserId,Menu.Name,UserAccess.isAdmin,UserAccess.R, UserAccess.W, UserAccess.E, UserAccess.D FROM UserAccess JOIN Menu ON UserAccess.MenuItemId = Menu.Id WHERE UserId = "
 }
