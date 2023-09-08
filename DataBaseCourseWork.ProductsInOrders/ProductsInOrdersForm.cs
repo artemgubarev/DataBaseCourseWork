@@ -25,7 +25,6 @@ namespace DataBaseCourseWork.ProductsInOrders
                 new DataColumn("Id", typeof(int)),
                 new DataColumn("Название заявки", typeof(string)),
                 new DataColumn("Товар", typeof(string)),
-                new DataColumn("Цена", typeof(int)),
                 new DataColumn("Количество", typeof(int)),
             };
 

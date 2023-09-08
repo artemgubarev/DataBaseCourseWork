@@ -8,21 +8,19 @@
 8,6,Товары в заявках,ProductsInOrders,ProductsInOrdersForm,1
 9,6,Товары в поставках,ProductsInSupplies,ProductsInSuppliesForm,2
 10,6,Товары на складе,ProductsInStock,ProductsInStockForm,3
-11,6,Товары в магазинах,Assortments,AssortmentsForm,4
-12,0,Заявки,Orders,OrdersForm,2
-13,0,Поставки,Supplies,SuppliesForm,3 
-14,0,Магазины,Shops,ShopsForm,4
-15,0,Поставщики,Providers,ProvidersForm,5
-16,0,Продавцы,Workers,WorkersForm,6
-17,0,Продажи,Sales,SalesForm,7
-18,0,Документы,NULL,NULL,8
-19,18,Выручка от продаж,NULL,NULL,0
-20,18,Ассортименты магазинов,NULL,NULL,1
-21,18,Товары на центральном складе,NULL,NULL,2
-22,0,Справка,NULL,NULL,9
-23,22,Содержание,NULL,NULL,0
-24,22,О программе,AboutProgram,AboutProgramForm,1
-25,0,Разное,NULL,NULL,10
-26,25,Настройка,NULL,NULL,0
-27,25,Сменить пароль,ChangePass,ChangePassForm,1
-28,0,Панель администратора,AdminPanel,AdminPanelForm,11
+11,0,Заявки,Orders,OrdersForm,2
+12,0,Поставки,Supplies,SuppliesForm,3 
+13,0,Магазины,Shops,ShopsForm,4
+14,0,Поставщики,Providers,ProvidersForm,5
+15,0,Продавцы,Workers,WorkersForm,6
+16,0,Продажи,Sales,SalesForm,7
+17,0,Документы,NULL,NULL,8
+18,17,Выручка от продаж,Revenue,RevenueForm,0
+19,17,Ассортименты магазинов,ShopsAssortments,ShopsAssortmentsForm,1
+20,0,Справка,NULL,NULL,9
+21,20,Содержание,NULL,NULL,0
+22,20,О программе,AboutProgram,AboutProgramForm,1
+23,0,Разное,NULL,NULL,10
+24,23,Настройка,NULL,NULL,0
+25,23,Сменить пароль,ChangePass,ChangePassForm,1
+26,0,Панель администратора,AdminPanel,AdminPanelForm,11

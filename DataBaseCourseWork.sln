@@ -47,11 +47,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Workers"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ChangePass", "DataBaseCourseWork.ChangePass\DataBaseCourseWork.ChangePass.csproj", "{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Assortments", "DataBaseCourseWork.Assortments\DataBaseCourseWork.Assortments.csproj", "{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AboutProgram", "DataBaseCourseWork.AboutProgram\DataBaseCourseWork.AboutProgram.csproj", "{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AdminPanel", "DataBaseCourseWork.AdminPanel\DataBaseCourseWork.AdminPanel.csproj", "{4F51DE55-95C6-4DCC-A741-F59A06FAF406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ShopsAssortments", "DataBaseCourseWork.ShopsAssortments\DataBaseCourseWork.ShopsAssortments.csproj", "{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ProductsInCentralStock", "DataBaseCourseWork.ProductsInCentralStock\DataBaseCourseWork.ProductsInCentralStock.csproj", "{57A6B8BC-1E66-4A12-96EE-5DA0567C105A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Revenue", "DataBaseCourseWork.Revenue\DataBaseCourseWork.Revenue.csproj", "{A6AA2FA9-AE56-460E-9657-022099CDE9DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,10 +151,6 @@ Global
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7F8F63C-2850-406E-B2B1-EBFBE64571E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -159,6 +159,18 @@ Global
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A6B8BC-1E66-4A12-96EE-5DA0567C105A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A6B8BC-1E66-4A12-96EE-5DA0567C105A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A6B8BC-1E66-4A12-96EE-5DA0567C105A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A6B8BC-1E66-4A12-96EE-5DA0567C105A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6AA2FA9-AE56-460E-9657-022099CDE9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6AA2FA9-AE56-460E-9657-022099CDE9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6AA2FA9-AE56-460E-9657-022099CDE9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6AA2FA9-AE56-460E-9657-022099CDE9DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

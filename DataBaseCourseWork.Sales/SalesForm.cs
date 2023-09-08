@@ -26,7 +26,7 @@ namespace DataBaseCourseWork.Sales
                 new DataColumn("Продавец", typeof(string)),
                 new DataColumn("Дата", typeof(DateTime)),
                 new DataColumn("Товар", typeof(string)),
-                new DataColumn("Доход", typeof(int)),
+                new DataColumn("Цена реализации", typeof(int)),
                 new DataColumn("Количество", typeof(int)),
             };
 

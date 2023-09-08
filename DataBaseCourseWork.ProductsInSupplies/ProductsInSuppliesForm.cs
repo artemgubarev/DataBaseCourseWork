@@ -24,7 +24,6 @@ namespace DataBaseCourseWork.ProductsInSupplies
                 new DataColumn("Id", typeof(int)),
                 new DataColumn("Название поставки", typeof(string)),
                 new DataColumn("Товар", typeof(string)),
-                new DataColumn("Цена", typeof(int)),
                 new DataColumn("Количество", typeof(int)),
             };
 

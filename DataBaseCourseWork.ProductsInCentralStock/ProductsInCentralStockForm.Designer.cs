@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.Assortments
+﻿namespace DataBaseCourseWork.ProductsInCentralStock
 {
-    partial class AssortmentsForm
+    partial class ProductsInCentralStockForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataViewerDevexpressUserControl = new DataBaseCourseWork.UserControls.DataViewerDevexpressUserControl();
+            this.documentUserControl = new DataBaseCourseWork.UserControls.DocumentUserControl();
             this.SuspendLayout();
             // 
-            // dataViewerDevexpressUserControl
+            // documentUserControl
             // 
-            this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
-            this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
-            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(633, 420);
-            this.dataViewerDevexpressUserControl.TabIndex = 0;
+            this.documentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentUserControl.Location = new System.Drawing.Point(0, 0);
+            this.documentUserControl.Name = "documentUserControl";
+            this.documentUserControl.Size = new System.Drawing.Size(595, 450);
+            this.documentUserControl.TabIndex = 0;
             // 
-            // AssortmentsForm
+            // ProductsInCentralStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 420);
-            this.Controls.Add(this.dataViewerDevexpressUserControl);
-            this.Name = "AssortmentsForm";
+            this.ClientSize = new System.Drawing.Size(595, 450);
+            this.Controls.Add(this.documentUserControl);
+            this.Name = "ProductsInCentralStockForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Товары в магазинах";
+            this.Text = "Товары на центральном складе";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.DataViewerDevexpressUserControl dataViewerDevexpressUserControl;
+        private UserControls.DocumentUserControl documentUserControl;
     }
 }

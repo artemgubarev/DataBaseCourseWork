@@ -117,31 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAARxJREFUOE+t0r9LgkEcx3H/OpeGFgeXlhaXhpYWl5YGl5YGl4YeQkIDjRApQqKI
-        ingQEUQexIgMC6TFx8fHfslHnwe/3Jfj6e4B7w0HN724+94lsMiyLCMrKBFs3j9H6A9HeP5w4QxctN9c
-        NF/HsF/GeOh5uO16qDseLjoTVNsTVFo+Sk0fhYaPI3uKw6cp8o9fIRqCJrCDewaqMLn/sP07BsbFqCgs
-        d8NAHcavScnY3jUDo2ZGyTOjZGy3/i3AuA/Ak7HsFQNNYDuXDDSBbdd+BKj7Z5QK26oyUPdpKRWWOf8V
-        oAqLes0obPOMgTqMUmEbZQbqTkapsPTpnwBXuSZhqSIDTWDrJzMBmsDWCgw0gSWPl2Aw7GBjYgHAHORn
-        KgWKL3HVAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="pictureBox.ToolTip" xml:space="preserve">
-    <value>Внизу таблица для внесения новых записей в базу данных, 
-при нажатии на кнопку 'Добавить' все строки перенесутся из  нижней таблицы в основную.
-Останутся только строки которые были заполнены неправильно, и будут выделены красным цветом.
-
-После внесения изменений в одну из строк основной таблицы, строка будет выделена зеленым цветом, 
-это значит что она была выделена как обновляемая строка. 
-Для того чтобы внесенные изменения в строках сохранились в базе данных, необходимо нажать на кнопку 'Обновить'.
-
-После нажатия на кнопку 'Удалить' из таблицы удалятся строки которые были выделены серым цветом.
-</value>
-  </data>
 </root>

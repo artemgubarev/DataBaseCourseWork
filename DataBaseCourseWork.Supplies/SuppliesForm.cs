@@ -1,13 +1,6 @@
 ﻿using DataBaseCourseWork.Common;
-using DevExpress.XtraEditors.Design;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Supplies
@@ -24,6 +17,7 @@ namespace DataBaseCourseWork.Supplies
             {
                 new DataColumn("Id", typeof(int)),
                 new DataColumn("Название", typeof(string)),
+                new DataColumn("Магазин", typeof(string)),
                 new DataColumn("Поставщик", typeof(string)),
                 new DataColumn("Дата поставки", typeof(DateTime)),
             };

@@ -18,6 +18,7 @@ namespace DataBaseCourseWork.Orders
                 new DataColumn("Id", typeof(int)),
                 new DataColumn("Название", typeof(string)),
                 new DataColumn("Магазин", typeof(string)),
+                new DataColumn("Поставщик", typeof(string)),
                 new DataColumn("Дата", typeof(DateTime)),
             };
 
