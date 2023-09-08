@@ -22,7 +22,8 @@ namespace DataBaseCourseWork.ProductsInOrders
 
             DataColumn[] columns =
             {
-                new DataColumn("Id заявки", typeof(int)),
+                new DataColumn("Id", typeof(int)),
+                new DataColumn("Название заявки", typeof(string)),
                 new DataColumn("Товар", typeof(string)),
                 new DataColumn("Цена", typeof(int)),
                 new DataColumn("Количество", typeof(int)),
@@ -31,6 +32,8 @@ namespace DataBaseCourseWork.ProductsInOrders
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
                 Properties.Resources.queries, tableName, columns);
             this.Disposed += ProductsInOrdersForm_Disposed;
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 3 / 5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 5 / 6;
         }
 
         private void ProductsInOrdersForm_Disposed(object sender, EventArgs e)

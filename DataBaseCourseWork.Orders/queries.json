@@ -2,8 +2,8 @@
   "connStr": "Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e913_coursework;User Id=db_a9e913_coursework_admin;Password=flyg919st",
   "fkeys": "SELECT fkc.parent_column_id AS ColumnNumber, OBJECT_NAME(fkc.referenced_object_id) AS TableName FROM sys.foreign_key_columns AS fkc WHERE OBJECT_NAME(fkc.parent_object_id) = ",
   "getnamesfromtable": "SELECT * FROM ",
-  "readAll": "SELECT * FROM Supplies;",
-  "insert": "INSERT INTO Supplies(ProviderId,SuppliesDate) VALUES (@ProviderId,@SuppliesDate) SELECT SCOPE_IDENTITY();",
-  "delete": "DELETE FROM Supplies WHERE Id = ",
-  "update": "UPDATE Supplies SET ProviderId=@ProviderId,SuppliesDate=@SuppliesDate WHERE Id = @Id;"
+  "readAll": "SELECT * FROM Orders;",
+  "insert": "INSERT INTO Orders(Name,ShopId,OrderDate) VALUES (@Name,@ShopId,@OrderDate) SELECT SCOPE_IDENTITY();",
+  "delete": "DELETE FROM Orders WHERE Id = ",
+  "update": "UPDATE Orders SET Name=@Name,ShopId=@ShopId,OrderDate=@OrderDate WHERE Id = @Id;"
 }

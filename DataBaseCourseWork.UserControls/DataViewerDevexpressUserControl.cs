@@ -204,10 +204,11 @@ namespace DataBaseCourseWork.UserControls
             for (int i = 0; i < gridView.RowCount; i++)
             {
                 gridView.RefreshRow(i);
+                gridViewInsertingData.RefreshRow(i);
             }
         }
 
-        public void RemoveTmpRowsIndeces(IEnumerable<int> indeces, bool insert = true)
+        public void RemoveTmpRowsIndeces(IEnumerable<int> indeces)
         {
             var collection = UpdatedRowsIndexes;
             foreach (var index in indeces)

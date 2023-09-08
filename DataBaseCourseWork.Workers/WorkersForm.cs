@@ -31,6 +31,8 @@ namespace DataBaseCourseWork.Workers
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
                 Properties.Resources.queries, tableName, columns);
             this.Disposed += WorkersForm_Disposed;
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 3 / 5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 5 / 6;
         }
 
         private void WorkersForm_Disposed(object sender, EventArgs e)

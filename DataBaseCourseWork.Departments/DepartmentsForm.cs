@@ -28,6 +28,8 @@ namespace DataBaseCourseWork.Departments
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl, 
                 Properties.Resources.queries,tableName, columns);
             this.Disposed += DepartmentsForm_Disposed;
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 3 / 5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 5 / 6;
         }
 
         private void DepartmentsForm_Disposed(object sender, EventArgs e)

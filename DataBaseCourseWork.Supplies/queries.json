@@ -3,9 +3,9 @@
   "fkeys": "SELECT fkc.parent_column_id AS ColumnNumber, OBJECT_NAME(fkc.referenced_object_id) AS TableName FROM sys.foreign_key_columns AS fkc WHERE OBJECT_NAME(fkc.parent_object_id) = ",
   "getnamesfromtable": "SELECT * FROM ",
   "readAll": "SELECT * FROM Supplies",
-  "insert": "INSERT INTO Supplies(ProviderId,SuppliesDate) VALUES (@ProviderId,@SuppliesDate) SELECT SCOPE_IDENTITY();",
+  "insert": "INSERT INTO Supplies(Name,ProviderId,SuppliesDate) VALUES (@Name,@ProviderId,@SuppliesDate) SELECT SCOPE_IDENTITY();",
   "delete": "DELETE FROM Supplies WHERE Id = ",
-  "update": "UPDATE Supplies SET ProviderId=@ProviderId,SuppliesDate=@SuppliesDate WHERE Id = @Id;",
+  "update": "UPDATE Supplies SET Name=@Name,ProviderId=@ProviderId,SuppliesDate=@SuppliesDate WHERE Id = @Id;",
   "find": "SELECT Name FROM @Table WHERE Id = @Id",
   "datatypes": "SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "
 }

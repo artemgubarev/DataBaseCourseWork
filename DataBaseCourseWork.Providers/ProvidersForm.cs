@@ -27,6 +27,8 @@ namespace DataBaseCourseWork.Providers
             _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl, Properties.Resources.queries,
                 _tableName, columns);
             this.Disposed += ProvidersForm_Disposed;
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 3 / 5;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 5 / 6;
         }
         private void ProvidersForm_Disposed(object sender, System.EventArgs e)
         {

@@ -1,13 +1,11 @@
 ﻿using DataBaseCourseWork.UserControls;
 using DevExpress.Utils.Extensions;
-using DevExpress.XtraGrid.Views.Grid;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -66,7 +64,7 @@ namespace DataBaseCourseWork.Common
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            InsertOrUpdateData(insert: false);
+            UpdateData();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -77,7 +75,6 @@ namespace DataBaseCourseWork.Common
         private void CreateButton_Click(object sender, EventArgs e)
         {
             InsertData();
-            //InsertOrUpdateData(insert: true);
         }
 
         public void DeleteData()
@@ -169,59 +166,83 @@ namespace DataBaseCourseWork.Common
             var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
             var dataTableIns = (System.Data.DataTable)_userControl.GridControlInserting.DataSource;
             int colsCount = dataTable.Columns.Count;
-            _userControl.InsertedNoValidRows.Clear();       
-
-            for (int i = 0; i < dataTableIns.Rows.Count; i++)
+            _userControl.InsertedNoValidRows.Clear();
+            var errorMessages = new List<string>();
+            int i;
+            for (i = 0; i < dataTableIns.Rows.Count; i++)
             {
-                int isEmpty = DataTableRowEmpty(dataTableIns, i);
                 if (DataTableRowEmpty(dataTableIns, i) != 1)
                 {
                     continue;
                 }
-
-                var data = new object[colsCount];
-                var displayedData = new object[colsCount];
-                var row = dataTableIns.Rows[i];
-                for (int j = 0; j < colsCount; j++)
+                try
                 {
-                    data[j] = row[j];
-                    displayedData[j] = row[j];
+                    int index = _firstColumnIsVisible ? 0 : 1;
+                    var data = new object[colsCount - index];
+                    var displayedData = new object[colsCount];
+                    var row = dataTableIns.Rows[i];
+                    for (int j = index; j < colsCount; j++)
+                    {
+                        data[j - index] = row[j];
+                    }
+                    for (int j = 0; j < colsCount; j++)
+                    {
+                        displayedData[j] = row[j];
+                    }
+                    _foreignKeys.ForEach(fkey =>
+                    {
+                        int colIndex = fkey.Key;
+                        var value = fkey.Value.FirstOrDefault(f =>
+                            f[1].ToString() == data[colIndex - 1 - index].ToString());
+                        data[colIndex - 1 - index] = value[0];
+                    });
+                    var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
+                    var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
+                    dataTable.Rows.Add(displayedData);
+                    dataTable.Rows[dataTable.Rows.Count - 1][0] = id;
                 }
-                _foreignKeys.ForEach(fkey =>
+                catch (System.Data.SqlClient.SqlException exception)
                 {
-                    int colIndex = fkey.Key;
-                    var value = fkey.Value.FirstOrDefault(f =>
-                        f[1].ToString() == data[colIndex - 1].ToString());
-                    data[colIndex - 1] = value[0];
-                });
-                var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
-                var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
-                dataTable.Rows.Add(displayedData);
-                dataTable.Rows[dataTable.Rows.Count - 1][0] = id;
-                dataTableIns.Rows.RemoveAt(i);
+                    int ex_number = exception.Number;
+                    string message = string.Empty;
+                    switch (ex_number)
+                    {
+                        case 2628:
+                            message = "Превышено ограничение на длину строки"; break;
+                        case 547: message = "Превышено ограничение на тип данных одного из значений"; break;
+                        case 515: message = "Невозможно добавить строки в таблицу имеющие пустые значения."; break;
+                        case 245: message = "Неверный тип данных одного из значений."; break;
+                        case 2627: message = "Значение уже имеется в таблице."; break;
+                    }
+                    errorMessages.Add(message + " Номер строки: " + i.ToString());
+                }
             }
+            errorMessages.ForEach(message => MessageBox.Show(message));
             // подсветить невалидные
             int rowsCount = dataTableIns.Rows.Count;
             var temp = new List<int>();
-            for (int i = 0; i < rowsCount; i++)
+            for (i = 0; i < rowsCount; i++)
             {
-                if (DataTableRowEmpty(dataTableIns, i) == -1)
+                int isEmpty = DataTableRowEmpty(dataTableIns, i); 
+                if (isEmpty != 0)
                 {
                     temp.Add(i);
                 }
                 else
                 {
                     _userControl.InsertedNoValidRows.Add(i);
-                    _userControl.GridViewInsertignData.RefreshRow(i);
                 }
             }
-            foreach (var index in temp)
+            while(temp.Count != 0)
             {
-                dataTable.Rows.RemoveAt(index);
+                int index = temp.Last();
+                dataTableIns.Rows.RemoveAt(index);
+                temp.Remove(temp.Last());
             }
+            _userControl.RefreshRows();
         }
 
-        public void InsertOrUpdateData(bool insert = true)
+        public void UpdateData()
         {
             var indexes = _userControl.UpdatedRowsIndexes;
             var dataTable = (System.Data.DataTable)_userControl.GridControl.DataSource;
@@ -246,17 +267,8 @@ namespace DataBaseCourseWork.Common
                             f[1].ToString() == data[colIndex - 1].ToString());
                         data[colIndex - 1] = value[0];
                     });
-                    if (insert)
-                    {
-                        var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
-                        var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
-                        dataTable.Rows[index][0] = id;
-                    }
-                    else
-                    {
-                        var parameters = SqlParametersInit(_queries["update"], data, withId: true);
-                        _dataBase.ExecuteNonQuery(_queries["update"], _connection, parameters);
-                    }
+                    var parameters = SqlParametersInit(_queries["update"], data, withId: true);
+                    _dataBase.ExecuteNonQuery(_queries["update"], _connection, parameters);
                     tmpIndexes.Add(index);
                 }
                 catch (System.Data.SqlClient.SqlException exception)
@@ -275,7 +287,7 @@ namespace DataBaseCourseWork.Common
                 }
             }
             errorMessages.ForEach(message => MessageBox.Show(message));
-            _userControl.RemoveTmpRowsIndeces(tmpIndexes, insert);
+            _userControl.RemoveTmpRowsIndeces(tmpIndexes);
             _userControl.RefreshRows();
         }
 
@@ -371,7 +383,7 @@ namespace DataBaseCourseWork.Common
                 for (int i = 0; i < matches.Count; i++)
                 {
                     string name = matches[i].Groups[1].Value;
-                    object value = data[i+1];
+                    object value = data[i];
                     parameters.Add(new SqlParameter()
                     {
                         ParameterName = name,
@@ -380,16 +392,6 @@ namespace DataBaseCourseWork.Common
                 }
             }
             return parameters;
-        }
-
-        public void Dispose()
-        {
-            _connection.Close();
-            _connection.Dispose();
-
-            this._userControl.CreateButton.Click -= CreateButton_Click;
-            this._userControl.DeleteButton.Click -= DeleteButton_Click;
-            this._userControl.UpdateButton.Click -= UpdateButton_Click;
         }
 
         /// <summary>
@@ -413,6 +415,16 @@ namespace DataBaseCourseWork.Common
             if (emptyCells == 0) return 1;
             else if (emptyCells == count - colIndex) return -1;
             else return 0;
+        }
+
+        public void Dispose()
+        {
+            _connection.Close();
+            _connection.Dispose();
+
+            this._userControl.CreateButton.Click -= CreateButton_Click;
+            this._userControl.DeleteButton.Click -= DeleteButton_Click;
+            this._userControl.UpdateButton.Click -= UpdateButton_Click;
         }
     }
 }
