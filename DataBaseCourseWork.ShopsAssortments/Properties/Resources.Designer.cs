@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataBaseCourseWork.AuthorizationSystem.Properties {
+namespace DataBaseCourseWork.ShopsAssortments.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DataBaseCourseWork.AuthorizationSystem.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DataBaseCourseWork.AuthorizationSystem.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DataBaseCourseWork.ShopsAssortments.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,33 @@ namespace DataBaseCourseWork.AuthorizationSystem.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized string similar to WITH OrdersWithQuantity AS (
+        ///    SELECT
+        ///        O.Id AS OrderId,
+        ///        O.ShopId,
+        ///        O.ProviderId,
+        ///        PO.ProductId,
+        ///        PO.Quantity AS RequestedQuantity
+        ///    FROM
+        ///        Orders O
+        ///    INNER JOIN
+        ///        ProductsInOrders PO ON O.Id = PO.OrderId
+        ///),
+        ///SuppliesWithQuantity AS (
+        ///    SELECT
+        ///        S.Id AS SupplyId,
+        ///        S.ShopId,
+        ///        S.ProviderId,
+        ///        PS.ProductId,
+        ///        PS.Quantity AS DeliveredQuantity
+        ///    FROM
+        ///        Supplies S
+        ///    INNER JOIN
+        ///        ProductsInSu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static System.Drawing.Icon icon {
+        internal static string query {
             get {
-                object obj = ResourceManager.GetObject("icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] queries {
-            get {
-                object obj = ResourceManager.GetObject("queries", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("query", resourceCulture);
             }
         }
     }

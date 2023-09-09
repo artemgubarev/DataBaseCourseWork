@@ -48,6 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RevenueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,18 +61,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RevenueForm.resx">
       <DependentUpon>RevenueForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
+      <Project>{9F0B31D4-3ADF-472F-89EA-AA932EF8FF23}</Project>
+      <Name>DataBaseCourseWork.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseCourseWork.UserControls\DataBaseCourseWork.UserControls.csproj">
       <Project>{E425B6D4-E495-450F-9B99-6F4CEB1EE22E}</Project>
       <Name>DataBaseCourseWork.UserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="queries.json" />
+    <Content Include="query.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

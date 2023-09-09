@@ -1,6 +1,5 @@
 ﻿using DataBaseCourseWork.AdminPanel.Properties;
 using DataBaseCourseWork.Common;
-using DevExpress.Xpo.DB.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +31,7 @@ namespace DataBaseCourseWork.AdminPanel
                     _queries.Add(prop.Name, prop.Value.ToString());
                 }
             }
+
             if (_queries.TryGetValue("connStr", out var query))
             {
                 _connection = new SqlConnection(query);

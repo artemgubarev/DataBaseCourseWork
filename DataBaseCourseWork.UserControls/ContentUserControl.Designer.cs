@@ -1,6 +1,6 @@
 ﻿namespace DataBaseCourseWork.UserControls
 {
-    partial class AboutProgramUserControl
+    partial class ContentUserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.treeList = new DevExpress.XtraTreeList.TreeList();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList)).BeginInit();
             this.SuspendLayout();
             // 
-            // richTextBox
+            // treeList
             // 
-            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox.Font = new System.Drawing.Font("Century Schoolbook", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(582, 386);
-            this.richTextBox.TabIndex = 0;
-            this.richTextBox.Text = "";
+            this.treeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeList.Location = new System.Drawing.Point(0, 0);
+            this.treeList.Name = "treeList";
+            this.treeList.OptionsBehavior.ReadOnly = true;
+            this.treeList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.None;
+            this.treeList.Size = new System.Drawing.Size(351, 271);
+            this.treeList.TabIndex = 0;
             // 
-            // AboutProgramUserControl
+            // ContentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.richTextBox);
-            this.Name = "AboutProgramUserControl";
-            this.Size = new System.Drawing.Size(582, 386);
+            this.Controls.Add(this.treeList);
+            this.Name = "ContentUserControl";
+            this.Size = new System.Drawing.Size(351, 271);
+            ((System.ComponentModel.ISupportInitialize)(this.treeList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox;
+        private DevExpress.XtraTreeList.TreeList treeList;
     }
 }

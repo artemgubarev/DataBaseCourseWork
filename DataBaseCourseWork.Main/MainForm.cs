@@ -1,4 +1,5 @@
 ﻿using DataBaseCourseWork.Banks;
+using DataBaseCourseWork.ChangePass;
 using DataBaseCourseWork.Common;
 using DataBaseCourseWork.Main.Properties;
 using System;
@@ -165,9 +166,9 @@ namespace DataBaseCourseWork.Main
         private void MenuItem_Click(object sender, EventArgs e)
         {
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
-            if (menuItem.Dllname == "Banks")
+            if (menuItem.Dllname == "ChangePass")
             {
-                var form = new BanksForm();
+                var form = new ChangePassForm(_userId);
                 form.ShowDialog();
             }
             else

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,18 @@ namespace DataBaseCourseWork.UserControls
         public DocumentUserControl()
         {
             InitializeComponent();
+        }
+
+        public GridControl GridControl 
+        { 
+            get => this.gridControl;
+            set => this.gridControl = value;
+        }
+
+        public SimpleButton PrintButton 
+        { 
+            get => this.printButton;
+            set => this.printButton = value; 
         }
     }
 }

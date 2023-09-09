@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -95,7 +93,7 @@ namespace DataBaseCourseWork.AuthorizationSystem
                 }
                 else // добавить нового пользователя
                 {
-                    string hashedPassword = CalculateMD5Hash(password);
+                    string hashedPassword = MD5HashCalculator.CalculateMD5Hash(password);
                     var parameters = SqlParametersInit(_queries["insert"], new object[] { name, hashedPassword});
                     int id = Convert.ToInt32(_dataBase.ExecuteScalar(_queries["insert"], _connection, parameters).ToString());
                     ShowMainForm(id);
@@ -153,7 +151,7 @@ namespace DataBaseCourseWork.AuthorizationSystem
                 var userData = GetUserIdPassword(name);
                 int userId = userData.Item1;
                 string hashedPasswordFromDataBase = userData.Item2;
-                string hashedPassword = CalculateMD5Hash(password);
+                string hashedPassword = MD5HashCalculator.CalculateMD5Hash(password);
 
                 if (!string.Equals(hashedPasswordFromDataBase, hashedPassword))
                 {
@@ -176,26 +174,7 @@ namespace DataBaseCourseWork.AuthorizationSystem
             this.Close();
         }
 
-        /// <summary>
-        /// Вычислить хэш код для строки MD5
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private string CalculateMD5Hash(string input)
-        {
-            using (MD5 md5 = MD5.Create())
-            {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("x2"));
-                }
-                return sb.ToString();
-            }
-        }
+        
         private bool IsExistUser(string userName)
         {
             var rows = _dataBase.ExecuteReader(query: _queries["isExist"] + "'" +  userName + "'", _connection);

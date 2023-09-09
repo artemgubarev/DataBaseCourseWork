@@ -40,6 +40,7 @@
     <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -82,6 +83,12 @@
     <Compile Include="ChangePassUserControl.Designer.cs">
       <DependentUpon>ChangePassUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ContentUserControl.Designer.cs">
+      <DependentUpon>ContentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataViewerDevexpressUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +128,9 @@
     <EmbeddedResource Include="ChangePassUserControl.resx">
       <DependentUpon>ChangePassUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ContentUserControl.resx">
+      <DependentUpon>ContentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataViewerDevexpressUserControl.resx">
       <DependentUpon>DataViewerDevexpressUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +150,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\AboutProgram.txt" />
     <Content Include="Resources\Hint.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

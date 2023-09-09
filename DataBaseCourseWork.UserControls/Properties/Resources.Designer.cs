@@ -59,5 +59,18 @@ namespace DataBaseCourseWork.UserControls.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Курсовая работа по дисциплине &quot;Базы данных&quot; 5-ый семестр 2022-2023 учебный год.
+        ///Разработка фрагмента информационной системы торговой сети магазинов.
+        ///Все права защмщены.
+        ///Все события и персонажи вымешлены.
+        ///Все трюки выполнены профессионалами, не пытайтесь повторить дома..
+        /// </summary>
+        internal static string AboutProgram {
+            get {
+                return ResourceManager.GetString("AboutProgram", resourceCulture);
+            }
+        }
     }
 }

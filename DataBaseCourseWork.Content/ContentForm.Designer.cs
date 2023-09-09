@@ -1,6 +1,6 @@
-﻿namespace DataBaseCourseWork.ProductsInCentralStock
+﻿namespace DataBaseCourseWork.Content
 {
-    partial class ProductsInCentralStockForm
+    partial class ContentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.documentUserControl = new DataBaseCourseWork.UserControls.DocumentUserControl();
+            this.contentUserControl = new DataBaseCourseWork.UserControls.ContentUserControl();
             this.SuspendLayout();
             // 
-            // documentUserControl
+            // contentUserControl
             // 
-            this.documentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentUserControl.Location = new System.Drawing.Point(0, 0);
-            this.documentUserControl.Name = "documentUserControl";
-            this.documentUserControl.Size = new System.Drawing.Size(595, 450);
-            this.documentUserControl.TabIndex = 0;
+            this.contentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentUserControl.Location = new System.Drawing.Point(0, 0);
+            this.contentUserControl.Name = "contentUserControl";
+            this.contentUserControl.Size = new System.Drawing.Size(551, 389);
+            this.contentUserControl.TabIndex = 0;
             // 
-            // ProductsInCentralStockForm
+            // ContentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 450);
-            this.Controls.Add(this.documentUserControl);
-            this.Name = "ProductsInCentralStockForm";
+            this.ClientSize = new System.Drawing.Size(551, 389);
+            this.Controls.Add(this.contentUserControl);
+            this.Name = "ContentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Товары на центральном складе";
+            this.Text = "Содержание";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.DocumentUserControl documentUserControl;
+        private UserControls.ContentUserControl contentUserControl;
     }
 }

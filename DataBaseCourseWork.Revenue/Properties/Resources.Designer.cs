@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataBaseCourseWork.AuthorizationSystem.Properties {
+namespace DataBaseCourseWork.Revenue.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DataBaseCourseWork.AuthorizationSystem.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DataBaseCourseWork.AuthorizationSystem.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DataBaseCourseWork.Revenue.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,30 @@ namespace DataBaseCourseWork.AuthorizationSystem.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized string similar to WITH SalesRevenue AS (
+        ///    SELECT
+        ///        w.ShopId,
+        ///        p.Name AS ProductName,
+        ///        SUM(s.Quantity) AS TotalQuantity,
+        ///        SUM((s.Price - ps.Price) * s.Quantity) AS TotalRevenue
+        ///    FROM
+        ///        Sales s
+        ///    INNER JOIN
+        ///        Workers w ON s.WorkerId = w.Id
+        ///    INNER JOIN
+        ///        ProductsInStock ps ON s.ProductId = ps.ProductId
+        ///    INNER JOIN
+        ///        Products p ON s.ProductId = p.Id
+        ///    WHERE
+        ///        s.Quantity &lt;= ps.Quantity
+        ///    GROUP BY
+        ///        w.ShopId, s.ProductId, p.Name
+        ///)
+        ///S [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static System.Drawing.Icon icon {
+        internal static string query {
             get {
-                object obj = ResourceManager.GetObject("icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] queries {
-            get {
-                object obj = ResourceManager.GetObject("queries", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("query", resourceCulture);
             }
         }
     }

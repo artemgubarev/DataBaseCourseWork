@@ -3,7 +3,7 @@
   "fkeys": "SELECT fkc.parent_column_id AS ColumnNumber, OBJECT_NAME(fkc.referenced_object_id) AS TableName FROM sys.foreign_key_columns AS fkc WHERE OBJECT_NAME(fkc.parent_object_id) = ",
   "getnamesfromtable": "SELECT * FROM ",
   "readAll": "SELECT * FROM Sales;",
-  "insert": "INSERT INTO Sales(WorkerId,SaleDate,ProductId,Revenue,Quantity) VALUES (@WorkerId,@SaleDate,@ProductId,@Revenue,@Quantity) SELECT SCOPE_IDENTITY();",
+  "insert": "INSERT INTO Sales(WorkerId,SaleDate,ProductId,Price,Quantity) VALUES (@WorkerId,@SaleDate,@ProductId,@Price,@Quantity) SELECT SCOPE_IDENTITY();",
   "delete": "DELETE FROM Sales WHERE Id = ",
-  "update": "UPDATE Sales SET WorkerId=@WorkerId,SaleDate=@SaleDate,ProductId=@ProductId,Revenue=@Revenue,Quantity=@Quantity WHERE Id = @Id;"
+  "update": "UPDATE Sales SET WorkerId=@WorkerId,SaleDate=@SaleDate,ProductId=@ProductId,Price=@Price,Quantity=@Quantity WHERE Id = @Id;"
 }

@@ -21,14 +21,12 @@ namespace DataBaseCourseWork.Common
         private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
         private readonly SqlConnection _connection;
         private readonly string _tableName;
-        private readonly bool _firstColumnIsVisible;
 
         public DataViewerDevexpressController(DataViewerDevexpressUserControl userControl, 
-            byte[] sqlQueryFile, string tableName, DataColumn[] columns, bool firstColumnIsVisible = false)
+            byte[] sqlQueryFile, string tableName, DataColumn[] columns)
         {
             _userControl = userControl;
             _tableName = tableName;
-            _firstColumnIsVisible = firstColumnIsVisible;
 
             string jsonString = System.Text.Encoding.UTF8.GetString((byte[])sqlQueryFile);
             using (var document = JsonDocument.Parse(jsonString))
@@ -139,12 +137,11 @@ namespace DataBaseCourseWork.Common
                     }
                 }
             }
+
             // скрыть первый столбец
-            if (!_firstColumnIsVisible)
-            {
-                _userControl.GridView.Columns[0].Visible = false;
-                _userControl.GridViewInsertignData.Columns[0].Visible = false;
-            }
+            _userControl.GridView.Columns[0].Visible = false;
+            _userControl.GridViewInsertignData.Columns[0].Visible = false;
+
             // поиск столбцов имеющих тип date, для отображения календарика в ячейке таблицы
             if (_queries.TryGetValue("datatypes", out string dataTypesQuery))
             {
@@ -177,24 +174,20 @@ namespace DataBaseCourseWork.Common
                 }
                 try
                 {
-                    int index = _firstColumnIsVisible ? 0 : 1;
-                    var data = new object[colsCount - index];
+                    var data = new object[colsCount];
                     var displayedData = new object[colsCount];
                     var row = dataTableIns.Rows[i];
-                    for (int j = index; j < colsCount; j++)
-                    {
-                        data[j - index] = row[j];
-                    }
                     for (int j = 0; j < colsCount; j++)
                     {
+                        data[j] = row[j];
                         displayedData[j] = row[j];
                     }
                     _foreignKeys.ForEach(fkey =>
                     {
                         int colIndex = fkey.Key;
                         var value = fkey.Value.FirstOrDefault(f =>
-                            f[1].ToString() == data[colIndex - 1 - index].ToString());
-                        data[colIndex - 1 - index] = value[0];
+                            f[1].ToString() == data[colIndex - 1].ToString());
+                        data[colIndex - 1] = value[0];
                     });
                     var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
                     var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
@@ -404,8 +397,7 @@ namespace DataBaseCourseWork.Common
         {
             int emptyCells = 0;
             int count = dataTable.Columns.Count;
-            int colIndex = _firstColumnIsVisible ? 0 : 1;
-            for (int j = colIndex; j < dataTable.Columns.Count; j++)
+            for (int j = 0; j < dataTable.Columns.Count; j++)
             {
                 if (string.IsNullOrEmpty(dataTable.Rows[rowIndex][j].ToString()))
                 {
@@ -413,7 +405,7 @@ namespace DataBaseCourseWork.Common
                 }
             }
             if (emptyCells == 0) return 1;
-            else if (emptyCells == count - colIndex) return -1;
+            else if (emptyCells == count) return -1;
             else return 0;
         }
 
