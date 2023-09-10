@@ -174,25 +174,25 @@ namespace DataBaseCourseWork.Common
                 }
                 try
                 {
-                    var data = new object[colsCount];
+                    var data = new object[colsCount - 1];
                     var displayedData = new object[colsCount];
                     var row = dataTableIns.Rows[i];
-                    for (int j = 0; j < colsCount; j++)
+                    for (int j = 1; j < colsCount; j++)
                     {
-                        data[j] = row[j];
+                        data[j - 1] = row[j];
                         displayedData[j] = row[j];
                     }
                     _foreignKeys.ForEach(fkey =>
                     {
                         int colIndex = fkey.Key;
                         var value = fkey.Value.FirstOrDefault(f =>
-                            f[1].ToString() == data[colIndex - 1].ToString());
-                        data[colIndex - 1] = value[0];
+                            f[1].ToString() == data[colIndex - 2].ToString());
+                        data[colIndex - 2] = value[0];
                     });
                     var parameters = SqlParametersInit(_queries["insert"], data, withId: false);
                     var id = _dataBase.ExecuteScalar(_queries["insert"], _connection, parameters);
+                    displayedData[0] = id;
                     dataTable.Rows.Add(displayedData);
-                    dataTable.Rows[dataTable.Rows.Count - 1][0] = id;
                 }
                 catch (System.Data.SqlClient.SqlException exception)
                 {
@@ -397,7 +397,7 @@ namespace DataBaseCourseWork.Common
         {
             int emptyCells = 0;
             int count = dataTable.Columns.Count;
-            for (int j = 0; j < dataTable.Columns.Count; j++)
+            for (int j = 1; j < dataTable.Columns.Count; j++)
             {
                 if (string.IsNullOrEmpty(dataTable.Rows[rowIndex][j].ToString()))
                 {

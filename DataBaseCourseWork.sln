@@ -47,8 +47,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Workers"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ChangePass", "DataBaseCourseWork.ChangePass\DataBaseCourseWork.ChangePass.csproj", "{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AboutProgram", "DataBaseCourseWork.AboutProgram\DataBaseCourseWork.AboutProgram.csproj", "{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AdminPanel", "DataBaseCourseWork.AdminPanel\DataBaseCourseWork.AdminPanel.csproj", "{4F51DE55-95C6-4DCC-A741-F59A06FAF406}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.ShopsAssortments", "DataBaseCourseWork.ShopsAssortments\DataBaseCourseWork.ShopsAssortments.csproj", "{09FBE7B9-1619-4BF1-B71F-CC09189CEC35}"
@@ -56,6 +54,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Revenue", "DataBaseCourseWork.Revenue\DataBaseCourseWork.Revenue.csproj", "{A6AA2FA9-AE56-460E-9657-022099CDE9DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.Content", "DataBaseCourseWork.Content\DataBaseCourseWork.Content.csproj", "{65F1C6CC-B968-44E1-91D2-9AB55492FC50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseCourseWork.AboutProgram", "DataBaseCourseWork.AboutProgram\DataBaseCourseWork.AboutProgram.csproj", "{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -151,10 +151,6 @@ Global
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD5E335D-8CA5-4B08-BE91-B659DFC1707B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F51DE55-95C6-4DCC-A741-F59A06FAF406}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -171,6 +167,10 @@ Global
 		{65F1C6CC-B968-44E1-91D2-9AB55492FC50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65F1C6CC-B968-44E1-91D2-9AB55492FC50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65F1C6CC-B968-44E1-91D2-9AB55492FC50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE60B21-30B2-43A5-A146-91F6BBFB74BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

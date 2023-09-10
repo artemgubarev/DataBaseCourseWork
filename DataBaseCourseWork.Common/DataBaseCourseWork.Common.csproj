@@ -78,9 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBaseViewerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DataViewerDevexpressController.cs" />
     <Compile Include="DocumentController.cs" />
     <Compile Include="MD5HashCalculator.cs" />
