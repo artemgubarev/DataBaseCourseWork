@@ -8,19 +8,48 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Main
 {
+   
     public partial class MainForm : Form
     {
+        private class UserAccess
+        {
+            public UserAccess(object[][] accessData)
+            {
+                _accessData = accessData;
+            }
+
+            private object[][] _accessData;
+
+            public (bool,bool,bool,bool) GetAccess(string elementName)
+            {
+                (bool, bool, bool, bool) data = (false,false,false,false);
+                foreach (var item in _accessData)
+                {
+                    if (item[1].ToString() == elementName)
+                    {
+                        data.Item1 = Convert.ToBoolean(item[3].ToString());
+                        data.Item2 = Convert.ToBoolean(item[4].ToString());
+                        data.Item3 = Convert.ToBoolean(item[5].ToString());
+                        data.Item4 = Convert.ToBoolean(item[6].ToString());
+                    }
+                }
+                return data;
+            }
+        }
+
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
         private readonly SqlConnection _connection;
         private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
         private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
         private int _userId;
+        private UserAccess _userAccess;
         public MainForm()
         {
             InitializeComponent();
@@ -59,6 +88,7 @@ namespace DataBaseCourseWork.Main
         {
             string query = _queries["access"] + "'" + _userId.ToString() + "';";
             var access = _dataBase.ExecuteReader(query, _connection).ToArray();
+            _userAccess = new UserAccess(access);
             bool admin = Convert.ToBoolean(access[0][2].ToString());
             var adminPanelItem = FindItemByText(this.mainUserControl.MenuStrip.Items, "Панель администратора");
             adminPanelItem.Visible = admin;
@@ -113,7 +143,6 @@ namespace DataBaseCourseWork.Main
         private void LoadMenuStrip()
         {
             var menuItems = _dataBase.ExecuteReader(_queries["readAll"], _connection).ToArray();
-
             // init
             for (int i = 0; i < menuItems.Length; i++)
             {
@@ -126,7 +155,6 @@ namespace DataBaseCourseWork.Main
                 _menuItems.Add(new MenuItem(name: name, id: id, parentId: parentId,
                       dllName: dllName, funcName: funcName, number: number));
             }
-
             // level 0
             var menuItemsLevel0 = _menuItems.Where(m => m.ParentId == 0).ToList();
             menuItemsLevel0.Sort((p, q) => p.Number.CompareTo(q.Number));
@@ -181,9 +209,29 @@ namespace DataBaseCourseWork.Main
                     string className = menuItem.Dllname + "Form";
                     var types = asm.GetTypes();
                     var type = types?.FirstOrDefault(t => t.Name == className);
-                    object instance = Activator.CreateInstance(type);
-                    var form = (Form)instance;
-                    form.ShowDialog();
+
+                    if (type != null)
+                    {
+                        string formText = ((ToolStripMenuItem)sender).Text;
+                        object[] constructorArgs = new object[] { _userAccess.GetAccess(formText) , formText, menuItem.Dllname};
+
+                        // Создайте экземпляр формы с передачей аргументов в конструктор
+                        object instance = Activator.CreateInstance(type, constructorArgs);
+
+                        if (instance is Form form)
+                        {
+                            form.ShowDialog();
+                        }
+                        else
+                        {
+                            throw new Exception("Тип не является формой.");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Тип не найден.");
+                    }
+
                 }
             }
         }

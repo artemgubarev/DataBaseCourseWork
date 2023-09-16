@@ -1,37 +1,22 @@
 ﻿using DataBaseCourseWork.Common;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Orders
 {
-    public partial class OrdersForm : Form
+    public partial class OrdersForm : DataViewerBaseForm
     {
-        private readonly DataViewerDevexpressController _controller;
-        public OrdersForm()
+        public OrdersForm((bool r, bool w, bool e, bool d) access, string formText, string tableName) 
+            : base(access, formText, tableName, new DataColumn[]
         {
-            InitializeComponent();
-
-            string tableName = "Orders";
-            DataColumn[] columns =
-           {
-                new DataColumn("Id", typeof(int)),
+            new DataColumn("Id", typeof(int)),
                 new DataColumn("Название", typeof(string)),
                 new DataColumn("Магазин", typeof(string)),
                 new DataColumn("Поставщик", typeof(string)),
                 new DataColumn("Дата", typeof(DateTime)),
-            };
-
-            _controller = new DataViewerDevexpressController(this.dataViewerDevexpressUserControl,
-                Properties.Resources.queries, tableName, columns);
-            this.Disposed += OrdersForm_Disposed;
-            this.Width = Screen.PrimaryScreen.Bounds.Width * 3 / 5;
-            this.Height = Screen.PrimaryScreen.Bounds.Height * 5 / 6;
-        }
-
-        private void OrdersForm_Disposed(object sender, EventArgs e)
+        }, Properties.Resources.queries)
         {
-            _controller.Dispose();
+
         }
     }
 }

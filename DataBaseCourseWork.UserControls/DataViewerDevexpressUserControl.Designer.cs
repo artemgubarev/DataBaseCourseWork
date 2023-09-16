@@ -90,7 +90,7 @@
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
             this.tablePanel1.SetRow(this.gridControl, 0);
-            this.gridControl.Size = new System.Drawing.Size(684, 304);
+            this.gridControl.Size = new System.Drawing.Size(684, 362);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -154,11 +154,11 @@
             // 
             this.tablePanel1.SetColumn(this.gridControlInsertingData, 0);
             this.gridControlInsertingData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlInsertingData.Location = new System.Drawing.Point(3, 342);
+            this.gridControlInsertingData.Location = new System.Drawing.Point(3, 389);
             this.gridControlInsertingData.MainView = this.gridViewInsertingData;
             this.gridControlInsertingData.Name = "gridControlInsertingData";
             this.tablePanel1.SetRow(this.gridControlInsertingData, 2);
-            this.gridControlInsertingData.Size = new System.Drawing.Size(684, 226);
+            this.gridControlInsertingData.Size = new System.Drawing.Size(684, 179);
             this.gridControlInsertingData.TabIndex = 11;
             this.gridControlInsertingData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewInsertingData});
@@ -202,19 +202,19 @@
             this.tablePanel1.Location = new System.Drawing.Point(2, 0);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 310F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 29F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 100F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F)});
             this.tablePanel1.Size = new System.Drawing.Size(690, 571);
             this.tablePanel1.TabIndex = 12;
             // 
             // labelControl2
             // 
             this.tablePanel1.SetColumn(this.labelControl2, 0);
-            this.labelControl2.Location = new System.Drawing.Point(3, 318);
+            this.labelControl2.Location = new System.Drawing.Point(3, 371);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 1);
-            this.labelControl2.Size = new System.Drawing.Size(140, 13);
+            this.labelControl2.Size = new System.Drawing.Size(140, 12);
             this.labelControl2.TabIndex = 12;
             this.labelControl2.Text = "Добавление новых записей";
             // 

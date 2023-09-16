@@ -78,6 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataViewerBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataViewerBaseForm.Designer.cs">
+      <DependentUpon>DataViewerBaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataViewerDevexpressController.cs" />
     <Compile Include="DocumentController.cs" />
     <Compile Include="MD5HashCalculator.cs" />
@@ -94,6 +100,11 @@
       <Project>{E425B6D4-E495-450F-9B99-6F4CEB1EE22E}</Project>
       <Name>DataBaseCourseWork.UserControls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataViewerBaseForm.resx">
+      <DependentUpon>DataViewerBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
