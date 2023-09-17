@@ -1,6 +1,6 @@
 ﻿namespace DataBaseCourseWork.Common
 {
-    partial class DataViewerBaseForm
+    partial class DocumentBaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataViewerDevexpressUserControl = new DataBaseCourseWork.UserControls.DataViewerDevexpressUserControl();
+            this.documentUserControl = new DataBaseCourseWork.UserControls.DocumentUserControl();
             this.SuspendLayout();
             // 
-            // dataViewerDevexpressUserControl
+            // documentUserControl
             // 
-            this.dataViewerDevexpressUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataViewerDevexpressUserControl.Location = new System.Drawing.Point(0, 0);
-            this.dataViewerDevexpressUserControl.Name = "dataViewerDevexpressUserControl";
-            this.dataViewerDevexpressUserControl.Size = new System.Drawing.Size(800, 501);
-            this.dataViewerDevexpressUserControl.TabIndex = 0;
+            this.documentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.documentUserControl.Location = new System.Drawing.Point(0, 0);
+            this.documentUserControl.Name = "documentUserControl";
+            this.documentUserControl.Size = new System.Drawing.Size(583, 450);
+            this.documentUserControl.TabIndex = 0;
             // 
-            // DataViewerBaseForm
+            // DocumentBaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 501);
-            this.Controls.Add(this.dataViewerDevexpressUserControl);
-            this.Name = "DataViewerBaseForm";
+            this.ClientSize = new System.Drawing.Size(583, 450);
+            this.Controls.Add(this.documentUserControl);
+            this.Name = "DocumentBaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DataViewerBaseForm";
+            this.Text = "DocumentBaseForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private UserControls.DataViewerDevexpressUserControl dataViewerDevexpressUserControl;
+        private UserControls.DocumentUserControl documentUserControl;
     }
 }

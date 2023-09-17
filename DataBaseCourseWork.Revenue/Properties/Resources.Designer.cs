@@ -61,6 +61,16 @@ namespace DataBaseCourseWork.Revenue.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] queries {
+            get {
+                object obj = ResourceManager.GetObject("queries", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WITH SalesRevenue AS (
         ///    SELECT
         ///        w.ShopId,

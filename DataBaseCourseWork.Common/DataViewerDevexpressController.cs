@@ -388,7 +388,9 @@ namespace DataBaseCourseWork.Common
         }
 
         /// <summary>
-        /// -1
+        /// -1 заполенена данными
+        /// 1 - пустая
+        /// 0 - частично пустая
         /// </summary>
         /// <param name="dataTable"></param>
         /// <param name="rowIndex"></param>
@@ -397,7 +399,7 @@ namespace DataBaseCourseWork.Common
         {
             int emptyCells = 0;
             int count = dataTable.Columns.Count;
-            for (int j = 1; j < dataTable.Columns.Count; j++)
+            for (int j = 1; j < count; j++)
             {
                 if (string.IsNullOrEmpty(dataTable.Rows[rowIndex][j].ToString()))
                 {
@@ -405,7 +407,7 @@ namespace DataBaseCourseWork.Common
                 }
             }
             if (emptyCells == 0) return 1;
-            else if (emptyCells == count) return -1;
+            else if (emptyCells == count - 1) return -1;
             else return 0;
         }
 

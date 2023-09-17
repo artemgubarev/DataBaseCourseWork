@@ -1,0 +1,4 @@
+{
+  "connStr": "Data Source=SQL5111.site4now.net;Initial Catalog=db_a9e913_coursework;User Id=db_a9e913_coursework_admin;Password=flyg919st",
+  "document": "with salesrevenue as ( select w.shopid, p.name as productname, sum(s.quantity) as totalquantity, sum((s.price - ps.price) * s.quantity) as totalrevenue from sales s inner join workers w on s.workerid = w.id inner join productsinstock ps on s.productid = ps.productid inner join products p on s.productid = p.id where s.quantity <= ps.quantity group by w.shopid, s.productid, p.name ) select sh.name as shopname, sr.productname, sr.totalquantity, sr.totalrevenue from salesrevenue sr inner join shops sh on sr.shopid = sh.id;"
+}

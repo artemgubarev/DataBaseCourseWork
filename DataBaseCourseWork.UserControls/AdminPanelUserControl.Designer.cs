@@ -40,6 +40,7 @@
             // 
             // applyButton
             // 
+            this.applyButton.AllowFocus = false;
             this.applyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.applyButton.Location = new System.Drawing.Point(3, 620);
             this.applyButton.Name = "applyButton";
@@ -61,6 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.userNameComboBox.Location = new System.Drawing.Point(85, 9);
             this.userNameComboBox.Name = "userNameComboBox";
+            this.userNameComboBox.Properties.AllowFocused = false;
             this.userNameComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.userNameComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;

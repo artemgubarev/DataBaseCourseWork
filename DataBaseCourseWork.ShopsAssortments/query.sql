@@ -57,4 +57,3 @@ HAVING
     END), 0) > 0
 ORDER BY
     S.Name, P.Name;
-

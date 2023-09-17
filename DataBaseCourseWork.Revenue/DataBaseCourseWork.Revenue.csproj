@@ -61,9 +61,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RevenueForm.resx">
-      <DependentUpon>RevenueForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseCourseWork.Common\DataBaseCourseWork.Common.csproj">
@@ -77,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="query.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="queries.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

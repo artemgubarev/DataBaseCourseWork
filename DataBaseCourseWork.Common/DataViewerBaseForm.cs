@@ -8,7 +8,8 @@ namespace DataBaseCourseWork.Common
     {
         protected DataViewerDevexpressController _controller;
         protected string _formText;
-        public DataViewerBaseForm((bool r, bool w, bool e, bool d) access, string formText, string tableName, DataColumn[] columns, byte[] resourceData)
+        public DataViewerBaseForm((bool r, bool w, bool e, bool d) access, string formText, 
+            string tableName, DataColumn[] columns, byte[] resourceData)
         {
             InitializeComponent();
 

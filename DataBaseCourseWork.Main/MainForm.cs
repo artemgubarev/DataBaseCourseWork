@@ -1,6 +1,4 @@
-﻿using DataBaseCourseWork.Banks;
-using DataBaseCourseWork.ChangePass;
-using DataBaseCourseWork.Common;
+﻿using DataBaseCourseWork.Common;
 using DataBaseCourseWork.Main.Properties;
 using System;
 using System.Collections.Generic;
@@ -8,13 +6,11 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Main
 {
-   
     public partial class MainForm : Form
     {
         private class UserAccess
@@ -193,45 +189,56 @@ namespace DataBaseCourseWork.Main
         /// <param name="e"></param>
         private void MenuItem_Click(object sender, EventArgs e)
         {
+            string formText = ((ToolStripMenuItem)sender).Text;
             var menuItem = (MenuItem)((ToolStripMenuItem)sender).Tag;
-            if (menuItem.Dllname == "ChangePass")
+            if (formText == "Настройка")
             {
-                var form = new ChangePassForm(_userId);
-                form.ShowDialog();
+                MessageBox.Show("Необязательный пункт. Мы об этом с вами разговаривали.");
+                return;
             }
-            else
+            if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
             {
-                if (menuItem.Funcname != "NULL" && menuItem.Dllname != "NULL")
+                string menuItemDllName = menuItem.Dllname;
+                string dllName = "DataBaseCourseWork." + menuItemDllName;
+                string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+                var asm = Assembly.LoadFrom(path);
+                string className = menuItem.Dllname + "Form";
+                var types = asm.GetTypes();
+                var type = types?.FirstOrDefault(t => t.Name == className);
+
+                if (type != null)
                 {
-                    string dllName = "DataBaseCourseWork." + menuItem.Dllname;
-                    string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
-                    var asm = Assembly.LoadFrom(path);
-                    string className = menuItem.Dllname + "Form";
-                    var types = asm.GetTypes();
-                    var type = types?.FirstOrDefault(t => t.Name == className);
-
-                    if (type != null)
+                    object[] constructorArgs;
+                    if (menuItemDllName == "AdminPanel" ||
+                        menuItemDllName == "AboutProgram" ||
+                        menuItemDllName == "Content")
                     {
-                        string formText = ((ToolStripMenuItem)sender).Text;
-                        object[] constructorArgs = new object[] { _userAccess.GetAccess(formText) , formText, menuItem.Dllname};
-
-                        // Создайте экземпляр формы с передачей аргументов в конструктор
-                        object instance = Activator.CreateInstance(type, constructorArgs);
-
-                        if (instance is Form form)
-                        {
-                            form.ShowDialog();
-                        }
-                        else
-                        {
-                            throw new Exception("Тип не является формой.");
-                        }
+                        constructorArgs = new object[] { };
+                    }
+                    else if (menuItemDllName == "ChangePass")
+                    {
+                        constructorArgs = new object[] { _userId };
                     }
                     else
                     {
-                        throw new Exception("Тип не найден.");
+                        constructorArgs = new object[] { _userAccess.GetAccess(formText), formText, menuItem.Dllname };
                     }
 
+                    // Создайте экземпляр формы с передачей аргументов в конструктор
+                    object instance = Activator.CreateInstance(type, constructorArgs);
+
+                    if (instance is Form form)
+                    {
+                        form.ShowDialog();
+                    }
+                    else
+                    {
+                        throw new Exception("Тип не является формой.");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Тип не найден.");
                 }
             }
         }
