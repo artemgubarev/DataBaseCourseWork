@@ -2,7 +2,6 @@
 using DataBaseCourseWork.Main.Properties;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -169,7 +168,7 @@ namespace DataBaseCourseWork.Main
             {
                 string menuItemDllName = menuItem.Dllname;
                 string dllName = "DataBaseCourseWork." + menuItemDllName;
-                string path = Path.Combine(@"..\..\..\", dllName, "bin", "Debug", dllName + ".dll");
+                string path = @"..\..\..\..\" + dllName + @"\bin\x64\Debug\" + dllName + ".dll";
                 var asm = Assembly.LoadFrom(path);
                 string className = menuItem.Dllname + "Form";
                 var types = asm.GetTypes();
