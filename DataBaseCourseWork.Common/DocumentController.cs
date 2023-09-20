@@ -14,11 +14,11 @@ namespace DataBaseCourseWork.Common
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
         private readonly SqlConnection _connection;
 
-        public DocumentController(DocumentUserControl userControl, DataColumn[] columns, string connectionString, string readDocumentQuery)
+        public DocumentController(DocumentUserControl userControl, DataColumn[] columns, SqlConnection connection,
+            string readDocumentQuery)
         {
             _userControl = userControl;
-            _connection = new SqlConnection(connectionString);
-            _connection.Open();
+            _connection = connection;
             ReadData(columns, readDocumentQuery);
 
             this._userControl.PrintButton.Click += PrintButton_Click;

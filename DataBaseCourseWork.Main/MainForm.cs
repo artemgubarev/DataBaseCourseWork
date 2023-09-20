@@ -2,16 +2,14 @@
 using DataBaseCourseWork.Main.Properties;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text.Json;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.Main
 {
-    public partial class MainForm : Form
+    public partial class MainForm : BaseForm
     {
         private class UserAccess
         {
@@ -38,43 +36,14 @@ namespace DataBaseCourseWork.Main
                 return data;
             }
         }
-
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
-        private readonly SqlConnection _connection;
         private List<MenuItem> _menuItems = new List<MenuItem>();
         private Form prevForm;
-        private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
         private int _userId;
         private UserAccess _userAccess;
-        public MainForm()
+        public MainForm() : base(queriesFile: Resources.queries)
         {
             InitializeComponent();
-
-            var sqlQueryFile = Resources.queries;
-            if (sqlQueryFile.GetType() != typeof(byte[]))
-                throw new ArgumentException("Файл с запросами должен иметь тип byte[]");
-
-            string jsonString = System.Text.Encoding.UTF8.GetString((byte[])sqlQueryFile);
-
-            using (var document = JsonDocument.Parse(jsonString))
-            {
-                var queries = document.RootElement;
-                foreach (var prop in queries.EnumerateObject())
-                {
-                    _queries.Add(prop.Name.ToString(), prop.Value.ToString());
-                }
-            }
-
-            if (_queries.ContainsKey("connStr"))
-            {
-                _connection = new SqlConnection(_queries["connStr"]);
-                _connection.Open();
-            }
-            else
-            {
-                throw new ArgumentException("Файл с запросами не содержит connectionString");
-            }
-
             this.Width = Screen.PrimaryScreen.Bounds.Width * 4 / 5;
             this.Height = Screen.PrimaryScreen.Bounds.Height * 3 / 5;
             this.Disposed += MainForm_Disposed;

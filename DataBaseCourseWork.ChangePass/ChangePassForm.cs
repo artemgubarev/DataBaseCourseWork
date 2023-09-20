@@ -34,7 +34,14 @@ namespace DataBaseCourseWork.ChangePass
             if (_queries.TryGetValue("connStr", out var query))
             {
                 _connection = new SqlConnection(query);
-                _connection.Open();
+                try
+                {
+                    _connection.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
@@ -43,6 +50,11 @@ namespace DataBaseCourseWork.ChangePass
 
             this.changePassUserControl.ChangePassButton.Click += ChangePassButton_Click;
             this.Disposed += ChangePassForm_Disposed;
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 2 / 6;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 3 / 6;
+            this.MinimumSize = new System.Drawing.Size(
+                Screen.PrimaryScreen.Bounds.Width * 2 / 6,
+                Screen.PrimaryScreen.Bounds.Height * 3 / 6);
         }
 
         private void ChangePassForm_Disposed(object sender, EventArgs e)
@@ -79,7 +91,7 @@ namespace DataBaseCourseWork.ChangePass
                 this.changePassUserControl.NewPassErrorLabel.Visible = true;
                 return;
             }
-            if (string.IsNullOrEmpty(repeatNewPassword))
+            if (string.IsNullOrEmpty(repeatNewPassword) || !string.Equals(repeatNewPassword, newPassword))
             {
                 this.changePassUserControl.RepeatPassErrorLabel.Visible = true;
                 return;

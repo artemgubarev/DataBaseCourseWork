@@ -6,48 +6,29 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DataBaseCourseWork.AuthorizationSystem
 {
-    public partial class AuthorizationForm : Form
+    public partial class AuthorizationForm : BaseForm
     {
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
-        private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
-        private readonly SqlConnection _connection;
 
         //private AuthorizationSystemRepository _repository;
-        public AuthorizationForm()
+        public AuthorizationForm() : base(queriesFile: Resources.queries)
         {
             InitializeComponent();
-           
-           // _repository = new AuthorizationSystemRepository();
             this.authorizationUserControl.Focus();
             this.authorizationUserControl.LoginButton.Click += LoginButton_Click;
             this.authorizationUserControl.RegistrationButton.Click += RegistrationButton_Click;
             this.Disposed += AuthorizationForm_Disposed;
 
-            // установить подключение, инициализировать запросы
-            string jsonString = System.Text.Encoding.UTF8.GetString((byte[])Resources.queries);
-            using (var document = JsonDocument.Parse(jsonString))
-            {
-                var queries = document.RootElement;
-                foreach (var prop in queries.EnumerateObject())
-                {
-                    _queries.Add(prop.Name, prop.Value.ToString());
-                }
-            }
-            if (_queries.TryGetValue("connStr", out var query))
-            {
-                _connection = new SqlConnection(query);
-                _connection.Open();
-            }
-            else
-            {
-                throw new ArgumentException("Файл с запросами не содержит connectionString (строка подключения)");
-            }
+            this.Width = Screen.PrimaryScreen.Bounds.Width * 2 / 6;
+            this.Height = Screen.PrimaryScreen.Bounds.Height * 3 / 6;
+            this.MinimumSize = new System.Drawing.Size(
+                Screen.PrimaryScreen.Bounds.Width * 2 / 6,
+                Screen.PrimaryScreen.Bounds.Height * 3 / 6);
         }
 
         private void AuthorizationForm_Disposed(object sender, EventArgs e)

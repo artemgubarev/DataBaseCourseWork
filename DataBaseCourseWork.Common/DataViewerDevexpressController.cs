@@ -15,38 +15,22 @@ namespace DataBaseCourseWork.Common
 {
     public class DataViewerDevexpressController : IDisposable
     {
-        private readonly Dictionary<int, IEnumerable<object[]>> _foreignKeys = new Dictionary<int, IEnumerable<object[]>>();
+        private readonly Dictionary<int, IEnumerable<object[]>> _foreignKeys 
+            = new Dictionary<int, IEnumerable<object[]>>();
         private readonly DataViewerDevexpressUserControl _userControl;
         private readonly MSSQLDataBase _dataBase = new MSSQLDataBase();
-        private readonly Dictionary<string, string> _queries = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> _queries;
         private readonly SqlConnection _connection;
         private readonly string _tableName;
 
-        public DataViewerDevexpressController(DataViewerDevexpressUserControl userControl, 
-            byte[] sqlQueryFile, string tableName, DataColumn[] columns)
+        public DataViewerDevexpressController(DataViewerDevexpressUserControl userControl,
+             Dictionary<string, string> queries, SqlConnection connection, string tableName, DataColumn[] columns)
         {
             _userControl = userControl;
             _tableName = tableName;
-
-            string jsonString = System.Text.Encoding.UTF8.GetString((byte[])sqlQueryFile);
-            using (var document = JsonDocument.Parse(jsonString))
-            {
-                var queries = document.RootElement;
-                foreach (var prop in queries.EnumerateObject())
-                {
-                    _queries.Add(prop.Name, prop.Value.ToString());
-                }
-            }
-            if (_queries.TryGetValue("connStr", out var query))
-            {
-                _connection = new SqlConnection(query);
-                _connection.Open();
-            }
-            else
-            {
-                throw new ArgumentException("Файл с запросами не содержит connectionString (строка подключения)");
-            }
-
+            _queries = queries;
+            _connection = connection;
+           
             ReadData(tableName, columns);
 
             this._userControl.CreateButton.Click += CreateButton_Click;
@@ -413,9 +397,6 @@ namespace DataBaseCourseWork.Common
 
         public void Dispose()
         {
-            _connection.Close();
-            _connection.Dispose();
-
             this._userControl.CreateButton.Click -= CreateButton_Click;
             this._userControl.DeleteButton.Click -= DeleteButton_Click;
             this._userControl.UpdateButton.Click -= UpdateButton_Click;
